@@ -7,9 +7,15 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(255), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    street_address = db.Column(db.String(255))
+    city_state = db.Column(db.String(255))
+    zipcode = db.Column(db.String(255))
+    phone = db.Column(db.String(20))
+    business_phone = db.Column(db.String(20))
+    logo_url = db.Column(db.String(500))
 
     @property
     def password(self):
@@ -25,6 +31,12 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'name': self.name,
+            'email': self.email,
+            'street_address': self.street_address,
+            'city_state': self.city_state,
+            'zipcode': self.zipcode,
+            'phone': self.phone,
+            'business_phone': self.business_phone,
+            'logo_url': self.logo_url,
         }
