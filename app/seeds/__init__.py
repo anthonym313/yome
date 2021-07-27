@@ -12,8 +12,8 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
-    seed_invoices()
     seed_clients()
+    seed_invoices()
     # Add other seed functions here
 
 
@@ -21,6 +21,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     undo_users()
-    undo_invoices()
     undo_clients()
+    undo_invoices()
     # Add other undo functions here
