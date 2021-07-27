@@ -8,7 +8,7 @@ class Item(db.Model):
     rate = db.Column(db.Integer, nullable = False)
     quantity = db.Column(db.Integer, nullable= False)
     amount = db.Column(db.Integer, nullable= False)
-    invoice_id = db.Column(db.Integer, ForeignKey('invoices.id'))
+    invoice_id = db.Column(db.Integer, db.ForeignKey('invoices.id'))
     
     invoices = db.relationship('Invoice', back_populates='items')
     
