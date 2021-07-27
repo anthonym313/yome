@@ -13,7 +13,7 @@ class Client(db.Model):
     users = db.relationship('User', back_populates='clients')
     
     def to_dict(self):
-        return{
+        return {
             'id': self.id,
             'name': self.name,
             'email': self.email,
