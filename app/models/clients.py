@@ -11,6 +11,8 @@ class Client(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     
     users = db.relationship('User', back_populates='clients')
+    invoices = db.relationship('Invoice', back_populates='clients')
+    payments = db.relationship('Payment', back_populates='clients')
     
     def to_dict(self):
         return {
