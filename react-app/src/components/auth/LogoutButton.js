@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 

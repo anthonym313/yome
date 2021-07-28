@@ -39,7 +39,6 @@ export default function NavBar(){
               </li>
             </div>     
           </div>
-          {/* <li> <LogoutButton/></li> */}
         </ul>
       </nav>
     );
