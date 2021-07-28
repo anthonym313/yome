@@ -1,0 +1,30 @@
+li {
+    list-style-type: none;
+    margin:0 4px 0 4px;
+    color: #67AB9F;
+    text-decoration: none;
+}
+
+.nav-links-container {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative;
+    text-decoration: none;
+    padding-top: 4px;
+    justify-content: space-between;
+}
+
+.nav-links-left{
+    margin-left: 30px;
+
+}
+.nav-links-right {
+    display:flex;
+    justify-content: flex-end;
+    margin-right:30px;
+}
+
