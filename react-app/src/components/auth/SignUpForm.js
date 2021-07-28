@@ -29,6 +29,9 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    if(password !== repeatPassword){
+      errors.push('Passwords do not match')
+    }
   };
   
   const updateStreetAddress = (e) => {
