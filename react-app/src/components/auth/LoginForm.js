@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './Login.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -27,38 +28,55 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/invoices' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className='login-page-container'>
+      <div className='login-column-left'>
+        <h1>Welcome Back!</h1>
+        <h2>Login to continue to your account.</h2>
+        <img src='./images/clipboard.jpg'></img>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
+      <div className='login-column-right'>
+        <h1>Login to Yome</h1>
+        <form onSubmit={onLogin}>
+          <div className='login-errors'>
+    
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+          <div>
+            <label htmlFor='email'>Email</label>
+            <input
+              name='email'
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div>
+            <label htmlFor='password'>Password</label>
+            <input
+              name='password'
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={updatePassword}
+            />
+          </div>
+          <div id="login-button">
+            <button type='submit'>Login</button>
+          </div>
+        </form>
+        <h3>or</h3>
+        <h3>Don't have an Account?</h3>
+        <a href='/signup'>Sign Up!</a>
+
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </div>
   );
 };
 
