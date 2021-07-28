@@ -13,7 +13,7 @@ export default function NavBar(){
     
     return (
       <nav>
-        <ul className= 'nav-links-container'>
+        <ul className= 'nav-links-container pro-status'>
           <li className='nav-links-left'>
             <NavLink to='/' exact={true} activeClassName='active'>
               <img src='logo.png' alt='yome'></img>
@@ -31,7 +31,7 @@ export default function NavBar(){
               </li>
               <li>
                 <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
-                  Login /
+                  Login\
                 </NavLink>
                 <NavLink to='/sign-up' exact={true} className='nav-feature'activeClassName='active'>
                   Sign Up
@@ -47,26 +47,35 @@ export default function NavBar(){
     return (
       <nav>
         <ul className= 'nav-links-container'>
-          <li className='nav-links-left'>
-              <img src='logo.png' alt='yome'></img>
-          </li>
-          <div className='nav-links-right'>
+          <div className='nav-links-left'>
             <li>
-              <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
-                Features
+              <img src='logo.png' alt='yome'></img>
+            </li>
+          </div>
+          <div className="nav-links-center">
+            <li>
+              <NavLink to='/invoices' exact={true} className='nav-feature' activeClassName='active'>
+                Invoices
               </NavLink>
+            </li>
+            <li>
+              <NavLink to='/clients' exact={true} className='nav-feature' activeClassName='active'>
+                Clients
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/users/:id' exact={true} className='nav-feature' activeClassName='active'>
+                Settings
+              </NavLink>
+            </li>
+          </div>
+          <div className='nav-links-right'>
+            <li className='logged_in_user'>
+              {user.username}
             </li>
             <div className= 'nav-links-right2'>
               <li>
                 <button className='demo-button'>Upgrade Now</button>
-              </li>
-              <li>
-                <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
-                  Login /
-                </NavLink>
-                <NavLink to='/sign-up' exact={true} className='nav-feature'activeClassName='active'>
-                  Sign Up
-                </NavLink>
               </li>
               <li> <LogoutButton/></li>
             </div>     
