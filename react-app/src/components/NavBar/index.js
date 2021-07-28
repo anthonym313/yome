@@ -32,9 +32,7 @@ export default function NavBar(){
                 Sign Up
               </NavLink>
             </li>
-          </div>
-            
-          
+          </div>     
         </div>
       </ul>
     </nav>
