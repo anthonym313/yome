@@ -22,7 +22,7 @@ export default function NavBar(){
           </li>
           <div className= 'nav-links-right2'>
             <li>
-              <button>Try It Free/Demo</button>
+              <button className='demo-button'>Try It Free/Demo</button>
             </li>
             <li>
               <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
