@@ -13,7 +13,7 @@ export default function NavBar(){
     
     return (
       <nav>
-        <ul className= 'nav-links-container'>
+        <ul className= 'nav-links-container pro-status'>
           <li className='nav-links-left'>
             <NavLink to='/' exact={true} activeClassName='active'>
               <img src='logo.png' alt='yome'></img>
