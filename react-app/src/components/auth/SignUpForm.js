@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './SignUpForm.css'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [streetAddress, setStreetAddress] = useState('');
+  const [cityState, setCityState] = useState('')
+  const [zipcode, setZipcode] = useState('')
+  const [phone, setPhone] = useState('')
+  const [businessPhone,setBusinessPhone ]= useState('')
+  const [logoUrl, setLogoUrl] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -21,7 +28,25 @@ const SignUpForm = () => {
       }
     }
   };
-
+  
+  const updateStreetAddress = (e) => {
+    setStreetAddress(e.target.value);
+  };
+  const updateCityState = (e) => {
+    setCityState(e.target.value);
+  };
+  const updateZipCode = (e) => {
+    setZipcode(e.target.value);
+  };
+  const updatePhone = (e) => {
+    setPhone(e.target.value);
+  };
+  const updateBusinsessPhone = (e) => {
+    setBusinessPhone(e.target.value);
+  };
+  const updateLogoUrl = (e) => {
+    setLogoUrl(e.target.value);
+  };
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -33,7 +58,7 @@ const SignUpForm = () => {
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-
+  
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };

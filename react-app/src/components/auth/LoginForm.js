@@ -77,7 +77,7 @@ const LoginForm = () => {
         </form>
         <h3>or</h3>
         <h3>Don't have an Account?</h3>
-        <a href='/signup'>Sign Up!</a>
+        <a href='/sign-up'>Sign Up!</a>
 
       </div>
     </div>
