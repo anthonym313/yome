@@ -16,25 +16,25 @@ export default function NavBar(){
         </li>
         <div className='nav-links-right'>
           <li>
-            <NavLink to='/feature' exact={true} activeClassName='active'>
-              Feature
+            <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
+              Features
             </NavLink>
           </li>
           <div className= 'nav-links-right2'>
             <li>
-              <NavLink to='/login' exact={true} activeClassName='active'>
-                Login
-              </NavLink>
+              <button>Try It Free/Demo</button>
             </li>
             <li>
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+              <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
+                Login /
+              </NavLink>
+              <NavLink to='/sign-up' exact={true} className='nav-feature'activeClassName='active'>
                 Sign Up
               </NavLink>
             </li>
           </div>
-          <li>
-            <LogoutButton />
-          </li>
+            
+          
         </div>
       </ul>
     </nav>
