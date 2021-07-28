@@ -34,10 +34,12 @@ const LoginForm = () => {
   return (
     <div className='login-page-container'>
       <div className='login-column-left'>
-        Things in here
+        <h1>Welcome Back!</h1>
+        <h2>Login to continue to your account</h2>
+        <img src='./images/clipboard.jpg'></img>
       </div>
       <div className='login-column-right'>
-        
+        <h1>Login to Yome</h1>
         <form onSubmit={onLogin}>
           <div>
             {errors.map((error, ind) => (
@@ -63,6 +65,8 @@ const LoginForm = () => {
               value={password}
               onChange={updatePassword}
             />
+          </div>
+          <div>
             <button type='submit'>Login</button>
           </div>
         </form>
