@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/index.js';
+import NotFoundPage from './components/NotFoundPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
@@ -40,8 +41,8 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/page-not-found'>
-          <h1>Page Not Found</h1>
+        <Route>
+          <NotFoundPage/>
         </Route>
         <ProtectedRoute path='/invoices' exact={true} >
           <h1>My ALL Invoice page</h1>
