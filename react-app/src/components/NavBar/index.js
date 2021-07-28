@@ -54,17 +54,17 @@ export default function NavBar(){
           </div>
           <div className="nav-links-center">
             <li>
-              <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
+              <NavLink to='/invoices' exact={true} className='nav-feature' activeClassName='active'>
                 Invoices
               </NavLink>
             </li>
             <li>
-              <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
+              <NavLink to='/clients' exact={true} className='nav-feature' activeClassName='active'>
                 Clients
               </NavLink>
             </li>
             <li>
-              <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
+              <NavLink to='/users/:id' exact={true} className='nav-feature' activeClassName='active'>
                 Settings
               </NavLink>
             </li>
