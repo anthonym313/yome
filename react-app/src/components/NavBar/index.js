@@ -31,7 +31,7 @@ export default function NavBar(){
               </li>
               <li>
                 <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
-                  Login /
+                  Login\
                 </NavLink>
                 <NavLink to='/sign-up' exact={true} className='nav-feature'activeClassName='active'>
                   Sign Up
@@ -47,26 +47,35 @@ export default function NavBar(){
     return (
       <nav>
         <ul className= 'nav-links-container'>
-          <li className='nav-links-left'>
+          <div className='nav-links-left'>
+            <li>
               <img src='logo.png' alt='yome'></img>
-          </li>
-          <div className='nav-links-right'>
+            </li>
+          </div>
+          <div className="nav-links-center">
             <li>
               <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
-                Features
+                Invoices
               </NavLink>
+            </li>
+            <li>
+              <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
+                Clients
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
+                Settings
+              </NavLink>
+            </li>
+          </div>
+          <div className='nav-links-right'>
+            <li className='logged_in_user'>
+              {user.username}
             </li>
             <div className= 'nav-links-right2'>
               <li>
                 <button className='demo-button'>Upgrade Now</button>
-              </li>
-              <li>
-                <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
-                  Login /
-                </NavLink>
-                <NavLink to='/sign-up' exact={true} className='nav-feature'activeClassName='active'>
-                  Sign Up
-                </NavLink>
               </li>
               <li> <LogoutButton/></li>
             </div>     
