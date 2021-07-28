@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import './LogoutButton.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
@@ -11,7 +12,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <div>
+    <div id='logout-button'>
       <button onClick={onLogout}>Logout</button>
     </div>
     )
