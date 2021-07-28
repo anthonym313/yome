@@ -27,4 +27,8 @@ li {
     justify-content: flex-end;
     margin-right:30px;
 }
+.nav-links-right2{
+    display: flex;
+    flex-direction: row;
+}
 

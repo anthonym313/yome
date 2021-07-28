@@ -20,16 +20,18 @@ export default function NavBar(){
               Feature
             </NavLink>
           </li>
-          <li>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              Sign Up
-            </NavLink>
-          </li>
+          <div className= 'nav-links-right2'>
+            <li>
+              <NavLink to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                Sign Up
+              </NavLink>
+            </li>
+          </div>
           <li>
             <LogoutButton />
           </li>
