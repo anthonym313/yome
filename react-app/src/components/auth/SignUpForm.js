@@ -73,7 +73,7 @@ const SignUpForm = () => {
     <div className='signup-page-container'>
       <div className='signup-column-left'>
         <form onSubmit={onSignUp}>
-          <div>
+          <div className='signup-errors'>
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}
@@ -169,13 +169,15 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button type='submit'>Sign Up!</button>
+          <button className='signup-button' type='submit'>Sign Up!</button>
         </form>
       </div>
       <div className='signup-column-right'>
         <h1>Sign Up!</h1>
-        <h2>Get started creating invoices for your business fast and with ease.</h2>
-        <img src></img>
+        <h2>Get started creating invoices for your business with ease.</h2>
+        <img src='./images/sign-up-illustration-yome.png'></img>
+        <h3>Already have an Account?</h3>
+        <a href='/login'><h4>Login</h4></a>
       </div>
     </div>
   );

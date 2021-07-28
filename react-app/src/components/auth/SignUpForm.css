@@ -1,0 +1,40 @@
+.signup-column-left{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    float:left;
+    background: #59948A;
+    height:90vh;
+    width:65%;
+    color:white;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.signup-column-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0;
+    float:right;
+    width: 35%;
+    height:90vh;
+
+}
+.signup-button{
+    margin-top: 15px;
+    width:340px;
+    border-radius: 3px;
+    border: none;
+    padding: 8px;
+    background-color: #264e70;
+    color:white;
+    transition-duration: .4s;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.signup-errors{
+    color:red;
+}
+a h4{
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

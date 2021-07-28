@@ -43,7 +43,7 @@ input{
 }
 
 .login-errors{
-    Color:red;
+    color:red;
 }
 #login-button button{
     margin-top: 15px;
