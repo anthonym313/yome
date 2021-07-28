@@ -67,10 +67,13 @@ const LoginForm = () => {
               onChange={updatePassword}
             />
           </div>
-          <div>
+          <div id="login-button">
             <button type='submit'>Login</button>
           </div>
         </form>
+        <h3>or</h3>
+        <h3>Don't have an Account?</h3>
+        <a href='/signup'>Sign Up!</a>
 
       </div>
     </div>
