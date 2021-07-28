@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoUser2 from '../DemoUser/DemoUser2';
 import './Login.css'
 
 const LoginForm = () => {
@@ -69,6 +70,9 @@ const LoginForm = () => {
           </div>
           <div id="login-button">
             <button type='submit'>Login</button>
+          </div>
+          <div>
+            <DemoUser2/>
           </div>
         </form>
         <h3>or</h3>
