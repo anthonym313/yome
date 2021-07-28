@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import DemoUser from '../DemoUser';
 import './NavBar.css'
 
 
@@ -27,7 +28,7 @@ export default function NavBar(){
             </li>
             <div className= 'nav-links-right2'>
               <li>
-                <button className='demo-button'>Try It Free/Demo</button>
+                <DemoUser/>
               </li>
               <li>
                 <NavLink to='/login' exact={true} className='nav-feature'activeClassName='active'>
