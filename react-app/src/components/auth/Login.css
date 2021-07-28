@@ -1,0 +1,12 @@
+.login-column-left{
+    margin:0;
+    float:left;
+    width: 35%;
+    background: #59948A;
+    height:90vh;
+
+}
+.login-column-right{
+    float:right;
+    width:65%;
+}
