@@ -28,20 +28,44 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+            <h1> My Home Page</h1>
+        </Route>
+        <Route path='/features' exact={true}>
+            <h1> My Features Page</h1>
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <Route path='/page-not-found'>
+          <h1>Page Not Found</h1>
+        </Route>
+        <ProtectedRoute path='/invoices' exact={true} >
+          <h1>My ALL Invoice page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/invoices/:id' exact={true} >
+          <h1>Individual Invoice Page to download the invoice and edit the invoice</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/invoices/:id/payments' exact={true} >
+          <h1>Add a payment to invoice</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/new-invoice' exact={true} >
+          <h1>My create an invoice page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/clients' exact={true} >
+          <h1>My ALL clients list page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/clients/:id' exact={true} >
+          <h1>My individual client editing page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/upgrade' exact={true} >
+          <h1>My Link to other projects and Portfolio</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
