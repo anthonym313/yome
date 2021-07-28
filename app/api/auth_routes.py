@@ -66,12 +66,12 @@ def sign_up():
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            street_address=form.data['streetAddress'],
-            city_state=form.data['cityState'],
+            street_address=form.data['street_address'],
+            city_state=form.data['city_state'],
             zipcode=form.data['zipcode'],
             phone=form.data['phone'],
-            business_phone=form.data['businessPhone'],
-            logo_url=form.data['logoUrl']
+            business_phone=form.data['business_phone'],
+            logo_url=form.data['logo_url']
             
         )
         db.session.add(user)

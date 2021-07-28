@@ -30,8 +30,9 @@ const SignUpForm = () => {
       }
     }
     if(password !== repeatPassword){
-      errors.push('Passwords do not match')
+      setErrors(['Passwords do not match'])
     }
+    
   };
   
   const updateStreetAddress = (e) => {
@@ -69,7 +70,7 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/invoices' />;
   }
 
   return (
