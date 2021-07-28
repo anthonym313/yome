@@ -22,7 +22,9 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, streetAddress,cityState,
+        zipcode,phone, businessPhone, logoUrl
+        ));
       if (data) {
         setErrors(data)
       }
@@ -75,7 +77,7 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <label>Business or Individual Name</label>
         <input
           type='text'
           name='username'
@@ -90,6 +92,60 @@ const SignUpForm = () => {
           name='email'
           onChange={updateEmail}
           value={email}
+        ></input>
+      </div>
+      <div>
+        <label>Street Address</label>
+        <input
+          type='text'
+          name='street_address'
+          onChange={updateStreetAddress}
+          value={streetAddress}
+        ></input>
+      </div>
+      <div>
+        <label>City, State</label>
+        <input
+          type='text'
+          name='city_state'
+          onChange={updateCityState}
+          value={cityState}
+        ></input>
+      </div>
+      <div>
+        <label>Zipcode</label>
+        <input
+          type='text'
+          name='zipcode'
+          onChange={updateZipCode}
+          value={zipcode}
+        ></input>
+      </div>
+      <div>
+        <label>Phone Number</label>
+        <input
+          type='text'
+          name='phone'
+          onChange={updatePhone}
+          value={phone}
+        ></input>
+      </div>
+      <div>
+        <label>Business Phone Number</label>
+        <input
+          type='text'
+          name='business_phone'
+          onChange={updateBusinsessPhone}
+          value={businessPhone}
+        ></input>
+      </div>
+      <div>
+        <label>Logo Url</label>
+        <input
+          type='text'
+          name='logo_url'
+          onChange={updateLogoUrl}
+          value={logoUrl}
         ></input>
       </div>
       <div>
@@ -111,7 +167,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button type='submit'>Sign Up!</button>
     </form>
   );
 };

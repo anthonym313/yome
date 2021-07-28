@@ -65,7 +65,14 @@ def sign_up():
         user = User(
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            street_address=form.data['streetAddress'],
+            city_state=form.data['cityState'],
+            zipcode=form.data['zipcode'],
+            phone=form.data['phone'],
+            business_phone=form.data['businessPhone'],
+            logo_url=form.data['logoUrl']
+            
         )
         db.session.add(user)
         db.session.commit()
