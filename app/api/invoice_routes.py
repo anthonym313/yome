@@ -8,4 +8,4 @@ invoice_routes = Blueprint('invoices', __name__)
 @login_required
 def get_all_invoices():
     invoices = Invoice.query.filter((Invoice.business_id == current_user.id)).all()
-    return {'invoices':[invoice.to_dict() for invoice in invoices]}
+    return jsonify([invoice.to_dict() for invoice in invoices])

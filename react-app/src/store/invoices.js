@@ -6,7 +6,7 @@ const getInvoices = (invoiceList)=>({
 });
 
 export const getAllInvoices = () => async (dispatch) =>{
-    const res = await fetch('/api/invoices');
+    const res = await fetch('/api/invoices/');
     if(res.ok){
         const allInvoices = await res.json();
         dispatch(getInvoices(allInvoices));
@@ -21,9 +21,7 @@ const invoiceReducer = (state = initialState, action)=>{
             [action.invoiceList].forEach((invoice)=>{
                 newState[invoice.id] = invoice
             });
-            return {
-                ...newState
-            }
+            return newState;
         default:
             return state;
     }
