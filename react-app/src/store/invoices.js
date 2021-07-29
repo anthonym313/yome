@@ -18,7 +18,7 @@ const invoiceReducer = (state = initialState, action)=>{
     let newState = {}
     switch(action.type){
         case GET_INVOICES:
-            [action.invoiceList].forEach((invoice)=>{
+            action.invoiceList.forEach((invoice)=>{
                 newState[invoice.id] = invoice
             });
             return newState;
