@@ -1,8 +1,8 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { getAllInvoices } from '../../store/invoices';
 
-import './InvoiceDashboard.css'
+import './InvoiceDashboard.css';
 
 export default function InvoiceDashboard(){
     const allInvoices = useSelector((state)=>Object.values(state.invoices))
@@ -42,25 +42,35 @@ export default function InvoiceDashboard(){
         })
     }
 
-    
-
-    return(
-        <div className='invoice-dashboard-container'>
-            <div className='invoice-navigation'></div>
-            <div className='invoices-table'>
-                <table id='user-invoices'>
-                    <tbody>
-                        <tr>{tableHeaders(headers)}</tr>
-                        {tableData(allInvoices)}
-                    </tbody>
-                    <tfoot>
-                        <th></th>
-                        <th></th>
-                        <th>Outstanding Balance</th>
-                        <th>${outstanding}</th>
-                    </tfoot>
-                </table>
+    if(allInvoices[0]){
+        return(
+            <div className='invoice-dashboard-container'>
+                <div className='invoice-navigation'></div>
+                <div className='invoices-table'>
+                    <table id='user-invoices'>
+                        <tbody>
+                            <tr>{tableHeaders(headers)}</tr>
+                            {tableData(allInvoices)}
+                        </tbody>
+                        <tfoot>
+                            <th></th>
+                            <th></th>
+                            <th>Outstanding Balance</th>
+                            <th>${outstanding}</th>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }else{
+        return(
+            <div className='invoice-dashboard-container'>
+                <div className='invoice-navigation'></div>
+                <h1>Invoice Dashboard</h1>
+                <h2>Currently You Have No Invoices. Create Your First Invoice!</h2>
+
+            </div>
+        )
+    }
+
 }
