@@ -1,0 +1,35 @@
+.client-dashboard-container{
+    width:100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.clients-table{
+    width: 82%;
+    margin-top: 60px;
+}
+
+#user-clients {
+    width: 100%;
+    text-align:center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 2px solid #67AB9F;
+    border-collapse: collapse;
+
+}
+#user-clients td, #user-clients th{
+    padding:8px;
+    border:1px solid #ffebd3
+}
+#user-clients th{
+    background-color: #67AB9F;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align:center;
+
+
+}
+#user-clients tr:hover{
+    background-color: bisque;
+}
