@@ -41,9 +41,6 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route>
-          <NotFoundPage/>
-        </Route>
         <ProtectedRoute path='/invoices' exact={true} >
           <h1>My ALL Invoice page</h1>
         </ProtectedRoute>
@@ -68,6 +65,8 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route component={NotFoundPage}/>
+          
       </Switch>
     </BrowserRouter>
   );
