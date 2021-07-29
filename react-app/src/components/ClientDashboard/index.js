@@ -38,7 +38,10 @@ export default function ClientDashboard(){
     if(allClients[0]){
         return(
             <div className='client-dashboard-container'>
-                <h1>Clients Dashboard</h1>
+                <h1>Client Dashboard</h1>
+                <div className='client-navigation'>
+                    <a href='/new-client'><button id='new-client-button'>Create New Client</button></a>
+                </div>
                 <div className='clients-table'>
                     <table id="user-clients">
                         <tbody>
@@ -53,7 +56,10 @@ export default function ClientDashboard(){
     } else{
         return(
             <div className='client-dashboard-container'>
-                <div className='client-navigation'></div>
+                 <h1>Client Dashboard</h1>
+                <div className='client-navigation'>
+                    <a href='/new-client'><button id='new-client-button'>Create New Client</button></a>
+                </div>
                 <h1>Currently You Have No Saved Clients</h1>
             </div>
         )
