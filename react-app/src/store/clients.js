@@ -56,6 +56,8 @@ const clientReducer = (state = initialState, action)=>{
                 newState[client.id] = client
             });
             return newState;
+        case SET_CLIENT:
+            return {client: action.client}
         default:
             return state;
     }
