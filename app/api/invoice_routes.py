@@ -7,5 +7,5 @@ invoice_routes = Blueprint('invoices', __name__)
 @invoice_routes.route('/')
 @login_required
 def get_all_invoices():
-    invoices = Invoice.query.filter((current_user.id == Invoice.business_id)).all()
+    invoices = Invoice.query.filter((Invoice.business_id == current_user.id)).all()
     return {'invoices':[invoice.to_dict() for invoice in invoices]}
