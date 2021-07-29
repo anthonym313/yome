@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { getAllInvoices } from '../../store/invoices';
 
-import './InvoiceDashboard.css'
+import './InvoiceDashboard.css';
 
 export default function InvoiceDashboard(){
     const allInvoices = useSelector((state)=>Object.values(state.invoices))

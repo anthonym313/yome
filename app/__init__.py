@@ -9,6 +9,7 @@ from .models import db, User, Invoice, Client, Item, Payment
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.invoice_routes import invoice_routes
+from .api.client_routes import client_routes
 
 from .seeds import seed_commands
 
@@ -33,6 +34,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(invoice_routes, url_prefix='/api/invoices')
+app.register_blueprint(client_routes, url_prefix='/api/clients')
 db.init_app(app)
 Migrate(app, db)
 
