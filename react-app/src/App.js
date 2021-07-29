@@ -5,8 +5,8 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/index.js';
 import NotFoundPage from './components/NotFoundPage';
+import InvoiceDashboard from './components/InvoiceDashboard';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -42,7 +42,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/invoices' exact={true} >
-          <h1>My ALL Invoice page</h1>
+          <InvoiceDashboard/>
         </ProtectedRoute>
         <ProtectedRoute path='/invoices/:id' exact={true} >
           <h1>Individual Invoice Page to download the invoice and edit the invoice</h1>
