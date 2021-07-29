@@ -45,7 +45,10 @@ export default function InvoiceDashboard(){
     if(allInvoices[0]){
         return(
             <div className='invoice-dashboard-container'>
-                <div className='invoice-navigation'></div>
+                <h1>Invoice Dashboard</h1>
+                <div className='invoice-navigation'>
+                    <a href='/new-invoice'><button id='new-invoice-button'>Create New Invoice</button></a>
+                </div>
                 <div className='invoices-table'>
                     <table id='user-invoices'>
                         <tbody>
