@@ -6,6 +6,7 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/index.js';
 import NotFoundPage from './components/NotFoundPage';
 import InvoiceDashboard from './components/InvoiceDashboard';
+import ClientDashboard from './components/ClientDashboard';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User';
 import { authenticate } from './store/session';
@@ -54,7 +55,7 @@ function App() {
           <h1>My create an invoice page</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/clients' exact={true} >
-          <h1>My ALL clients list page</h1>
+          <ClientDashboard/>
         </ProtectedRoute>
         <ProtectedRoute path='/clients/:id' exact={true} >
           <h1>My individual client editing page</h1>
