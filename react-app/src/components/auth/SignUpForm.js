@@ -179,7 +179,7 @@ const SignUpForm = () => {
       <div className='signup-column-right'>
         <h1>Sign Up!</h1>
         <h2>Get started creating invoices for your business with ease.</h2>
-        <img src='./images/sign-up-illustration-yome.png'></img>
+        <img src='./images/sign-up-illustration-yome.png' alt='key and chart'></img>
         <h3>Already have an Account?</h3>
         <a href='/login'><h4>Login</h4></a>
       </div>

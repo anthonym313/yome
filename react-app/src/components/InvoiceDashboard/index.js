@@ -6,7 +6,7 @@ export default function InvoiceDashboard(){
     return(
         <div className='invoice-dashboard-container'>
             <div></div>
-            <div></div>
+            <div><h1>My invoice dashboard</h1></div>
         </div>
     )
 }
