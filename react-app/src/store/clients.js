@@ -18,6 +18,19 @@ export const getAllClients = () => async (dispatch) =>{
         dispatch(getClients(allClients));
     }
 };
+export const editClient = (id, name,email, streetaddress,phone) => async (dispatch)=>{
+    const res = await fetch(`/api/clients/${id}/edit`, {
+        method:"PUT",
+        headers:{"Content-Type": "application/json"},
+        body:JSON.stringify({id,name,email, streetaddress,phone})
+    });
+    if (res.ok){
+        const updatedClient= await res.json();
+        dispatch(setClient(updatedClient));
+        return updatedClient
+    }
+}
+
 export const getOneClient =(clientId) => async (dispatch) =>{
     const res = await fetch(`/api/clients/${clientId}`);
     if (res.ok){

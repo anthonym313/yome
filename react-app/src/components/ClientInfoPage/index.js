@@ -22,7 +22,7 @@ export default function ClientInfoPage(){
                 <h4>{singleClient?.email}</h4>
                 <h4>{singleClient?.street_address}</h4>
                 <h4>{singleClient?.phone}</h4>
-                
+               
             </div>
         </div>
 
