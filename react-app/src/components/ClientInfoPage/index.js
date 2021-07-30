@@ -7,7 +7,7 @@ import './ClientInfoPage.css';
 export default function ClientInfoPage(){
     const {id} = useParams();
     const client = useSelector((state)=>Object.values(state.clients))
-    const singleClient = client[0]
+    const singleClient = client[0] || null
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(getOneClient(id));
@@ -16,8 +16,12 @@ export default function ClientInfoPage(){
     return(
         <div className="client-info-container">
             <h1>Client Information</h1>
-            <div>
-                {singleClient.id}
+            <div className='client-info'>
+                <h3>{singleClient?.name}</h3>
+                <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
+                {singleClient?.email}
+                {singleClient?.street_address}
+                {singleClient?.phone}
                 
             </div>
         </div>
