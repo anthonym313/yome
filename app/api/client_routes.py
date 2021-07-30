@@ -18,9 +18,15 @@ def validation_errors_to_error_messages(validation_errors):
 
 @client_routes.route('/')
 @login_required
-def get_all_invoices():
+def get_all_clients():
     clients = Client.query.filter((Client.user_id == current_user.id)).all()
     return jsonify([client.to_dict() for client in clients])
+
+@client_routes.route('/<int:id>')
+@login_required
+def get_one_client(id):
+    client = Client.query.get(id)
+    return jsonify([client.to_dict()])
 
 
 @client_routes.route('/new-client', methods=['POST'])
