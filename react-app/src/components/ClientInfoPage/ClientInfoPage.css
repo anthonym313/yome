@@ -4,3 +4,15 @@
     justify-content: center;
     align-items: center;
 }
+.client-info-card{
+    min-width:600px;
+    display:flex;
+    flex-direction: column;
+    border:3px solid black; 
+    padding: 0 0 0 20px;   
+}
+
+.client-info-card img{
+    width:300px;
+
+}

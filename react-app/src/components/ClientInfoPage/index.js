@@ -16,12 +16,12 @@ export default function ClientInfoPage(){
     return(
         <div className="client-info-container">
             <h1>Client Information</h1>
-            <div className='client-info'>
-                <h3>{singleClient?.name}</h3>
+            <div className='client-info-card'>
                 <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
-                {singleClient?.email}
-                {singleClient?.street_address}
-                {singleClient?.phone}
+                <h3>{singleClient?.name}</h3>
+                <h4>{singleClient?.email}</h4>
+                <h4>{singleClient?.street_address}</h4>
+                <h4>{singleClient?.phone}</h4>
                 
             </div>
         </div>
