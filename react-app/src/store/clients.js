@@ -19,7 +19,7 @@ export const getAllClients = () => async (dispatch) =>{
     }
 };
 
-export const clientCreation = (name, email, streetaddress,phone)=> async (dispatch)=>{
+export const clientCreation = (name, email,streetaddress,phone)=> async (dispatch)=>{
     const res = await fetch('/api/clients/new-client', {
         method:'POST',
         headers:{

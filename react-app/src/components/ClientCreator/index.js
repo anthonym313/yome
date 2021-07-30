@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 import { clientCreation } from "../../store/clients";
 
 import './ClientCreator.css'
@@ -12,6 +13,7 @@ export default function ClientCreator(){
     const [phone, setPhone] = useState('')
     
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const submitHandler = async(e)=>{
         e.preventDefault();
@@ -19,6 +21,8 @@ export default function ClientCreator(){
         if (data){
             setErrors(data)
         }
+        window.alert('Client Created!')
+        history.push('/clients')
     }
 
     return(
@@ -54,7 +58,7 @@ export default function ClientCreator(){
                     <label>Street Address*(required)</label>
                     <input
                     type='text'
-                    name='street_address'
+                    name='streetaddress'
                     onChange={(e)=>setStreetAddress(e.target.value)}
                     value={streetaddress}
                     required={true}
@@ -72,11 +76,10 @@ export default function ClientCreator(){
                 </div>
                 <div className='creation-buttons'>
                     <button id='client-creation-submit' type='submit'>Create Client</button>
-                    <button id='client-form-reset' type='reset'>Clear Form</button>
                 </div>
-
             </form>
-
+            <a href='/clients'><button id='client-creation-cancel'>Cancel</button></a>
         </div>
     )
 }
+
