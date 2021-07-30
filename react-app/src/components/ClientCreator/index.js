@@ -23,6 +23,7 @@ export default function ClientCreator(){
 
     return(
         <div className='client-creationPage-container'>
+            <h1>Create a New Client</h1>
             <form onSubmit={submitHandler}>
                 <div className='clientCreator-errors'>
                     {errors.map((error, ind) => (
@@ -36,6 +37,7 @@ export default function ClientCreator(){
                     name='name'
                     onChange={(e)=>setName(e.target.value)}
                     value={name}
+                    required={true}
                     ></input>
                 </div>
                 <div>
@@ -45,6 +47,7 @@ export default function ClientCreator(){
                     name='email'
                     onChange={(e)=>setEmail(e.target.value)}
                     value={email}
+                    required={true}
                     ></input>
                 </div>
                 <div>
@@ -54,6 +57,7 @@ export default function ClientCreator(){
                     name='street_address'
                     onChange={(e)=>setStreetAddress(e.target.value)}
                     value={streetaddress}
+                    required={true}
                     ></input>
                 </div>
                 <div>
@@ -63,7 +67,12 @@ export default function ClientCreator(){
                     name='phone'
                     onChange={(e)=>setPhone(e.target.value)}
                     value={phone}
+                    required={true}
                     ></input>
+                </div>
+                <div className='creation-buttons'>
+                    <button id='client-creation-submit' type='submit'>Create Client</button>
+                    <button id='client-form-reset' type='reset'>Clear Form</button>
                 </div>
 
             </form>
