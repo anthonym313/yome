@@ -8,6 +8,7 @@ import NotFoundPage from './components/NotFoundPage';
 import InvoiceDashboard from './components/InvoiceDashboard';
 import ClientDashboard from './components/ClientDashboard';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import ClientCreator from './components/ClientCreator';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -53,6 +54,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/new-invoice' exact={true} >
           <h1>My create an invoice page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/new-client' exact={true} >
+          <ClientCreator/>
         </ProtectedRoute>
         <ProtectedRoute path='/clients' exact={true} >
           <ClientDashboard/>

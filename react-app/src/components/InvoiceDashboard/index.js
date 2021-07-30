@@ -68,8 +68,10 @@ export default function InvoiceDashboard(){
     }else{
         return(
             <div className='invoice-dashboard-container'>
-                <div className='invoice-navigation'></div>
                 <h1>Invoice Dashboard</h1>
+                <div className='invoice-navigation'>
+                    <a href='/new-invoice'><button id='new-invoice-button'>Create New Invoice</button></a>
+                </div>
                 <h2>Currently You Have No Invoices. Create Your First Invoice!</h2>
 
             </div>
