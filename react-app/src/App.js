@@ -7,8 +7,9 @@ import NavBar from './components/NavBar/index.js';
 import NotFoundPage from './components/NotFoundPage';
 import InvoiceDashboard from './components/InvoiceDashboard';
 import ClientDashboard from './components/ClientDashboard';
-import ProtectedRoute from './components/auth/ProtectedRoute';
 import ClientCreator from './components/ClientCreator';
+import ClientInfoPage from './components/ClientInfoPage';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User';
 import { authenticate } from './store/session';
 
@@ -62,7 +63,7 @@ function App() {
           <ClientDashboard/>
         </ProtectedRoute>
         <ProtectedRoute path='/clients/:id' exact={true} >
-          <h1>My individual client editing page</h1>
+          <ClientInfoPage/>
         </ProtectedRoute>
         <ProtectedRoute path='/upgrade' exact={true} >
           <h1>My Link to other projects and Portfolio</h1>
