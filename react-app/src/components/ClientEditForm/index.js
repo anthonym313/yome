@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
-
+import './ClientEditForm.css'
 import { editClient } from '../../store/clients';
 
 
@@ -65,7 +65,7 @@ export default function ClientEditForm({client, id}){
                     
                     ></input>
                 </div>
-                <div>
+                <div className='client-submitEdit-button'>
                     <button type='submit'>Submit</button>
                 </div>
         </form>
