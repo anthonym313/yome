@@ -22,7 +22,7 @@ const removeClient = (client) =>({
 //Delete
 export const deleteClient = (id) => async (dispatch) =>{
     const res = await fetch(`/api/clients/${id}`,{
-        methods:"DELETE",
+        method:"DELETE",
         body:JSON.stringify({id}),
     });
     if (res.ok){

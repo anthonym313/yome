@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import './ClientEditForm.css'
-import { editClient } from '../../store/clients';
+import { editClient} from '../../store/clients';
 
 
 export default function ClientEditForm({client, id}){
@@ -24,6 +24,8 @@ export default function ClientEditForm({client, id}){
         window.alert('Client Information Updated!!')
         history.push('/clients')
     }
+
+    
 
     return client && (
         <form onSubmit={handleSubmit}>
