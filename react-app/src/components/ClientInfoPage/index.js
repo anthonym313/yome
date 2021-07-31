@@ -52,7 +52,7 @@ export default function ClientInfoPage(){
                     <h4>{singleClient.phone}</h4>
                 </div>
                 <div className='client-card-edit' style={toogleShow}>
-                    <button onClick={closeEdit}>Cancel Edit</button>
+                    <button onClick={closeEdit} id='client-close-button'>Cancel Edit</button>
                     <ClientEditForm client={singleClient} id={singleClient.id}/>
                 </div>
 

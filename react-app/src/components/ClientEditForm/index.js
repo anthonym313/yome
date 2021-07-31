@@ -7,16 +7,15 @@ import { editClient } from '../../store/clients';
 export default function ClientEditForm({client, id}){
     const dispatch = useDispatch();
     
-    const [name, updateName]= useState(client?.name)
-    const [email, updateEmail]= useState(client?.email)
-    const [streetaddress, updateStreetAddress] = useState(client?.street_address)
-    const [phone, updatePhone] = useState(client?.phone) 
+    const [name, updateName]= useState(client.name)
+    const [email, updateEmail]= useState(client.email)
+    const [streetaddress, updateStreetAddress] = useState(client.street_address)
+    const [phone, updatePhone] = useState(client.phone) 
     useEffect(()=>{
        
     },[client,name,email,streetaddress,phone, dispatch])
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log('this is in the submit handler',email)
         dispatch(editClient(id,name,email,streetaddress,phone))
 
     }
@@ -27,7 +26,7 @@ export default function ClientEditForm({client, id}){
                     <input
                     type='text'
                     name='name'
-                    placeholder={client?.name}
+                    placeholder={client.name}
                     onChange={(e)=>updateName(e.target.value)}
                     value={name}
                 
