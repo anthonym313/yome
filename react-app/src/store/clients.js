@@ -26,8 +26,8 @@ export const deleteClient = (id) => async (dispatch) =>{
         body:JSON.stringify({id}),
     });
     if (res.ok){
-        const deleted = await res.json()
-        dispatch(removeClient(deleted));
+        await res.json()
+        dispatch(removeClient(id));
         return res;
     }
 }
@@ -109,6 +109,10 @@ const clientReducer = (state = initialState, action)=>{
             return newState;
         case SET_CLIENT:
             return {client: action.client}
+        case REMOVE_CLIENT:
+            newState ={ ...state}
+            delete newState[action.id];
+            return {...newState}
         default:
             return state;
     }
