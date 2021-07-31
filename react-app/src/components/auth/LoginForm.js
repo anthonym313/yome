@@ -37,7 +37,7 @@ const LoginForm = () => {
       <div className='login-column-left'>
         <h1>Welcome Back!</h1>
         <h2>Login to continue to your account.</h2>
-        <img src='./images/clipboard.jpg' alt='clipboard'></img>
+        <img src='https://github.com/anthonym313/yome/blob/main/react-app/public/images/clipboard.jpg?raw=true' alt='clipboard'></img>
       </div>
       <div className='login-column-right'>
         <h1>Login to Yome</h1>

@@ -18,7 +18,7 @@ export default function NavBar(){
         <ul className= 'nav-links-container pro-status'>
           <li className='nav-links-left'>
             <NavLink to='/' exact={true} activeClassName='active'>
-              <img src='logo.png' alt='yome'></img>
+              <img src='https://github.com/anthonym313/yome/blob/main/react-app/public/logo.png?raw=true' alt='yome'></img>
             </NavLink>
           </li>
           <div className='nav-links-right'>
@@ -51,7 +51,7 @@ export default function NavBar(){
         <ul className= 'nav-links-container'>
           <div className='nav-links-left'>
             <li>
-              <img src='logo.png' alt='yome'></img>
+              <img src='https://github.com/anthonym313/yome/blob/main/react-app/public/logo.png?raw=true' alt='yome'></img>
             </li>
           </div>
           <div className="nav-links-center">
