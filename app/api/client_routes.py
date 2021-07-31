@@ -19,12 +19,19 @@ def validation_errors_to_error_messages(validation_errors):
 @client_routes.route('/')
 @login_required
 def get_all_clients():
+    """
+    This route gets all of the clients that are connected to an single user. It takes the current user's id to filter the client table and returns only the clients tha
+    are owned in a 'list' of 'dictionaries'
+    """
     clients = Client.query.filter((Client.user_id == current_user.id)).all()
     return jsonify([client.to_dict() for client in clients])
 
 @client_routes.route('/<int:id>')
 @login_required
 def get_one_client(id):
+    """
+    This route gets one client by the primary key and return it as the first and only thing in a list.
+    """
     client = Client.query.get(id)
     return jsonify([client.to_dict()])
 
