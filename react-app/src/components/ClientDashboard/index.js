@@ -24,7 +24,7 @@ export default function ClientDashboard(){
             return(
                 <tr key={id}>
                     <td>{id}</td>
-                    <td>{name}</td>
+                    <td><a href={`/clients/${id}`}>{name}</a></td>
                     <td>{phone}</td>
                     <td>{street_address}</td>
                     <td>{email}</td>
