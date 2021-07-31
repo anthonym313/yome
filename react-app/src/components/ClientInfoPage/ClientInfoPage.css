@@ -28,8 +28,12 @@
     padding-left:4px;
 }
 
-
+#delete-client-container{
+    margin:8px ;
+    display:flex;
+    justify-content: flex-end;
+}
 .client-card-edit{
-    float:right;
+   
     
 }

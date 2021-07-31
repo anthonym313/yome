@@ -1,4 +1,4 @@
-import React,{ useEffect} from 'react';
+import React,{ useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneClient } from '../../store/clients';
 import {useParams} from 'react-router-dom';
@@ -7,9 +7,29 @@ import './ClientInfoPage.css';
 
 export default function ClientInfoPage(){
     const {id} = useParams();
+    const dispatch = useDispatch();
     const client = useSelector((state)=>Object.values(state.clients))
     const singleClient = client[0] || null
-    const dispatch = useDispatch();
+
+    const noShow = {display:'none'}
+    const show = {display:'block'}
+    
+    const [toogleShow, setToggleShow] = useState(noShow)
+
+
+    const editClick =(e)=>{
+        e.preventDefault()
+        setToggleShow(show)
+        let editButton = document.getElementById('client-edit-button')
+        editButton.style.display='none'
+    }
+    const closeEdit =(e)=>{
+        e.preventDefault()
+        setToggleShow(noShow)
+        let editButton = document.getElementById('client-edit-button')
+        editButton.style.display='block'
+    }
+
     useEffect(()=>{
         dispatch(getOneClient(id));
     },[dispatch, id])
@@ -24,14 +44,15 @@ export default function ClientInfoPage(){
                     </div>
                     <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
                     <div>
-                        <button>Edit Client</button>
+                        <button onClick={editClick} id='client-edit-button'>Edit Client</button>
                     </div>
                     <h3>{singleClient.name}</h3>
                     <h4>{singleClient.email}</h4>
                     <h4>{singleClient.street_address}</h4>
                     <h4>{singleClient.phone}</h4>
                 </div>
-                <div className='client-card-edit'>
+                <div className='client-card-edit' style={toogleShow}>
+                    <button onClick={closeEdit}>Cancel Edit</button>
                     <ClientEditForm client={singleClient} id={singleClient.id}/>
                 </div>
 
