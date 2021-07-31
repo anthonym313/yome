@@ -1,24 +1,30 @@
 import React,{useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 import './ClientEditForm.css'
 import { editClient } from '../../store/clients';
 
 
 export default function ClientEditForm({client, id}){
     const dispatch = useDispatch();
+    const history = useHistory();
     
     const [name, updateName]= useState(client.name)
     const [email, updateEmail]= useState(client.email)
     const [streetaddress, updateStreetAddress] = useState(client.street_address)
     const [phone, updatePhone] = useState(client.phone) 
+   
     useEffect(()=>{
        
     },[client,name,email,streetaddress,phone, dispatch])
+    
     const handleSubmit = (e)=>{
         e.preventDefault();
         dispatch(editClient(id,name,email,streetaddress,phone))
-
+        window.alert('Client Information Updated!!')
+        history.push('/clients')
     }
+
     return client && (
         <form onSubmit={handleSubmit}>
              <div>

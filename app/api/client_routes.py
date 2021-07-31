@@ -42,12 +42,11 @@ def edit_client(id,):
     Edits a Clients information by finding the client by its PK.
     """
     req = request.get_json()
-    print(req)
     client_to_update = Client.query.get(id)
-    # client_to_update.name = req['name'],
-    # client_to_update.email = req['email'],
-    # client_to_update.street_address = req['streetaddress'],
-    # client_to_update.phone = req['phone'],
+    client_to_update.name = req['name'],
+    client_to_update.email = req['email'],
+    client_to_update.street_address = req['streetaddress'],
+    client_to_update.phone = req['phone'],
     
     db.session.commit()
     return client_to_update.to_dict()    
