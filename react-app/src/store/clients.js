@@ -22,11 +22,12 @@ export const editClient = (id, name,email, streetaddress,phone) => async (dispat
     const res = await fetch(`/api/clients/${id}/edit`, {
         method:"PUT",
         headers:{"Content-Type": "application/json"},
-        body:JSON.stringify({id,name,email, streetaddress,phone})
+        body:JSON.stringify({id,name,email,streetaddress,phone})
     });
     if (res.ok){
         const updatedClient= await res.json();
         dispatch(setClient(updatedClient));
+        console.log(updatedClient)
         return updatedClient
     }
 }

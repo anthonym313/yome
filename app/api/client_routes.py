@@ -28,6 +28,23 @@ def get_one_client(id):
     client = Client.query.get(id)
     return jsonify([client.to_dict()])
 
+@client_routes.route('/<int:id>/edit', methods=['PUT'])
+@login_required
+def edit_client(id,):
+    """
+    Edits a Clients information by finding the client by its PK.
+    """
+    req = request.get_json()
+    print(req)
+    client_to_update = Client.query.get(id)
+    # client_to_update.name = req['name'],
+    # client_to_update.email = req['email'],
+    # client_to_update.street_address = req['streetaddress'],
+    # client_to_update.phone = req['phone'],
+    
+    db.session.commit()
+    return client_to_update.to_dict()    
+    
 
 @client_routes.route('/new-client', methods=['POST'])
 @login_required
