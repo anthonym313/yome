@@ -14,19 +14,25 @@ export default function ClientInfoPage(){
         dispatch(getOneClient(id));
     },[dispatch, id])
 
-    return(
+    return singleClient && (
         <div className="client-info-container">
             <h1>Client Information</h1>
             <div className='client-info-card'>
-                <div client-card-left>
-                <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
-                <h3>{singleClient?.name}</h3>
-                <h4>{singleClient?.email}</h4>
-                <h4>{singleClient?.street_address}</h4>
-                <h4>{singleClient?.phone}</h4>
+                <div >
+                    <div id='delete-client-container'>
+                        <button id='delete-client-button'>Delete Client</button>
+                    </div>
+                    <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
+                    <div>
+                        <button>Edit Client</button>
+                    </div>
+                    <h3>{singleClient.name}</h3>
+                    <h4>{singleClient.email}</h4>
+                    <h4>{singleClient.street_address}</h4>
+                    <h4>{singleClient.phone}</h4>
                 </div>
-                <div client-card-right>
-                    <ClientEditForm client={singleClient} id={singleClient?.id}/>
+                <div className='client-card-edit'>
+                    <ClientEditForm client={singleClient} id={singleClient.id}/>
                 </div>
 
                

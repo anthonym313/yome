@@ -6,17 +6,13 @@ import { editClient } from '../../store/clients';
 
 export default function ClientEditForm({client, id}){
     const dispatch = useDispatch();
-    // const [id, updateid] = useState(client?.id)
-    console.log(typeof id)
-    console.log(client)
+    
     const [name, updateName]= useState(client?.name)
     const [email, updateEmail]= useState(client?.email)
     const [streetaddress, updateStreetAddress] = useState(client?.street_address)
     const [phone, updatePhone] = useState(client?.phone) 
     useEffect(()=>{
-        if (name !== client.name){
-
-        }
+       
     },[client,name,email,streetaddress,phone, dispatch])
     const handleSubmit = (e)=>{
         e.preventDefault();
@@ -24,7 +20,7 @@ export default function ClientEditForm({client, id}){
         dispatch(editClient(id,name,email,streetaddress,phone))
 
     }
-    return(
+    return client && (
         <form onSubmit={handleSubmit}>
              <div>
                     <label>Update Name</label>
