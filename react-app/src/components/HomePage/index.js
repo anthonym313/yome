@@ -28,9 +28,23 @@ export default function HomePage(){
                 </div>
             </div>
             <div className='home-break-container'>
-                
+                <div>
+                    <img src=''></img>
+                    {/* <div>
+                        <h2>Save Time</h2>
+                        <p>dadf</p>
+                    </div>
+                    <div>
+                        <h2>Get Paid</h2>
+                    </div>
+                    <div>
+                        <h2>Look Professional</h2>
+                    </div> */}
+                </div>
 
             </div>
+                
+
 
             
             <div className='footeer'>
