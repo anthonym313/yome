@@ -28,29 +28,45 @@ export default function HomePage(){
                 </div>
             </div>
             <div className='home-break-container'>
-                <div>
-                    <img src=''></img>
-                    {/* <div>
-                        <h2>Save Time</h2>
-                        <p>dadf</p>
-                    </div>
-                    <div>
-                        <h2>Get Paid</h2>
-                    </div>
-                    <div>
-                        <h2>Look Professional</h2>
-                    </div> */}
+                <div className='home-break-image'>
+                    <img src='https://github.com/anthonym313/yome/blob/main/react-app/src/images/yome-definition.png?raw=true' alt='definition'></img>
                 </div>
-
             </div>
-                
+            <div className='home-feature-content'>
+                <div className='feature-text-items'>
+                    <div className='feature-text-containers'>
+                        <h2>Save Time</h2>
+                        <p>
+                            Optimize your payment organization by filling out<br></br> easy downloadable invoice forms
+                            so that you can <br></br>spend more time doing the
+                            business that gets you paid
+                        </p>
+                    </div>
+                    <div className='feature-text-containers'>
+                        <h2>Get Paid</h2>
+                        <p>
+                            Optimize your payment organization by filling out<br></br> easy downloadable invoice forms
+                            so that you can <br></br>spend more time doing the
+                            business that gets you paid
+                        </p>
+                    </div>
+                    <div className='feature-text-containers'>
+                        <h2>Look Professional</h2>
+                        <p>
+                            Optimize your payment organization by filling out<br></br> easy downloadable invoice forms
+                            so that you can <br></br>spend more time doing the
+                            business that gets you paid
+                        </p>
+                    </div>
 
 
-            
-            <div className='footeer'>
-
+                </div>
             </div>
-
+            <div className='footer'>
+            </div>
+          
         </div>
+           
     )
 }
+

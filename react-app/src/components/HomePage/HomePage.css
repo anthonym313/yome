@@ -1,5 +1,5 @@
 .hero-container img{
-    max-height: 700px;
+    max-height: 650px;
     width: auto;
 }
 
@@ -50,17 +50,24 @@
 
 .home-break-container{
     background-color:#67AB9F ;
-    height:80vh;
+    height:75vh;
     clip-path: polygon(0% 20%, 100% 0,100% 80%, 0% 100%);
     display:flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
-.home-break-text{
-    z-index: 400;
-
+.home-break-image img{
+    box-shadow: 3px 8px 8px rgba(0,0,0,.40);
+}
+.home-feature-content{
+    height:80vh;
+}
+.feature-text-items{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
 
 }
-
 
 
