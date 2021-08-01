@@ -45,17 +45,17 @@ export default function HomePage(){
                     <div className='feature-text-containers'>
                         <h2>Get Paid</h2>
                         <p>
-                            Optimize your payment organization by filling out<br></br> easy downloadable invoice forms
-                            so that you can <br></br>spend more time doing the
-                            business that gets you paid
+                            Invoicing is required to get you paid and to keep<br></br>track of 
+                            revenue for tax purposes. Store your client<br></br>information and
+                            easily view invoices with outstanding<br></br>balances, and record new payments. 
                         </p>
                     </div>
                     <div className='feature-text-containers'>
                         <h2>Look Professional</h2>
                         <p>
-                            Optimize your payment organization by filling out<br></br> easy downloadable invoice forms
-                            so that you can <br></br>spend more time doing the
-                            business that gets you paid
+                            The easy to fill out forms in Yome provide you with<br></br>a clean, easy to read, downloadble, electronic mailable,
+                            <br></br>printable pdf form for you and your clients.
+                
                         </p>
                     </div>
 
