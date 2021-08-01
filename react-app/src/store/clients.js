@@ -1,6 +1,8 @@
 const GET_CLIENTS = 'clients/GET_CLIENTS';
 const SET_CLIENT = 'clients/SET_CLIENT';
+const REMOVE_CLIENT = 'clients/REMOVE_CLIENT';
 
+//Action Creators
 const getClients = (clientList)=>({
     type: GET_CLIENTS,
     clientList
@@ -11,6 +13,26 @@ const setClient = (client)=>({
     client:client
 })
 
+const removeClient = (client) =>({
+    type: REMOVE_CLIENT,
+    client
+})
+
+///////////**Thunks**/////////
+//Delete
+export const deleteClient = (id) => async (dispatch) =>{
+    const res = await fetch(`/api/clients/${id}`,{
+        method:"DELETE",
+        body:JSON.stringify({id}),
+    });
+    if (res.ok){
+        await res.json()
+        dispatch(removeClient(id));
+        return res;
+    }
+}
+
+//Read
 export const getAllClients = () => async (dispatch) =>{
     const res = await fetch('/api/clients/');
     if(res.ok){
@@ -18,6 +40,8 @@ export const getAllClients = () => async (dispatch) =>{
         dispatch(getClients(allClients));
     }
 };
+
+//Update
 export const editClient = (id, name,email, streetaddress,phone) => async (dispatch)=>{
     const res = await fetch(`/api/clients/${id}/edit`, {
         method:"PUT",
@@ -32,6 +56,7 @@ export const editClient = (id, name,email, streetaddress,phone) => async (dispat
     }
 }
 
+//Read
 export const getOneClient =(clientId) => async (dispatch) =>{
     const res = await fetch(`/api/clients/${clientId}`);
     if (res.ok){
@@ -41,6 +66,7 @@ export const getOneClient =(clientId) => async (dispatch) =>{
     }
 }
 
+//Create
 export const clientCreation = (name, email,streetaddress,phone)=> async (dispatch)=>{
     const res = await fetch('/api/clients/new-client', {
         method:'POST',
@@ -69,6 +95,9 @@ export const clientCreation = (name, email,streetaddress,phone)=> async (dispatc
     }
 }
 
+
+
+//Reducer
 const initialState = {}
 const clientReducer = (state = initialState, action)=>{
     let newState = {}
@@ -80,6 +109,10 @@ const clientReducer = (state = initialState, action)=>{
             return newState;
         case SET_CLIENT:
             return {client: action.client}
+        case REMOVE_CLIENT:
+            newState ={ ...state}
+            delete newState[action.id];
+            return {...newState}
         default:
             return state;
     }

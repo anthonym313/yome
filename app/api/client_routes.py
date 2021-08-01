@@ -37,7 +37,7 @@ def get_one_client(id):
 
 @client_routes.route('/<int:id>/edit', methods=['PUT'])
 @login_required
-def edit_client(id,):
+def edit_client(id):
     """
     Edits a Clients information by finding the client by its PK.
     """
@@ -50,7 +50,18 @@ def edit_client(id,):
     
     db.session.commit()
     return client_to_update.to_dict()    
+
+@client_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_client(id):
+    """
+    This API brings in a client by its id and deletes the client from the database
+    """
+    client_to_delete = Client.query.get(id)
     
+    db.session.delete(client_to_delete)
+    db.session.commit()
+    return {'message': 'Client Deleted'}       
 
 @client_routes.route('/new-client', methods=['POST'])
 @login_required

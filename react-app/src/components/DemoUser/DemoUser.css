@@ -2,6 +2,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: white;
     border:2px solid #67AB9F;
+    font-weight: 700;
     color:#67AB9F;
     transition-duration: .4s;
     height: 30px
