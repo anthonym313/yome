@@ -9,6 +9,7 @@ export default function ClientInfoPage(){
     const {id} = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
+    const currentUserId = useSelector((state)=>(state.session.user.id))
     const client = useSelector((state)=>Object.values(state.clients))
     const singleClient = client[0] || null
 
@@ -34,13 +35,18 @@ export default function ClientInfoPage(){
 
     const handleDelete = (e)=>{
         e.preventDefault();
-        const permitDeletion = window.confirm('Are you sure you want to delete this client?');
-        if (permitDeletion){
-            dispatch(deleteClient(singleClient.id));
-            history.push('/clients')
-        }
-
+        if (currentUserId !== 1 || (currentUserId === 1 && singleClient.id > 2)){
+            const permitDeletion = window.confirm('Are you sure you want to delete this client?');
+            if (permitDeletion){
+                dispatch(deleteClient(singleClient.id));
+                history.push('/clients')
+            }
+        } else {
+        }window.alert('The demo user is not allowed to delete example clients. Please create a new client or sign-up to see this feature function.')
+            
     }
+
+
 
     useEffect(()=>{
         dispatch(getOneClient(id));
