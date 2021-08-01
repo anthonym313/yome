@@ -58,11 +58,14 @@ export default function HomePage(){
                 
                         </p>
                     </div>
-
-
                 </div>
+                <div className='feature-content-button'>
+                    <button onClick={handleHero}>Try it Now</button>
+                </div>
+
             </div>
             <div className='footer'>
+                
             </div>
           
         </div>
