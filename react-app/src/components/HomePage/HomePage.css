@@ -49,7 +49,9 @@
 
 
 .home-break-container{
-
+    background-color:#67AB9F ;
+    height:80vh;
+    clip-path: polygon(0% 20%, 100% 0,100% 80%, 0% 100%)
 }
 
 
