@@ -1,0 +1,14 @@
+.hero-container img{
+    max-height: 700px;
+    width: auto;
+}
+
+.hero-container{
+    margin: 100px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+
