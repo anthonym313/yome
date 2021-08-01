@@ -58,6 +58,7 @@ export default function ClientInfoPage(){
             <div className='client-info-card'>
                 <div >
                     <div id='delete-client-container'>
+                        <a href='/clients'>Back to Dashboard</a>
                         <button onClick={handleDelete} id='delete-client-button'>Delete Client</button>
                     </div>
                     <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
