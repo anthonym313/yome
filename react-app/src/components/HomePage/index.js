@@ -1,9 +1,17 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 
 import './HomePage.css';
 
 export default function HomePage(){
-    
+    const history = useHistory();
+
+
+    const handleHero =(e)=>{
+        e.preventDefault();
+        history.push('/login')
+
+    };
     
     
     return(
@@ -16,7 +24,7 @@ export default function HomePage(){
                         <h2>Get paid. Save Time. Look Professional</h2>
                         <h4>Yome invoicing software helps get you the money that you are owed.</h4>
                     </div>
-                    <button>Create An Invoice Now</button>
+                    <button onClick={handleHero}>Create An Invoice Now</button>
                 </div>
             </div>
             <div className='home-break-container'>

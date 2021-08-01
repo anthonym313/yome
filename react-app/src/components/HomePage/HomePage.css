@@ -35,9 +35,19 @@
     background: rgb(44,84,95);
     background: linear-gradient(90deg, rgba(44,84,95,1) 0%, rgba(103,171,159,1) 100%);
     padding:10px 14px;
-    border-radius: 5px;
-    border-color: rgba(87, 86, 86, 0.068);;
+    border-radius: 10px;
+    border-color: rgba(87, 86, 86, 0.068);
+    transition-duration: .4s;
 }
+.hero-right-col button:hover{
+    cursor: pointer;
+    background: rgb(44,84,95);
+    background: linear-gradient(90deg, rgba(103,171,159,1) 0%, rgba(44,84,95,1) 100%);
+    padding:10px 14px;
+    box-shadow: 3px 4px 4px rgba(0,0,0,.40);
+}
+
+
 .home-break-container{
 
 }
