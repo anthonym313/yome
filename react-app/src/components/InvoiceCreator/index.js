@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
 
 import './InvoiceCreator.css';
@@ -69,7 +70,7 @@ export default function InvoiceCreator(){
                     <h5>{currentUser.phone}</h5>
                 </div>
                 <div>
-
+                    <InvoiceItemCreator/>
                 </div>
                     
 

@@ -8,7 +8,7 @@ const setItem = (item)=>({
 
 //////////////Thunks/////
 //Create
-export const itemCreation = (description,rate,quantity, amount) => (dispatch) =>{
+export const itemCreation = (description,rate,quantity, amount) => async (dispatch) =>{
     const res = await fetch('/api/invoices/new-invoice/item',{
         method:'POST',
         headers:{'Content-Type': 'application/json'},
@@ -34,7 +34,7 @@ export const itemCreation = (description,rate,quantity, amount) => (dispatch) =>
 //Reducer//
 const initialState={}
 const itemReducer = (state = initialState, action)=>{
-    let newState = {}
+    
     switch(action.type){
         case SET_ITEM:
             return{item:action.item}
@@ -42,3 +42,5 @@ const itemReducer = (state = initialState, action)=>{
             return state;
     }
 }
+
+export default itemReducer;
