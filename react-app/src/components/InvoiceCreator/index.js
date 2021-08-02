@@ -13,6 +13,7 @@ export default function InvoiceCreator(){
     const history = useHistory();
     
     const [errors, setErrors] = useState([]);
+    const [items, setItems] = useState([])
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
@@ -27,6 +28,20 @@ export default function InvoiceCreator(){
         }
         window.alert('Invoice Created!')
         history.push(`/invoice/${invoicenumber}`)
+    }
+    
+    const addItem =(e)=>{
+        e.preventDefault();
+        setItems([...items,<InvoiceItemCreator/>])
+    } 
+    const deleteItem=(e)=>{
+        e.preventDefault();
+        if(items[0]){
+            items.pop()
+            setItems([...items])
+           
+        }
+        return
     }
 
     return(
@@ -76,8 +91,12 @@ export default function InvoiceCreator(){
                         <th>Quantity</th>
                         <th>Amount</th>
                     </thead>
-                    <InvoiceItemCreator/>
-                    
+                    {items.map(item =>(
+                        <div>{item}</div>
+                    ))}
+                    <button onClick={addItem}>Add Item</button>
+                    <button onClick={deleteItem}>Delete Item</button>
+
                 </div>
                     
 
