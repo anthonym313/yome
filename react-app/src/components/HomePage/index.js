@@ -10,8 +10,12 @@ export default function HomePage(){
     const handleHero =(e)=>{
         e.preventDefault();
         history.push('/login')
-
     };
+    const handleFeatures = (e)=>{
+        e.preventDefault();
+        history.push('/sign-up')
+    }
+
     
     
     return(
@@ -60,7 +64,7 @@ export default function HomePage(){
                     </div>
                 </div>
                 <div className='feature-content-button'>
-                    <button onClick={handleHero}>Try it Now</button>
+                    <button onClick={handleFeatures}>Try it Now</button>
                 </div>
 
             </div>
