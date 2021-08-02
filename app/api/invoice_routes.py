@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.models import db,Invoice
+from app.models import db,Invoice,Item
 from flask_login import current_user, login_required
 
 invoice_routes = Blueprint('invoices', __name__)
@@ -28,3 +28,21 @@ def create_invoice():
     db.session.add(new_invoice)
     db.session.commit()
     return new_invoice.to_dict()
+
+@invoice_routes.route('/new-invoice/item', methods=['POST'])
+@login_required
+def add_invoice_item():
+    """
+    Creates an item that correspondes with the current invoice being made.
+    """
+    req=request.get_json()
+    item = Item(
+        description=req['description'],
+        rate=req['rate'],
+        quantity=req['quantity'],
+        amount =req['amount'],
+        invoice_id= req['invoice_id']
+    )
+    db.session.add(item)
+    db.session.commit()
+    return item.to_dict
