@@ -9,7 +9,7 @@ export default function InvoiceCreator(){
     return(
         <div className='invoice-creator-container'>
             <div className='invoice-header'>
-                <img src={currentUser.logo_url}></img>
+                <img src={currentUser.logo_url} alt='user logo'></img>
                 <h1>Invoice</h1>
 
             </div>

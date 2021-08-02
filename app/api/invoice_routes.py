@@ -10,21 +10,21 @@ def get_all_invoices():
     invoices = Invoice.query.filter((Invoice.business_id == current_user.id)).all()
     return jsonify([invoice.to_dict() for invoice in invoices])
 
-@invoice_routes.route('/new-client', methods=['POST'])
+@invoice_routes.route('/new-invoice', methods=['POST'])
 @login_required
 def create_invoice():
     """
     Creates a new invoice under the current logged in user.
     """
     req =request.get_json()
-    client = Invoice(
+    new_invoice = Invoice(
         invoice_number=req['invoicenumber'],
         date=req['date'],
-        balace=req['balance'],
+        balance=req['balance'],
         business_id=current_user.id,
         client_id = req['clientid'],
-        
     )
-    db.session.add(client)
+        
+    db.session.add(new_invoice)
     db.session.commit()
-    return client.to_dict()
+    return new_invoice.to_dict()
