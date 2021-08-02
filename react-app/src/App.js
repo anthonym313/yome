@@ -9,10 +9,12 @@ import InvoiceDashboard from './components/InvoiceDashboard';
 import ClientDashboard from './components/ClientDashboard';
 import ClientCreator from './components/ClientCreator';
 import ClientInfoPage from './components/ClientInfoPage';
+import InvoiceCreator from './components/InvoiceCreator';
 import HomePage from './components/HomePage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User';
 import { authenticate } from './store/session';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,7 +54,7 @@ function App() {
           <h1>Add a payment to invoice</h1>
         </ProtectedRoute>
         <ProtectedRoute path='/new-invoice' exact={true} >
-          <h1>My create an invoice page</h1>
+          <InvoiceCreator/>
         </ProtectedRoute>
         <ProtectedRoute path='/new-client' exact={true} >
           <ClientCreator/>
