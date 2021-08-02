@@ -34,6 +34,8 @@ def create_invoice():
 def add_invoice_item():
     """
     Creates an item that correspondes with the current invoice being made.
+    Must create a function that finds the last invoice and add one to the Id
+    to get the new invoices id number.
     """
     req=request.get_json()
     item = Item(
@@ -41,8 +43,8 @@ def add_invoice_item():
         rate=req['rate'],
         quantity=req['quantity'],
         amount =req['amount'],
-        invoice_id= req['invoice_id']
+        invoice_id= 'to be determined in a function above'
     )
     db.session.add(item)
     db.session.commit()
-    return item.to_dict
+    return item.to_dict()
