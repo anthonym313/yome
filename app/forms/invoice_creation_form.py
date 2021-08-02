@@ -6,6 +6,5 @@ class InvoiceCreationForm(FlaskForm):
     invoice_number= StringField('invoicenumber', validators=[DataRequired()])
     date = DateField('date', validators=[DataRequired()])
     balance = IntegerField('balance', validators=[DataRequired()])
-    business_id = IntegerField('businessid', validators=[DataRequired()])
     client_id = IntegerField('clientid', validators=[DataRequired()])
     submit = SubmitField('Submit')
