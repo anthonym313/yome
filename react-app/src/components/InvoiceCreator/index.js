@@ -70,7 +70,14 @@ export default function InvoiceCreator(){
                     <h5>{currentUser.phone}</h5>
                 </div>
                 <div>
+                    <thead>
+                        <th>Description</th>
+                        <th>Rate</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                    </thead>
                     <InvoiceItemCreator/>
+                    
                 </div>
                     
 
