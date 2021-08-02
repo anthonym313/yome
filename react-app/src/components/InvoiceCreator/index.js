@@ -53,6 +53,9 @@ export default function InvoiceCreator(){
                 <div>
                     <input
                     type='date'
+                    onChange={(e)=> setDate(e.target.value)}
+                    value={date}
+                    required={true}
                     ></input>
                 </div>
                 <div className='invoice-client-Info-container'>
@@ -65,7 +68,9 @@ export default function InvoiceCreator(){
                     <h5>{currentUser.business_phone}</h5>
                     <h5>{currentUser.phone}</h5>
                 </div>
-                <div></div>
+                <div>
+
+                </div>
                     
 
             </form>
