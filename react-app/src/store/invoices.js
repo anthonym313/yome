@@ -1,10 +1,41 @@
 const GET_INVOICES = 'invoices/GET_INVOICES';
+const SET_INVOICE = 'invoices/SET_INVOICE';
 
+//Action Creators
 const getInvoices = (invoiceList)=>({
     type: GET_INVOICES,
     invoiceList
 });
+const setInvoice = (invoice)=>({
+    type:SET_INVOICE,
+    invoice:invoice
+})
 
+///////////////Thunks
+//Create
+export const invoiceCreation = (invoicenumber, date, balance,clientid) => async (dispatch)=>{
+    const res = await fetch('/api/clients/new-invoice',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            invoicenumber,date,balance, clientid
+        })
+    });
+    if (res.ok){
+        const invoice = await res.json();
+        dispatch(setInvoice(invoice))
+        return null;
+    }else if (res.status < 500){
+        const data = await res.json()
+        if (data.errors){
+            return data.errors;
+        }
+    }else{
+        return ['An error occured. Please try again.']
+    }
+}
+
+//Read
 export const getAllInvoices = () => async (dispatch) =>{
     const res = await fetch('/api/invoices/');
     if(res.ok){
@@ -13,6 +44,12 @@ export const getAllInvoices = () => async (dispatch) =>{
     }
 };
 
+//Update
+
+//Delete
+
+
+//Reducer//
 const initialState = {}
 const invoiceReducer = (state = initialState, action)=>{
     let newState = {}
@@ -22,6 +59,8 @@ const invoiceReducer = (state = initialState, action)=>{
                 newState[invoice.id] = invoice
             });
             return newState;
+        case SET_INVOICE:
+            return {invoice:action.invoice}
         default:
             return state;
     }

@@ -33,7 +33,7 @@ export default function InvoiceDashboard(){
             const {invoice_number, date, balance, client_id, id} = invoice
             return(
                  <tr key={id}>
-                     <td>{invoice_number}</td>
+                     <td><a href={`/invoices/${invoice_number}`}>{invoice_number}</a></td>
                      <td>{date}</td>
                      <td>{client_id}</td>
                      <td>${balance}</td>

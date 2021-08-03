@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session'
 import invoiceReducer from './invoices';
 import clientReducer from './clients';
+import itemReducer from './items';
 
 const rootReducer = combineReducers({
   session,
   invoices:invoiceReducer,
   clients:clientReducer,
+  items: itemReducer,
 });
 
 
