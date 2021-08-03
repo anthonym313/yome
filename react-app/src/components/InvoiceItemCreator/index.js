@@ -1,7 +1,10 @@
 import React,{useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { itemCreation } from '../../store/items';
 import './InvoiceItemCreator.css'
 
 export default function InvoiceItemCreator({itemToInvoiceAmount}){
+    const dispatch = useDispatch()
     const [description, setDescription] = useState('')
     const [rate, setRate] = useState(0);
     const [quantity, setQuantity] = useState(1);
@@ -11,16 +14,24 @@ export default function InvoiceItemCreator({itemToInvoiceAmount}){
         return r * q;
     }
 
+    const handleItemSubmit= (e)=>async(des,rat,qua,amt)=>{
+        e.preventDefault()
+        const data = await dispatch(itemCreation(des,rat,qua,amt))
+        console.log(des,'items submitted too')
+        return data
+        
+    }
+    
     useEffect(()=>{
         setAmount(amt(rate,quantity))
          itemToInvoiceAmount(amount)
 
-    },[rate, quantity,amount])
+    },[itemToInvoiceAmount,rate, quantity,amount])
 
     
     return(
         <div>
-            <form>
+            <form onSubmit={handleItemSubmit(description, rate, quantity,amount)} id="invoiceItem-form">
 
                 <tr>
                     <td>
