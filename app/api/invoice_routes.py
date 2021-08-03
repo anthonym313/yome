@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.models import db,Invoice,Item
+from app.models import db,Invoice,Item,Client
 from flask_login import current_user, login_required
 
 invoice_routes = Blueprint('invoices', __name__)

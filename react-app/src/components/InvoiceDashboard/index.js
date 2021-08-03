@@ -1,16 +1,33 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { getAllInvoices } from '../../store/invoices';
+import { getAllClients } from '../../store/clients';
+
 
 import './InvoiceDashboard.css';
 
 export default function InvoiceDashboard(){
     const allInvoices = useSelector((state)=>Object.values(state.invoices))
+    const allClients = useSelector((state)=>Object.values(state.clients))
+    console.log(allClients)
     const dispatch = useDispatch();
     const headers = ["Invoice Number", 'Date', "Client Number", 'Balance']
+    const[clientName, setClientName] = useState('')
+
+    const getClientName= (array,clientNum)=>{
+     
+        let currperson= array.filter((personObj)=>
+            personObj.id ===clientNum
+        )
+        
+        return currperson[0]?.name
+    }
+    console.log(getClientName(allClients,1))
     
     useEffect(()=>{
         dispatch(getAllInvoices())
+        dispatch(getAllClients())
+
     },[dispatch])
     
     const tableHeaders = (array)=>{
@@ -28,21 +45,22 @@ export default function InvoiceDashboard(){
     const outstanding = getTotalBalance(allInvoices)
     
 
-    const tableData = (array)=>{
+    const tableData = (array,allClients)=>{
         return array?.map((invoice)=>{
             const {invoice_number, date, balance, client_id, id} = invoice
+           if(allClients[0])
             return(
                  <tr key={id}>
                      <td><a href={`/invoices/${invoice_number}`}>{invoice_number}</a></td>
                      <td>{date}</td>
-                     <td>{client_id}</td>
+                     <td>{getClientName(allClients,client_id)}</td>
                      <td>${balance}</td>
                  </tr>
             )
         })
     }
 
-    if(allInvoices[0]){
+    if(allInvoices[0]&& allClients[0]){
         return(
             <div className='invoice-dashboard-container'>
                 <h1>Invoice Dashboard</h1>
@@ -53,7 +71,7 @@ export default function InvoiceDashboard(){
                     <table id='user-invoices'>
                         <tbody>
                             <tr>{tableHeaders(headers)}</tr>
-                            {tableData(allInvoices)}
+                            {tableData(allInvoices,allClients)}
                         </tbody>
                         <tfoot>
                             <th></th>

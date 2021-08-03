@@ -36,9 +36,9 @@ export default function InvoiceCreator(){
         if(data){
             setErrors(data)
         }
+        window.alert('Invoice Created!')
+        history.push(`/invoices/${invoicenumber}`)
         return data;
-        // window.alert('Invoice Created!')
-        // history.push(`/invoices/${invoicenumber}`)
     }
         
     const addItem =(e)=>{

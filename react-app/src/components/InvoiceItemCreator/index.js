@@ -1,10 +1,9 @@
 import React,{useState, useEffect} from 'react';
-// import { useDispatch } from 'react-redux';
-// import { itemCreation } from '../../store/items';
+
 import './InvoiceItemCreator.css'
 
 export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList}){
-    // const dispatch = useDispatch()
+  
     const [description, setDescription] = useState('')
     const [rate, setRate] = useState(0);
     const [quantity, setQuantity] = useState(1);
