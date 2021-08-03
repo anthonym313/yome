@@ -3,10 +3,11 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
-
+import { getAllClients } from '../../store/clients';
 import './InvoiceCreator.css';
 
 export default function InvoiceCreator(){
+    const allClients = useSelector((state)=> Object.values(state.clients))
     const currentUser = useSelector((state)=> state.session.user);
     
     const dispatch = useDispatch();
@@ -17,8 +18,8 @@ export default function InvoiceCreator(){
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
-    const [itemAmounts, setItemAmounts ] = useState([0])
     const [client, setClient] = useState('')
+    const [itemAmounts, setItemAmounts ] = useState([0])
 
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
@@ -55,10 +56,11 @@ export default function InvoiceCreator(){
         setBalance(n) 
     }
     useEffect(()=>{
+        dispatch(getAllClients())
         getBalance(itemAmounts)
     },[itemAmounts])
 
-    return(
+    return allClients &&(
         <div className='invoice-creator-container'>
             <div className='invoice-header'>
                 <img src={currentUser.logo_url} alt='user logo'></img>
@@ -90,7 +92,12 @@ export default function InvoiceCreator(){
                     ></input>
                 </div>
                 <div className='invoice-client-Info-container'>
-                    <div></div>
+                    <label for='clients'> Choose a client</label>
+                    <select value={client} onChange={(e)=>setClient(e.target.value)}>
+                        {allClients.map((person)=>(
+                            <option value={person.id}>{person.name}</option>
+                        ))}
+                    </select>
 
                 </div>
                 <div className='invoice-business-Info-container'>
