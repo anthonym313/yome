@@ -55,6 +55,7 @@ export default function InvoiceCreator(){
         array.forEach(item=>(n+=item))
         setBalance(n) 
     }
+
     useEffect(()=>{
         dispatch(getAllClients())
         getBalance(itemAmounts)
@@ -93,11 +94,12 @@ export default function InvoiceCreator(){
                 </div>
                 <div className='invoice-client-Info-container'>
                     <label for='clients'> Choose a client</label>
-                    <select value={client} onChange={(e)=>setClient(e.target.value)}>
+                    <select value={client} onChange={(e)=>setClient(e.target.value)} id='client-drop'>
                         {allClients.map((person)=>(
                             <option value={person.id}>{person.name}</option>
                         ))}
                     </select>
+                   
 
                 </div>
                 <div className='invoice-business-Info-container'>
