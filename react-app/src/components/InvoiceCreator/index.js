@@ -42,8 +42,10 @@ export default function InvoiceCreator(){
         e.preventDefault();
         if(items[0]){
             items.pop()
+            itemAmounts.pop()
             setItems([...items])
-           
+            setItemAmounts([...itemAmounts])
+            
         }
         return
     }
@@ -61,7 +63,7 @@ export default function InvoiceCreator(){
             <div className='invoice-header'>
                 <img src={currentUser.logo_url} alt='user logo'></img>
                 <h1>Invoice</h1>
-                {balance}
+               
             </div>
             <form onSubmit={submitInvoiceHandler}>
                 <div className='invoiceCreator-errors'>
@@ -112,6 +114,10 @@ export default function InvoiceCreator(){
                     <button onClick={addItem}>Add Another Item</button>
                     <button onClick={deleteItem}>Delete Item</button>
 
+                </div>
+                <div>
+                    <thead><th>Total Balance</th></thead>
+                    <tbody><td>${Number.parseFloat(balance).toFixed(2)}</td></tbody>
                 </div>
                     
 
