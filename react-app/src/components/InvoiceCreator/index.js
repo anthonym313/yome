@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import InvoiceItemCreator from '../InvoiceItemCreator';
@@ -17,8 +17,12 @@ export default function InvoiceCreator(){
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
+    const [itemAmounts, setItemAmounts ] = useState([0])
     const [client, setClient] = useState('')
-    
+
+    const itemToInvoiceAmount = (itemAmt)=>{
+        setItemAmounts([...itemAmounts,itemAmt])
+    }
 
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
@@ -32,7 +36,7 @@ export default function InvoiceCreator(){
     
     const addItem =(e)=>{
         e.preventDefault();
-        setItems([...items,<InvoiceItemCreator/>])
+        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount}/>])
     } 
     const deleteItem=(e)=>{
         e.preventDefault();
@@ -43,12 +47,21 @@ export default function InvoiceCreator(){
         }
         return
     }
+    function getBalance(array){
+        let n = 0
+        array.forEach(item=>(n+=item))
+        setBalance(n) 
+    }
+    useEffect(()=>{
+        getBalance(itemAmounts)
+    },[itemAmounts])
 
     return(
         <div className='invoice-creator-container'>
             <div className='invoice-header'>
                 <img src={currentUser.logo_url} alt='user logo'></img>
                 <h1>Invoice</h1>
+                {balance}
             </div>
             <form onSubmit={submitInvoiceHandler}>
                 <div className='invoiceCreator-errors'>
@@ -75,6 +88,7 @@ export default function InvoiceCreator(){
                     ></input>
                 </div>
                 <div className='invoice-client-Info-container'>
+                    <div></div>
 
                 </div>
                 <div className='invoice-business-Info-container'>
@@ -93,8 +107,9 @@ export default function InvoiceCreator(){
                     </thead>
                     {items.map(item =>(
                         <div>{item}</div>
+                        
                     ))}
-                    <button onClick={addItem}>Add Item</button>
+                    <button onClick={addItem}>Add Another Item</button>
                     <button onClick={deleteItem}>Delete Item</button>
 
                 </div>

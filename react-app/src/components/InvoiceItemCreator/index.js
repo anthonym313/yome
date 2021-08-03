@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import './InvoiceItemCreator.css'
 
-export default function InvoiceItemCreator(){
+export default function InvoiceItemCreator({itemToInvoiceAmount}){
     const [description, setDescription] = useState('')
     const [rate, setRate] = useState(0);
     const [quantity, setQuantity] = useState(1);
@@ -13,9 +13,9 @@ export default function InvoiceItemCreator(){
 
     useEffect(()=>{
         setAmount(amt(rate,quantity))
-         
+         itemToInvoiceAmount(amount)
 
-    },[rate, quantity])
+    },[rate, quantity,amount])
 
     
     return(
@@ -60,7 +60,7 @@ export default function InvoiceItemCreator(){
                     =
                     <td>
                         <div>
-                           {Number.parseFloat(amount).toFixed(2)}
+                           ${Number.parseFloat(amount).toFixed(2)}
                         </div>
                     </td>
 
