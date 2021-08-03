@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { itemCreation } from '../../store/items';
+
 import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
-
 import { getAllClients } from '../../store/clients';
+
 import './InvoiceCreator.css';
 
 export default function InvoiceCreator(){
@@ -29,9 +29,6 @@ export default function InvoiceCreator(){
         setItemAmounts([...itemAmounts,itemAmt])
     }
     
-
-  
-
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
 
@@ -42,14 +39,13 @@ export default function InvoiceCreator(){
         return data;
         // window.alert('Invoice Created!')
         // history.push(`/invoices/${invoicenumber}`)
-        
-
     }
-    
+        
     const addItem =(e)=>{
         e.preventDefault();
         setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount} list={list} setList={setList} />])
     } 
+    
     const deleteItem=(e)=>{
         e.preventDefault();
         if(items[0]){
@@ -57,21 +53,21 @@ export default function InvoiceCreator(){
             itemAmounts.pop()
             setItems([...items])
             setItemAmounts([...itemAmounts])
-            
         }
         return
     }
+            
     function getBalance(array){
         let n = 0
         array.forEach(item=>(n+=item))
         setBalance(n) 
     }
-    console.log(list)
-
+    
     useEffect(()=>{
         dispatch(getAllClients())
         getBalance(itemAmounts)
     },[dispatch,itemAmounts])
+    
     
     return allClients &&(
         <div className='invoice-creator-container'>
@@ -147,3 +143,7 @@ export default function InvoiceCreator(){
          
               
 }
+
+    
+
+    

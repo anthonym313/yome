@@ -35,9 +35,7 @@ def create_invoice():
 def add_invoice_item(itemList, new_invoiceId):
     """
     Creates an item that correspondes with the current invoice being made.
-    Must create a function that finds the last invoice and add one to the Id
-    to get the new invoices id number.
-    
+    Gets called during invoice creation.
     """
     invoice_items=[]
         
