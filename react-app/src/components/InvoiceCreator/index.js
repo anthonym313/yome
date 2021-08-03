@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { itemCreation } from '../../store/items';
 import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
 
@@ -22,26 +23,32 @@ export default function InvoiceCreator(){
     const [client, setClient] = useState(1)
     console.log('client id', client)
     const [itemAmounts, setItemAmounts ] = useState([0])
-
+    const [list, setList]= useState([])
+    
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
     }
     
 
+  
+
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
-        const data = await dispatch(invoiceCreation(invoicenumber,date,balance,client))
+
+        const data = await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
         if(data){
             setErrors(data)
         }
-        window.alert('Invoice Created!')
-        history.push(`/invoices/${invoicenumber}`)
-        console.log('invoice form submitted now')
+        return data;
+        // window.alert('Invoice Created!')
+        // history.push(`/invoices/${invoicenumber}`)
+        
+
     }
     
     const addItem =(e)=>{
         e.preventDefault();
-        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount} />])
+        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount} list={list} setList={setList} />])
     } 
     const deleteItem=(e)=>{
         e.preventDefault();
@@ -59,10 +66,7 @@ export default function InvoiceCreator(){
         array.forEach(item=>(n+=item))
         setBalance(n) 
     }
-    function sumbitBothForms(){
-        document.getElementById('invoice-creator-form').submit();
-        document.getElementById('invoiceItem-form').submit();
-    }
+    console.log(list)
 
     useEffect(()=>{
         dispatch(getAllClients())
@@ -76,8 +80,8 @@ export default function InvoiceCreator(){
                 <h1>Invoice</h1>
                
             </div>
-            <form onSubmit={submitInvoiceHandler} id='invoice-creator-form'>
-            <button type="submit" onClick={sumbitBothForms}>Create Invoice</button>
+            <form  id='invoice-creator-form'>
+            <button type="submit" onClick={submitInvoiceHandler}>Create Invoice</button>
                 <div className='invoiceCreator-errors'>
                      {errors.map((error,ind)=>(
                          <div key={ind}>{error}</div>

@@ -24,30 +24,35 @@ def create_invoice():
         business_id=current_user.id,
         client_id = req['clientid'],
     )
-        
+    
+    
     db.session.add(new_invoice)
     db.session.commit()
+    add_invoice_item(req["arrayOfItems"],new_invoice)
     return new_invoice.to_dict()
 
-@invoice_routes.route('/new-invoice/item', methods=['POST'])
-@login_required
-def add_invoice_item():
+
+def add_invoice_item(itemList, new_invoiceId):
     """
     Creates an item that correspondes with the current invoice being made.
     Must create a function that finds the last invoice and add one to the Id
     to get the new invoices id number.
-    """
-    last_invoice_in_db = Invoice.query(func.count(Invoice.id)).scalar()
-    print('last invoice number',last_invoice_in_db)
     
-    req=request.get_json()
-    item = Item(
-        description=req['description'],
-        rate=req['rate'],
-        quantity=req['quantity'],
-        amount =req['amount'],
-        invoice_id= last_invoice_in_db
-    )
-    db.session.add(item)
-    db.session.commit()
-    return item.to_dict()
+    """
+    invoice_items=[]
+        
+    for item in itemList:
+        item = Item(
+            description=item['description'],
+            rate=item['rate'],
+            quantity=item['quantity'],
+            amount =item['amount'],
+            invoice_id= new_invoiceId.id
+        )
+        db.session.add(item)
+        db.session.commit()
+        invoice_items.append(item)
+        
+    return [item.to_dict() for item in invoice_items]
+        
+             

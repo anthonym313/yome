@@ -13,12 +13,12 @@ const setInvoice = (invoice)=>({
 
 ///////////////Thunks
 //Create
-export const invoiceCreation = (invoicenumber, date, balance,clientid) => async (dispatch)=>{
+export const invoiceCreation = (invoicenumber, date, balance,clientid, arrayOfItems) => async (dispatch)=>{
     const res = await fetch('/api/invoices/new-invoice',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
-            invoicenumber,date,balance, clientid
+            invoicenumber,date,balance, clientid,arrayOfItems
         })
     });
     if (res.ok){
