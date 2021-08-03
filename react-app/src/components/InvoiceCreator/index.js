@@ -19,7 +19,8 @@ export default function InvoiceCreator(){
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
-    const [client, setClient] = useState('')
+    const [client, setClient] = useState(1)
+    console.log('client id', client)
     const [itemAmounts, setItemAmounts ] = useState([0])
 
     const itemToInvoiceAmount = (itemAmt)=>{
@@ -59,7 +60,7 @@ export default function InvoiceCreator(){
         setBalance(n) 
     }
     function sumbitBothForms(){
-        document.getElementById('invoice-creator-form')
+        document.getElementById('invoice-creator-form').submit();
         document.getElementById('invoiceItem-form').submit();
     }
 
