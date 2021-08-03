@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
+
 import { getAllClients } from '../../store/clients';
 import './InvoiceCreator.css';
 
@@ -18,12 +19,14 @@ export default function InvoiceCreator(){
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
-    const [client, setClient] = useState('')
+    const [client, setClient] = useState(1)
+    console.log('client id', client)
     const [itemAmounts, setItemAmounts ] = useState([0])
 
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
     }
+    
 
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
@@ -32,12 +35,13 @@ export default function InvoiceCreator(){
             setErrors(data)
         }
         window.alert('Invoice Created!')
-        history.push(`/invoice/${invoicenumber}`)
+        history.push(`/invoices/${invoicenumber}`)
+        console.log('invoice form submitted now')
     }
     
     const addItem =(e)=>{
         e.preventDefault();
-        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount}/>])
+        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount} />])
     } 
     const deleteItem=(e)=>{
         e.preventDefault();
@@ -55,12 +59,16 @@ export default function InvoiceCreator(){
         array.forEach(item=>(n+=item))
         setBalance(n) 
     }
+    function sumbitBothForms(){
+        document.getElementById('invoice-creator-form').submit();
+        document.getElementById('invoiceItem-form').submit();
+    }
 
     useEffect(()=>{
         dispatch(getAllClients())
         getBalance(itemAmounts)
-    },[itemAmounts])
-
+    },[dispatch,itemAmounts])
+    
     return allClients &&(
         <div className='invoice-creator-container'>
             <div className='invoice-header'>
@@ -68,7 +76,8 @@ export default function InvoiceCreator(){
                 <h1>Invoice</h1>
                
             </div>
-            <form onSubmit={submitInvoiceHandler}>
+            <form onSubmit={submitInvoiceHandler} id='invoice-creator-form'>
+            <button type="submit" onClick={sumbitBothForms}>Create Invoice</button>
                 <div className='invoiceCreator-errors'>
                      {errors.map((error,ind)=>(
                          <div key={ind}>{error}</div>
@@ -95,8 +104,8 @@ export default function InvoiceCreator(){
                 <div className='invoice-client-Info-container'>
                     <label for='clients'> Choose a client</label>
                     <select value={client} onChange={(e)=>setClient(e.target.value)} id='client-drop'>
-                        {allClients.map((person)=>(
-                            <option value={person.id}>{person.name}</option>
+                        {allClients.map((person,ind)=>(
+                            <option value={person.id} key={ind}>{person.name}</option>
                         ))}
                     </select>
                    
@@ -124,17 +133,13 @@ export default function InvoiceCreator(){
                     <button onClick={deleteItem}>Delete Item</button>
 
                 </div>
-                <div>
-                    <thead><th>Total Balance</th></thead>
-                    <tbody><td>${Number.parseFloat(balance).toFixed(2)}</td></tbody>
-                </div>
-                    
-
+            
             </form>
-
-
-
-
+                <thead><th>Total Balance</th></thead>
+                <tbody><td>${Number.parseFloat(balance).toFixed(2)}</td></tbody>
         </div>
+                
     )
+         
+              
 }

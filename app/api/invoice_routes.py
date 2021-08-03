@@ -37,13 +37,16 @@ def add_invoice_item():
     Must create a function that finds the last invoice and add one to the Id
     to get the new invoices id number.
     """
+    last_invoice_in_db = Invoice.query(func.count(Invoice.id)).scalar()
+    print('last invoice number',last_invoice_in_db)
+    
     req=request.get_json()
     item = Item(
         description=req['description'],
         rate=req['rate'],
         quantity=req['quantity'],
         amount =req['amount'],
-        invoice_id= 'to be determined in a function above'
+        invoice_id= last_invoice_in_db
     )
     db.session.add(item)
     db.session.commit()
