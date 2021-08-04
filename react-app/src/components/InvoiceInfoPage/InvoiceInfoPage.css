@@ -1,7 +1,13 @@
 .inv-head img{
     max-height: 150px;
-
 }
+.inv-head-logo{
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .client-company-infoContainer{
     display: flex;
     flex-direction: row;
@@ -26,6 +32,26 @@
     border:.5px solid rgba(51, 51, 51, 0.158);
 }
 .invoice-preview{
-    
+    margin:27mm 16mm;
+}
+
+#invoice-summary{
+    width:100%;
+    text-align:center;
+    font-family:'Times New Roman', Times, serif;
+}
+
+#invoice-summary th{
+    border-top:1px solid black;
+    border-bottom: 1px solid black;
+}
+#invoice-summary th:nth-child(1){
+    border-left: 1px solid black;
+}
+#invoice-summary th:nth-last-child(1){
+    border-right: 1px solid black;
+}
+#invoice-summary tr{
+    padding:5px 0;
 }
 
