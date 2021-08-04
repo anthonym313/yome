@@ -131,34 +131,39 @@ export default function InvoiceCreator(){
                     </div>
 
                 </div>
-                   
-
-                <div>
-                    <thead>
-                        <th>Description</th>
-                        <th>Rate</th>
-                        <th>Quantity</th>
-                        <th>Amount</th>
-                    </thead>
+                <thead>
+                    <th id='itemDes'>Description</th>
+                    <th id='itemRate'>Rate</th>
+                    <th id='itemQty'>Qty</th>
+                    <th>Amount</th>
+                </thead>
                     {items.map(item =>(
                         <div>{item}</div>
                         
-                        ))}
-                    <button onClick={addItem}>Add Another Item</button>
+                    ))}
+                <div className='itm-addDel-buttons'>
+                    <button onClick={addItem}>Add Item</button>
                     <button onClick={deleteItem}>Delete Item</button>
-
                 </div>
-            
+                    
+
             </form>
+            <div className='invoice-bottom-container'>
                 <thead><th>Total Balance</th></thead>
                 <tbody><td>${Number.parseFloat(balance).toFixed(2)}</td></tbody>
                 <button type="submit" onClick={submitInvoiceHandler}>Create Invoice</button>
+            </div>    
+            
         </div>
                 
     )
          
               
 }
+
+
+                
+            
 
     
 

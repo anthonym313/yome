@@ -30,7 +30,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
 
                 <tr className='invoice-item-inputs'>
                     <td>
-                        <div>
+                        <div className='item-description'>
                             <input
                             type='text'
                             name='description'
@@ -41,7 +41,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
                         </div>
                     </td>
                     <td>
-                        <div>
+                        <div className='item-rate'>
                             <input
                             type='number'
                             name='rate'
@@ -53,7 +53,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
                     </td>
                     X
                     <td>
-                        <div>
+                        <div className='item-quantity'>
                             <input
                             type='number'
                             name='quantity'
@@ -65,7 +65,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
                     </td>
                     =
                     <td>
-                        <div>
+                        <div className='item-balance'>
                            ${Number.parseFloat(amount).toFixed(2)}
                         </div>
                     </td>

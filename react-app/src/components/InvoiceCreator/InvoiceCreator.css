@@ -30,4 +30,21 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding-right: 10%;
     padding-left:4%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom:30px;
+}
+thead #itemDes{
+    padding-left:55px;
+    padding-right:300px;
+}
+thead #itemRate{
+    padding-right:110px;
+}
+thead #itemQty{
+    padding-right:80px;
+}
+.itm-addDel-buttons{
+    margin-left:55px;
+    width:170px;
+    display:flex;
+    justify-content:space-between;
 }

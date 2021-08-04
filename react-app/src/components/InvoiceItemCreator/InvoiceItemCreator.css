@@ -1,5 +1,22 @@
-.it
-
-.invoice-item-inputs{ 
+.invoiceItem{
+    margin:20px;
+    display:block;
     
+}
+
+
+.item-description input{
+    margin-left:20px;
+    width:340px;
+}
+.item-rate input{
+    margin:0px 8px;
+    width:70px;
+}
+.item-quantity input{
+    margin:0px 8px;
+    width: 50px;
+}
+.item-balance{
+    margin:0px 8px;
 }
