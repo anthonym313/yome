@@ -10,13 +10,13 @@ def get_all_invoices():
     invoices = Invoice.query.filter((Invoice.business_id == current_user.id)).all()
     return jsonify([invoice.to_dict() for invoice in invoices])
 
-@invoice_routes.route('/:invoice_number')
+@invoice_routes.route('/<invoice_number>')
 @login_required
 def get_one_invoice(invoice_number):
     """
     This route gets one invoice based on the logged in user and the unique invoice_number identifier
     """
-    single_invoice = Invoice.query.filter_by(invoice_number == Invoice.invoice_number).all()
+    single_invoice = Invoice.query.filter((invoice_number == Invoice.invoice_number)).first()
     return jsonify([single_invoice.to_dict()])
 
 @invoice_routes.route('/new-invoice', methods=['POST'])

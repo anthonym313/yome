@@ -24,5 +24,6 @@ class Invoice(db.Model):
             'business_id': self.business_id,
             'client_id': self.client_id,
             'items':[item.to_dict()for item in self.items],
+            'clients':self.clients.to_dict(),
             
         }
