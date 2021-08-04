@@ -48,7 +48,7 @@ function App() {
         <ProtectedRoute path='/invoices' exact={true} >
           <InvoiceDashboard/>
         </ProtectedRoute>
-        <ProtectedRoute path='/invoices/:id' exact={true} >
+        <ProtectedRoute path='/invoices/:invoiceNum' exact={true} >
           <InvoiceInfoPage/>
         </ProtectedRoute>
         <ProtectedRoute path='/invoices/:id/payments' exact={true} >

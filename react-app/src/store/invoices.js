@@ -43,6 +43,15 @@ export const getAllInvoices = () => async (dispatch) =>{
         dispatch(getInvoices(allInvoices));
     }
 };
+//Read
+export const getOneInvoice = (invoiceNumber) => async (dispatch) =>{
+    const res = await fetch(`/api/invoices/${invoiceNumber}`);
+    if(res.ok){
+        const invoice = await res.json()
+        dispatch(getInvoices(invoice));
+        return invoice;
+    }
+}
 
 //Update
 
