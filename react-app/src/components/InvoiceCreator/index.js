@@ -79,6 +79,7 @@ export default function InvoiceCreator(){
         <div className='iC-page'>
 
             <div className='invoice-creator-container'>
+                <div className='invoice-dash-back'><a href='/invoices'>Back to Invoice Dashboard</a></div>
                 <div className='invoice-header'>
                     <img src={currentUser.logo_url} alt='user logo'></img>
                     <div>

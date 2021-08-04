@@ -7,13 +7,14 @@ background: linear-gradient(0deg, rgba(13,27,31,1) 0%, rgba(103,171,159,1) 100%)
 .invoice-creator-container{
     background-color: rgba(241, 241, 233, 0.959);
     margin:0 auto;
-    padding-top:50px;
     width:50%;
     border:1px solid black;
     box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
+.invoice-dash-back{
+    margin:8px 0 30px 12px;
+}
 .invoice-header img{
     max-height:150px;
 }
