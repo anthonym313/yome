@@ -2,7 +2,7 @@
     min-height: 95vh;
     max-height:auto;
     background: rgb(13,27,31);
-background: linear-gradient(0deg, rgba(13,27,31,1) 0%, rgba(103,171,159,1) 100%);
+    background: linear-gradient(0deg, rgba(13,27,31,1) 0%, rgba(103,171,159,1) 100%);
 }
 .invoice-creator-container{
     background-color: rgba(241, 241, 233, 0.959);

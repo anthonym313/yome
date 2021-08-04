@@ -42,57 +42,59 @@ export default function InvoiceInfoPage(){
     
     if(editMode === false){
         return currentInvoice && (
-            <div>
-
+            <div className='individual-page-container'>
+                <div className='free'></div>
                 <div className='invoice-information-page-container'>
-                    <div className='inv-head'>
-                        <img src={currentUser.logo_url} alt='user logo'></img>
-                        <div>
-                            <h1>Invoice</h1>
-                        </div>
-                        <div>
-                            <h2>{currentInvoice.invoice_number}</h2>
-                        </div>
-                    </div>
-                    <div className='client-company-infoContainer'>
-                        <div className='client-information-container'>
-                            <h4>Customer Info</h4>
-                            <h5>{currentInvoice.clients.name}</h5>
-                            <h5>{currentInvoice.clients.street_address}</h5>
-                            <h5>{currentInvoice.clients.phone}</h5>
-                            <h5>{currentInvoice.clients.email}</h5>
-                        </div>
-                        <div className='company-info-container'>
-                            <h4>Company Info</h4>
-                            <h5>{currentUser.username}</h5>
-                            <h5>{currentUser.street_address}</h5>
-                            <h5>{currentUser.city_state}</h5>
-                            <h5>{currentUser.zipcode}</h5>
-                            <h5>{currentUser.business_phone}</h5>
-                            <h5>{currentUser.phone}</h5>
-                        </div>
-                    </div>
-                    <div id='order-date'>
-                        <h4>Order Date:</h4>
-                        <h5>{currentInvoice.date}</h5>
-                    </div>
-                    <div>
-                        <h2>Order Summary</h2>
-                        <table>
-                            <tbody>
-                                <tr>{tableHeaders(headers)}</tr>
-                                {tableData(currentInvoice.items)}
-                                <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
-                            </tbody>
+                    <div className='invoice-preview'>
 
-                        </table>
+                        <div className='inv-head'>
+                            <img src={currentUser.logo_url} alt='user logo'></img>
+                            <div>
+                                <h1>Invoice</h1>
+                            </div>
+                            <div>
+                                <h2>{currentInvoice.invoice_number}</h2>
+                            </div>
+                        </div>
+                        <div className='client-company-infoContainer'>
+                            <div className='client-information-container'>
+                                <h4>Customer Info</h4>
+                                <h5>{currentInvoice.clients.name}</h5>
+                                <h5>{currentInvoice.clients.street_address}</h5>
+                                <h5>{currentInvoice.clients.phone}</h5>
+                                <h5>{currentInvoice.clients.email}</h5>
+                            </div>
+                            <div className='company-info-container'>
+                                <h4>Company Info</h4>
+                                <h5>{currentUser.username}</h5>
+                                <h5>{currentUser.street_address}</h5>
+                                <h5>{currentUser.city_state}</h5>
+                                <h5>{currentUser.zipcode}</h5>
+                                <h5>{currentUser.business_phone}</h5>
+                                <h5>{currentUser.phone}</h5>
+                            </div>
+                        </div>
+                        <div id='order-date'>
+                            <h4>Order Date:</h4>
+                            <h5>{currentInvoice.date}</h5>
+                        </div>
+                        <div>
+                            <h2>Order Summary</h2>
+                            <table>
+                                <tbody>
+                                    <tr>{tableHeaders(headers)}</tr>
+                                    {tableData(currentInvoice.items)}
+                                    <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
-                    
-        
                 </div>
             </div>
         )
-
     }
-
 }
+                    
+        
+
