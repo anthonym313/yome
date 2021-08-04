@@ -12,7 +12,9 @@ export default function InvoiceInfoPage(){
     const invoice = useSelector((state)=> Object.values(state.invoices))
     const currentInvoice = invoice[0] || null
     const [editMode, setEditMode] = useState(false)
-    const headers
+    const headers = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL']
+    const headTotal=(anInvoice)=> (['','','','TOTAL', anInvoice.balance])
+
     useEffect(()=>{
         dispatch(getOneInvoice(invoice_number))
     },[dispatch])
@@ -20,6 +22,21 @@ export default function InvoiceInfoPage(){
     const tableHeaders = (array)=>{
         return array.map((head, index)=>{
             return <th key={index}>{head}</th>
+        })
+    }
+    const tableData=(array)=>{
+        return array?.map((item,index)=>{
+            const {amount, description, quantity, rate}= item
+            return(
+                <tr key={index}>
+                    <td>{index}</td>
+                    <td>{description}</td>
+                    <td>{rate}</td>
+                    <td>{quantity}</td>
+                    <td>$ {Number.parseFloat(amount).toFixed(2)}</td>
+                </tr>
+            )
+                
         })
     }
     
@@ -55,9 +72,20 @@ export default function InvoiceInfoPage(){
                             <h5>{currentUser.phone}</h5>
                         </div>
                     </div>
+                    <div id='order-date'>
+                        <h4>Order Date:</h4>
+                        <h5>{currentInvoice.date}</h5>
+                    </div>
                     <div>
                         <h2>Order Summary</h2>
+                        <table>
+                            <tbody>
+                                <tr>{tableHeaders(headers)}</tr>
+                                {tableData(currentInvoice.items)}
+                                <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
+                            </tbody>
 
+                        </table>
                     </div>
                     
         
