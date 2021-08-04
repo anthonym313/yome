@@ -36,7 +36,6 @@ export default function InvoiceCreator(){
 
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
-
         const data = await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
         if(data){
             setErrors(data)
@@ -142,7 +141,7 @@ export default function InvoiceCreator(){
                         
                     ))}
                 <div className='itm-addDel-buttons'>
-                    <button onClick={addItem}>Add Item</button>
+                    <button id='addItem-button' onClick={addItem}>Add Item</button>
                     <button onClick={deleteItem}>Delete Item</button>
                 </div>
                     
