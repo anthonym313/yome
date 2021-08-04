@@ -138,7 +138,7 @@ export default function InvoiceCreator(){
                     <th>Amount</th>
                 </thead>
                     {items.map(item =>(
-                        <div>{item}</div>
+                        <div className='inv-item'>{item}</div>
                         
                     ))}
                 <div className='itm-addDel-buttons'>

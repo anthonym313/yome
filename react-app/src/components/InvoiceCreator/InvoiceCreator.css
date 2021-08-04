@@ -41,10 +41,26 @@ thead #itemRate{
 }
 thead #itemQty{
     padding-right:80px;
+    
+}
+.inv-item{
+    border-bottom:1px solid rgba(158, 173, 189, 0.466);
 }
 .itm-addDel-buttons{
     margin-left:55px;
     width:170px;
     display:flex;
     justify-content:space-between;
+}
+.invoice-bottom-container{
+    margin:30px 0 0 670px;
+}
+.invoice-bottom-container button{
+    cursor: pointer;
+    margin:14px 0;
+    padding:10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    background-color: #264e70;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
