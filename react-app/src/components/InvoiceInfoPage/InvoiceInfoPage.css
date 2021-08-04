@@ -1,0 +1,10 @@
+.inv-head img{
+    max-height: 150px;
+
+}
+.client-company-infoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
