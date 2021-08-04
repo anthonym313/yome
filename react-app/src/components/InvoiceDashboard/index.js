@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { getAllInvoices } from '../../store/invoices';
 import { getAllClients } from '../../store/clients';
@@ -9,32 +9,29 @@ import './InvoiceDashboard.css';
 export default function InvoiceDashboard(){
     const allInvoices = useSelector((state)=>Object.values(state.invoices))
     const allClients = useSelector((state)=>Object.values(state.clients))
-    console.log(allClients)
+    
     const dispatch = useDispatch();
     const headers = ["Invoice Number", 'Date', "Client Number", 'Balance']
-    const[clientName, setClientName] = useState('')
 
     const getClientName= (array,clientNum)=>{
-     
         let currperson= array.filter((personObj)=>
             personObj.id ===clientNum
         )
-        
         return currperson[0]?.name
     }
-    console.log(getClientName(allClients,1))
     
     useEffect(()=>{
         dispatch(getAllInvoices())
         dispatch(getAllClients())
 
     },[dispatch])
-    
+        
     const tableHeaders = (array)=>{
         return array.map((head, index)=>{
             return <th key={index}>{head}</th>
         })
     }
+     
     const getTotalBalance =(array)=>{
         let totalBalance = 0
         array.forEach(invoice => {
@@ -42,6 +39,8 @@ export default function InvoiceDashboard(){
         });
         return totalBalance;
     }
+    
+    
     const outstanding = getTotalBalance(allInvoices)
     
 
@@ -57,6 +56,7 @@ export default function InvoiceDashboard(){
                      <td>${balance}</td>
                  </tr>
             )
+            
         })
     }
 

@@ -25,10 +25,10 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
 
     
     return(
-        <div>
+        <div className='invoiceItem'>
             <form >
 
-                <tr>
+                <tr className='invoice-item-inputs'>
                     <td>
                         <div>
                             <input

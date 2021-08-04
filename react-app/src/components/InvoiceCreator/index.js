@@ -21,14 +21,19 @@ export default function InvoiceCreator(){
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
     const [client, setClient] = useState(1)
-    console.log('client id', client)
+    
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [list, setList]= useState([])
     
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
     }
+   
+    const clientTings =(e)=>{
+        setClient(e.target.value)
+    }
     
+
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
 
@@ -63,61 +68,71 @@ export default function InvoiceCreator(){
         setBalance(n) 
     }
     
+    
     useEffect(()=>{
         dispatch(getAllClients())
         getBalance(itemAmounts)
     },[dispatch,itemAmounts])
     
     
+    
     return allClients &&(
         <div className='invoice-creator-container'>
             <div className='invoice-header'>
                 <img src={currentUser.logo_url} alt='user logo'></img>
-                <h1>Invoice</h1>
-               
+                <div>
+                    <h1>Invoice</h1>
+                </div>
             </div>
+
+               
             <form  id='invoice-creator-form'>
-            <button type="submit" onClick={submitInvoiceHandler}>Create Invoice</button>
                 <div className='invoiceCreator-errors'>
                      {errors.map((error,ind)=>(
                          <div key={ind}>{error}</div>
-                     ))}
+                         ))}
                 </div>
-                <div>
-                    <input 
-                    type='text'
-                    name='invoicenumber'
-                    placeholder='Invoice Number/ID'
-                    onChange={(e)=>setInvoiceNumber(e.target.value)}
-                    value={invoicenumber}
-                    required={true}
-                    ></input>
-                </div>
-                <div>
-                    <input
-                    type='date'
-                    onChange={(e)=> setDate(e.target.value)}
-                    value={date}
-                    required={true}
-                    ></input>
-                </div>
-                <div className='invoice-client-Info-container'>
-                    <label for='clients'> Choose a client</label>
-                    <select value={client} onChange={(e)=>setClient(e.target.value)} id='client-drop'>
-                        {allClients.map((person,ind)=>(
-                            <option value={person.id} key={ind}>{person.name}</option>
-                        ))}
-                    </select>
-                   
+                <div className='invoice-top-inputs'>
+                    <div>
+                        <input 
+                        type='text'
+                        name='invoicenumber'
+                        placeholder='Invoice Number/ID'
+                        onChange={(e)=>setInvoiceNumber(e.target.value)}
+                        value={invoicenumber}
+                        required={true}
+                        ></input>
+                    </div>
+                    <div>
+                        <input
+                        type='date'
+                        onChange={(e)=> setDate(e.target.value)}
+                        value={date}
+                        required={true}
+                        ></input>
+                    </div>
 
                 </div>
-                <div className='invoice-business-Info-container'>
-                    <h4>{currentUser.username}</h4>
-                    <h5>{currentUser.street_address}</h5>
-                    <h5>{currentUser.city_state} {currentUser.zipcode}</h5>
-                    <h5>{currentUser.business_phone}</h5>
-                    <h5>{currentUser.phone}</h5>
+                <div className='busCli-container'>
+                    <div className='invoice-client-Info-container'>
+                        <label for='clients'> Choose a client</label>
+                        <select value={client} onChange={clientTings} id='client-drop'>
+                            {allClients.map((person,ind)=>(
+                                <option value={person.id} key={ind}>{person.name}</option>
+                                ))}
+                        </select>
+                    </div>
+                    <div className='invoice-business-Info-container'>
+                        <h4>{currentUser.username}</h4>
+                        <h5>{currentUser.street_address}</h5>
+                        <h5>{currentUser.city_state} {currentUser.zipcode}</h5>
+                        <h5>{currentUser.business_phone}</h5>
+                        <h5>{currentUser.phone}</h5>
+                    </div>
+
                 </div>
+                   
+
                 <div>
                     <thead>
                         <th>Description</th>
@@ -128,7 +143,7 @@ export default function InvoiceCreator(){
                     {items.map(item =>(
                         <div>{item}</div>
                         
-                    ))}
+                        ))}
                     <button onClick={addItem}>Add Another Item</button>
                     <button onClick={deleteItem}>Delete Item</button>
 
@@ -137,6 +152,7 @@ export default function InvoiceCreator(){
             </form>
                 <thead><th>Total Balance</th></thead>
                 <tbody><td>${Number.parseFloat(balance).toFixed(2)}</td></tbody>
+                <button type="submit" onClick={submitInvoiceHandler}>Create Invoice</button>
         </div>
                 
     )
