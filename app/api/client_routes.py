@@ -69,15 +69,17 @@ def create_client():
     """
     Creates a new client under the current logged in user.
     """
-    req =request.get_json()
-    client = Client(
-        name=req['name'],
-        email=req['email'],
-        street_address=req['streetaddress'],
-        phone=req['phone'],
-        user_id=current_user.id
-    )
-    db.session.add(client)
-    db.session.commit()
-    return client.to_dict()
-    
+    form = ClientCreationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        client = Client(
+            name=form.data['name'],
+            email=form.data['email'],
+            street_address=form.data['street_address'],
+            phone=form.data['phone'],
+            user_id=current_user.id
+        )
+        db.session.add(client)
+        db.session.commit()
+        return client.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

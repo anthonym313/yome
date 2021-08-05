@@ -66,7 +66,7 @@ export const getOneClient =(clientId) => async (dispatch) =>{
 }
 
 //Create
-export const clientCreation = (name, email,streetaddress,phone)=> async (dispatch)=>{
+export const clientCreation = (name, email,street_address,phone)=> async (dispatch)=>{
     const res = await fetch('/api/clients/new-client', {
         method:'POST',
         headers:{
@@ -75,7 +75,7 @@ export const clientCreation = (name, email,streetaddress,phone)=> async (dispatc
         body: JSON.stringify({
             name,
             email,
-            streetaddress,
+            street_address,
             phone
         })
     });
