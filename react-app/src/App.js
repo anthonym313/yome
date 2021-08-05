@@ -6,10 +6,11 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/index.js';
 import NotFoundPage from './components/NotFoundPage';
 import InvoiceDashboard from './components/InvoiceDashboard';
+import InvoiceCreator from './components/InvoiceCreator';
+import InvoiceInfoPage from './components/InvoiceInfoPage';
 import ClientDashboard from './components/ClientDashboard';
 import ClientCreator from './components/ClientCreator';
 import ClientInfoPage from './components/ClientInfoPage';
-import InvoiceCreator from './components/InvoiceCreator';
 import HomePage from './components/HomePage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import User from './components/User';
@@ -47,8 +48,8 @@ function App() {
         <ProtectedRoute path='/invoices' exact={true} >
           <InvoiceDashboard/>
         </ProtectedRoute>
-        <ProtectedRoute path='/invoices/:id' exact={true} >
-          <h1>Individual Invoice Page to download the invoice and edit the invoice</h1>
+        <ProtectedRoute path='/invoices/:invoice_number' exact={true} >
+          <InvoiceInfoPage/>
         </ProtectedRoute>
         <ProtectedRoute path='/invoices/:id/payments' exact={true} >
           <h1>Add a payment to invoice</h1>
