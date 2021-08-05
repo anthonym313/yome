@@ -24,6 +24,7 @@ export default function InvoiceCreator(){
     const [validationErrors,setValidationErrors] = useState([])
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [list, setList]= useState([])
+    const [show, setShow]= useState('none')
     
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
@@ -36,10 +37,14 @@ export default function InvoiceCreator(){
 
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
-        await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
-        
-        window.alert('Invoice Created!')
-        history.push(`/invoices/${invoicenumber}`)
+        if(validationErrors.length){
+            setShow('flex')
+        }else{
+            await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
+            window.alert('Invoice Created!')
+            history.push(`/invoices/${invoicenumber}`)
+
+        }
         
     }
 
@@ -94,10 +99,11 @@ export default function InvoiceCreator(){
 
                 
                 <form  id='invoice-creator-form'>
-                    <div className='invoiceCreator-errors'>
-                        {errors.map((error,ind)=>(
-                            <div key={ind}>{error}</div>
-                            ))}
+                    <div className='invoiceCreator-errors' style={{display:show}}>
+                        <h4>Please Fix Errors</h4>
+                        {validationErrors && validationErrors.map((e,i)=>(
+                            <p key={i}>{e}</p>
+                        ))}
                     </div>
                     <div className='invoice-top-inputs'>
                         <div>
