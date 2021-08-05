@@ -198,7 +198,6 @@ export default function InvoiceInfoPage(){
                                 value={date}
                                 required={true}
                                 ></input>
-        
                             </div>
                         </form>
                         <div>
@@ -218,6 +217,7 @@ export default function InvoiceInfoPage(){
         )
 
     }
+        
 }
                     
         

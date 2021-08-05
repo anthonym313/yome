@@ -9,7 +9,7 @@ export default function ClientCreator(){
     const [errors, setErrors] = useState([]);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [streetaddress, setStreetAddress] = useState('');
+    const [street_address, setStreetAddress] = useState('');
     const [phone, setPhone] = useState('')
     
     const dispatch = useDispatch();
@@ -17,12 +17,12 @@ export default function ClientCreator(){
 
     const submitHandler = async(e)=>{
         e.preventDefault();
-        const data = await dispatch(clientCreation(name, email, streetaddress, phone));
-        if (data){
-            setErrors(data)
+        const data = await dispatch(clientCreation(name, email, street_address, phone));
+        if (!data){
+            window.alert('Client Created!')
+            history.push('/clients')
         }
-        window.alert('Client Created!')
-        history.push('/clients')
+        setErrors(data)
     }
 
     return(
@@ -58,9 +58,9 @@ export default function ClientCreator(){
                     <label>Street Address*(required)</label>
                     <input
                     type='text'
-                    name='streetaddress'
+                    name='street_address'
                     onChange={(e)=>setStreetAddress(e.target.value)}
-                    value={streetaddress}
+                    value={street_address}
                     required={true}
                     ></input>
                 </div>
