@@ -39,11 +39,17 @@ export default function InvoiceInfoPage(){
                 
         })
     }
+    const handleClick = (e)=>{
+        e.preventDefault();
+        setEditMode(editMode?false:true)
+    }
     
     if(editMode === false){
         return currentInvoice && (
             <div className='individual-page-container'>
-                <div className='free'></div>
+                <div className='free'>
+                    <button onClick={handleClick}>Edit Mode</button>
+                </div>
                 <div className='invoice-information-page-container'>
                     <div className='invoice-preview'>
 
@@ -94,6 +100,63 @@ export default function InvoiceInfoPage(){
                 </div>
             </div>
         )
+    }else{
+        return currentInvoice && (
+            <div className='individual-page-container'>
+                <div className='free'>
+                    <button onClick={handleClick}>Preview Mode</button>
+                </div>
+                <div className='invoice-information-page-container'>
+                    <div className='invoice-preview'>
+
+                        <div className='inv-head'>
+                            <div className='inv-head-logo'>
+                                <h1>INVOICE</h1>
+                                <img src={currentUser.logo_url} alt='user logo'></img>
+                            </div>
+                            <div>
+                                <h3>Invoice No.</h3>
+                                <p>{currentInvoice.invoice_number}</p>
+                            </div>
+                        </div>
+                        <div className='client-company-infoContainer'>
+                            <div className='client-information-container'>
+                                <h3>Customer Info</h3>
+                                <p>{currentInvoice.clients.name}</p>
+                                <p>{currentInvoice.clients.street_address}</p>
+                                <p>{currentInvoice.clients.phone}</p>
+                                <p>{currentInvoice.clients.email}</p>
+                            </div>
+                            <div className='company-info-container'>
+                                <h3>Company Info</h3>
+                                <p>{currentUser.username}</p>
+                                <p>{currentUser.street_address}</p>
+                                <p>{currentUser.city_state} {currentUser.zipcode}</p>
+                                <p>{currentUser.email}</p>
+                                <p>{currentUser.business_phone}</p>
+                                <p>{currentUser.phone}</p>
+                            </div>
+                        </div>
+                        <div id='order-date'>
+                            <h3>Order Date:</h3>
+                            <p>{currentInvoice.date}</p>
+                        </div>
+                        <div>
+                            <h2>Order Summary</h2>
+                            <table id='invoice-summary'>
+                                <tbody>
+                                    <tr>{tableHeaders(headers)}</tr>
+                                    {tableData(currentInvoice.items)}
+                                    <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+
     }
 }
                     

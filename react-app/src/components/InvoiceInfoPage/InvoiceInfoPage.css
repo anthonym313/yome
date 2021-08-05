@@ -51,7 +51,10 @@
 #invoice-summary th:nth-last-child(1){
     border-right: 1px solid black;
 }
-#invoice-summary tr{
-    padding:5px 0;
+#invoice-summary td{
+    padding:10px 0;
 }
-
+#order-date{
+    margin-bottom:40px;
+    border-bottom: 1px solid lightslategrey;
+}
