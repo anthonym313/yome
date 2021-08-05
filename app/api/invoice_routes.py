@@ -79,3 +79,10 @@ def edit_invoice(id):
     return invoice_to_update.to_dict()
 
 
+@invoice_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_invoice(id):
+    invoice_to_delete = Invoice.query.get(id)
+    db.session.delete(invoice_to_delete)
+    db.session.commit()
+    return {'message':'Invoice Deleted'}
