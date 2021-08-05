@@ -48,6 +48,7 @@ export default function InvoiceInfoPage(){
         return currentInvoice && (
             <div className='individual-page-container'>
                 <div className='preview-edit'>
+                    <button disabled={true}>Preview Mode</button>
                     <button onClick={handleClick}>Edit Mode</button>
                 </div>
                 <div className='invoice-information-page-container'>
@@ -102,9 +103,10 @@ export default function InvoiceInfoPage(){
         )
     }else{
         return currentInvoice && (
-            <div className='individual-page-container'>
+            <div className='individual-page-container-edit'>
                 <div className='preview-edit'>
                     <button onClick={handleClick}>Preview Mode</button>
+                    <button disabled={true}>Edit Mode</button>
                 </div>
                 <div className='invoice-information-page-container'>
                     <div className='invoice-preview'>
