@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link} from 'react-router-dom';
 
 import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
@@ -25,7 +25,7 @@ export default function InvoiceCreator(){
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [list, setList]= useState([])
     const [show, setShow]= useState('none')
-    
+    console.log(allClients)
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
     }
@@ -34,7 +34,30 @@ export default function InvoiceCreator(){
         setClient(e.target.value)
     }
 
+    const clientStatus= (array)=>{
+        if (!array.length){
+            return(
+                <>
+                    <h5>You Must Create a Client Before Creating an Invoice</h5>
+                    <Link to='/new-client'>Create a Client</Link>
+                </>
+            )
+        }else{
+            return(
+                <>
+                    <label for='clients'> Choose a client</label>
+                    <select value={client} onChange={clientTings} id='client-drop'>
+                        {array.map((person,ind)=>(
+                            <option value={person.id} key={ind}>{person.name}</option>
+                            ))}
+                    </select>
+                    <h5>or</h5>
+                    <Link to='/new-client'>Create a new Client</Link>
+                </>
+            )
+        }
 
+    }
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
         if(validationErrors.length){
@@ -128,12 +151,13 @@ export default function InvoiceCreator(){
                     </div>
                     <div className='busCli-container'>
                         <div className='invoice-client-Info-container'>
-                            <label for='clients'> Choose a client</label>
+                            {clientStatus(allClients)}
+                            {/* <label for='clients'> Choose a client</label>
                             <select value={client} onChange={clientTings} id='client-drop'>
                                 {allClients.map((person,ind)=>(
                                     <option value={person.id} key={ind}>{person.name}</option>
                                     ))}
-                            </select>
+                            </select> */}
                         </div>
                         <div className='invoice-business-Info-container'>
                             <h4>{currentUser.username}</h4>
