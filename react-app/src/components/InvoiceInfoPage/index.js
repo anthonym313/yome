@@ -107,6 +107,7 @@ export default function InvoiceInfoPage(){
                 <div className='preview-edit'>
                     <button onClick={handleClick}>Preview Mode</button>
                     <button disabled={true}>Edit Mode</button>
+                    <button id='delete-invoice-button'>Delete Invoice</button>
                 </div>
                 <div className='invoice-information-page-container'>
                     <div className='invoice-preview'>

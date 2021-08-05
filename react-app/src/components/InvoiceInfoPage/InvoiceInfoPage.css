@@ -85,3 +85,8 @@
     color:white;
     opacity: .55;
 }
+#delete-invoice-button{
+    background-color:#db481b;
+    color:#ffebd3;
+    margin-left:200px;
+}
