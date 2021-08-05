@@ -42,8 +42,9 @@
     top:400px;
     left:850px;
     color:red;
-    background-color:white;
-    
+    font-weight: 900;
+    background:rgba(255, 255, 255, 0.021);
+    padding:20px;
 }
 
 
