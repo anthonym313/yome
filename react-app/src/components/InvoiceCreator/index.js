@@ -52,7 +52,7 @@ export default function InvoiceCreator(){
                             ))}
                     </select>
                     <h5>or</h5>
-                    <Link to='/new-client'>Create a new Client</Link>
+                    <Link to='/new-client' style={{color:'Blue',fontWeight:"Bold"}}>Create a new Client</Link>
                 </>
             )
         }
@@ -111,7 +111,7 @@ export default function InvoiceCreator(){
         <div className='iC-page'>
 
             <div className='invoice-creator-container'>
-                <div className='invoice-dash-back'><a href='/invoices'>Back to Invoice Dashboard</a></div>
+                <div className='invoice-dash-back'><a href='/invoices' style={{color:'Blue'}}>Back to Invoice Dashboard</a></div>
                 <div className='invoice-header'>
                     <img src={currentUser.logo_url} alt='user logo'></img>
                     <div>
@@ -151,12 +151,6 @@ export default function InvoiceCreator(){
                     <div className='busCli-container'>
                         <div className='invoice-client-Info-container'>
                             {clientStatus(allClients)}
-                            {/* <label for='clients'> Choose a client</label>
-                            <select value={client} onChange={clientTings} id='client-drop'>
-                                {allClients.map((person,ind)=>(
-                                    <option value={person.id} key={ind}>{person.name}</option>
-                                    ))}
-                            </select> */}
                         </div>
                         <div className='invoice-business-Info-container'>
                             <h4>{currentUser.username}</h4>
