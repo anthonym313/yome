@@ -1,5 +1,6 @@
 const GET_INVOICES = 'invoices/GET_INVOICES';
 const SET_INVOICE = 'invoices/SET_INVOICE';
+const REMOVE_INVOICE = 'invoices/REMOVE_INVOICE';
 
 //Action Creators
 const getInvoices = (invoiceList)=>({
@@ -9,6 +10,11 @@ const getInvoices = (invoiceList)=>({
 const setInvoice = (invoice)=>({
     type:SET_INVOICE,
     invoice:invoice
+})
+const removeInvoice =(invoice)=>({
+    type:REMOVE_INVOICE,
+    invoice
+
 })
 
 ///////////////Thunks
@@ -56,7 +62,17 @@ export const getOneInvoice = (invoiceNumber) => async (dispatch) =>{
 //Update
 
 //Delete
-
+export const deleteInvoice =(id)=> async (dispatch)=>{
+    const res =await fetch(`/api/clients/${id}`, {
+        method:'DELETE',
+        body:JSON.stringify({id}),
+    });
+    if (res.ok){
+        await res.json()
+        dispatch(removeInvoice(id));
+        return res;
+    }
+}
 
 //Reducer//
 const initialState = {}
@@ -70,6 +86,10 @@ const invoiceReducer = (state = initialState, action)=>{
             return newState;
         case SET_INVOICE:
             return {invoice:action.invoice}
+        case REMOVE_INVOICE:
+            newState = {...state}
+            delete newState[action.id];
+            return {...newState}
         default:
             return state;
     }
