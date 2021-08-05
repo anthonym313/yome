@@ -75,7 +75,7 @@ export const editInvoice = (id,invoicenumber, date,clientid) => async (dispatch)
 
 //Delete
 export const deleteInvoice =(id)=> async (dispatch)=>{
-    const res =await fetch(`/api/clients/${id}`, {
+    const res =await fetch(`/api/invoices/${id}`, {
         method:'DELETE',
         body:JSON.stringify({id}),
     });

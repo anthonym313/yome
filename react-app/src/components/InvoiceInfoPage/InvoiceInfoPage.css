@@ -90,3 +90,10 @@
     color:#ffebd3;
     margin-left:200px;
 }
+#invoice-update-save{
+    background-color: green;
+    color:#ffebd3;
+    margin-right:-10px;
+    margin-left: 10px;
+    padding:0 8px;
+}

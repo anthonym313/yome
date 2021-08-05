@@ -1,25 +1,27 @@
 import React,{useEffect,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory} from 'react-router-dom';
 import { getAllClients } from '../../store/clients';
-import { editInvoice, getOneInvoice } from '../../store/invoices';
+import { editInvoice, getOneInvoice,deleteInvoice} from '../../store/invoices';
 import './InvoiceInfoPage.css'
 
 
 export default function InvoiceInfoPage(){
     const {invoice_number} = useParams();
+    const history = useHistory();
     const dispatch = useDispatch();
     const currentUser = useSelector((state)=>(state.session.user))
     const invoice = useSelector((state)=> Object.values(state.invoices))
     const allClients = useSelector((state)=> Object.values(state.clients))
     const currentInvoice = invoice[0] || null
-    console.log(currentInvoice)
+    
     
     const [editMode, setEditMode] = useState(false)
 
     const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice?.invoice_number)
     const [date, updateInvoiceDate]= useState(currentInvoice?.date)
     const [clientid, updateInvoiceClientID]= useState(currentInvoice?.client_id)
+
     
 
     const headers = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL']
@@ -30,10 +32,23 @@ export default function InvoiceInfoPage(){
         dispatch(getOneInvoice(invoice_number))
     },[dispatch,invoice_number])
 
+    const handleInvoiceDelete = (e) =>{
+        e.preventDefault();
+        if(currentUser.id !== 1 || (currentUser.id === 1 && currentInvoice.id > 2)){
+            const permitDeletion = window.confirm('Are you sure you want to delete this invoice?');
+            if(permitDeletion){
+                dispatch(deleteInvoice(currentInvoice.id));
+                window.alert('Invoice successfully deleted.')
+                history.push('/invoices')
+            }
+        }
+    }
+
     const updateInvoiceSubmitHandler = (e)=>{
         e.preventDefault();
         dispatch(editInvoice(currentInvoice.id,invoicenumber,date,clientid))
         window.alert('Changes saved.Invoice Information Updated!')
+        history.push(`/invoices/${invoicenumber}`)
     }
     const clientSelectHandler = (e)=>{
         updateInvoiceClientID(e.target.value)
@@ -129,8 +144,8 @@ export default function InvoiceInfoPage(){
                 <div className='preview-edit'>
                     <button onClick={handleClick}>Preview Mode</button>
                     <button disabled={true}>Edit Mode</button>
-                    <button type='submit' onClick>Save</button>
-                    <button id='delete-invoice-button'>Delete Invoice</button>
+                    <button id="invoice-update-save" type='submit' onClick={updateInvoiceSubmitHandler} >Save Changes</button>
+                    <button id='delete-invoice-button' onClick={handleInvoiceDelete}>Delete Invoice</button>
                 </div>
                 <div className='invoice-information-page-container'>
                     <div className='invoice-preview'>
@@ -150,14 +165,14 @@ export default function InvoiceInfoPage(){
                                         onChange={(e)=>updateInvoiceNumber(e.target.value)}
                                         value={invoicenumber}
                                         required={true}
+                                    ></input>
 
-                                        ></input>
                                 </div>
                             </div>
                             <div className='client-company-infoContainer'>
                                 <div className='client-information-container'>
                                     <h3>Customer Info</h3>
-                                    <label htmlFor='clients'>Update Client</label>
+                                    <label htmlFor='clients'>Update Client </label>
                                     <select value={clientid} onChange={clientSelectHandler}>
                                         {allClients.map((person,ind)=>(
                                             <option value={person.id} key={ind}>{person.name}</option>
