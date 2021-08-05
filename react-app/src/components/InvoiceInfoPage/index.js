@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom';
 import { getAllClients } from '../../store/clients';
-import { getOneInvoice } from '../../store/invoices';
+import { editInvoice, getOneInvoice } from '../../store/invoices';
 import './InvoiceInfoPage.css'
 
 
@@ -13,6 +13,7 @@ export default function InvoiceInfoPage(){
     const invoice = useSelector((state)=> Object.values(state.invoices))
     const allClients = useSelector((state)=> Object.values(state.clients))
     const currentInvoice = invoice[0] || null
+    console.log(currentInvoice)
     
     const [editMode, setEditMode] = useState(false)
 
@@ -29,6 +30,11 @@ export default function InvoiceInfoPage(){
         dispatch(getOneInvoice(invoice_number))
     },[dispatch,invoice_number])
 
+    const updateInvoiceSubmitHandler = (e)=>{
+        e.preventDefault();
+        dispatch(editInvoice(currentInvoice.id,invoicenumber,date,clientid))
+        window.alert('Changes saved.Invoice Information Updated!')
+    }
     const clientSelectHandler = (e)=>{
         updateInvoiceClientID(e.target.value)
     }
@@ -42,9 +48,9 @@ export default function InvoiceInfoPage(){
             const {amount, description, quantity, rate}= item
             return(
                 <tr key={index}>
-                    <td>{index}</td>
+                    <td>{++index}</td>
                     <td>{description}</td>
-                    <td>{rate}</td>
+                    <td>{Number.parseFloat(rate).toFixed(2)}</td>
                     <td>{quantity}</td>
                     <td>$ {Number.parseFloat(amount).toFixed(2)}</td>
                 </tr>
@@ -123,6 +129,7 @@ export default function InvoiceInfoPage(){
                 <div className='preview-edit'>
                     <button onClick={handleClick}>Preview Mode</button>
                     <button disabled={true}>Edit Mode</button>
+                    <button type='submit' onClick>Save</button>
                     <button id='delete-invoice-button'>Delete Invoice</button>
                 </div>
                 <div className='invoice-information-page-container'>
@@ -170,7 +177,13 @@ export default function InvoiceInfoPage(){
                             </div>
                             <div id='order-date'>
                                 <h3>Order Date:</h3>
-                                <p>{currentInvoice.date}</p>
+                                <input
+                                type='date'
+                                onChange={(e)=> updateInvoiceDate(e.target.value)}
+                                value={date}
+                                required={true}
+                                ></input>
+        
                             </div>
                         </form>
                         <div>
