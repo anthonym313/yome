@@ -24,7 +24,7 @@ export default function ClientEditForm({client, id}){
         window.alert('Client Information Updated!!')
         history.push('/clients')
     }
-
+    
     
 
     return client && (
@@ -37,6 +37,7 @@ export default function ClientEditForm({client, id}){
                     placeholder={client.name}
                     onChange={(e)=>updateName(e.target.value)}
                     value={name}
+                    required={true}
                 
                     ></input>
                 </div>
@@ -48,7 +49,7 @@ export default function ClientEditForm({client, id}){
                     placeholder={client?.email}
                     onChange={(e)=>updateEmail(e.target.value)}
                     value={email}
-                    
+                    required={true}
                     ></input>
                 </div>
                 <div>
@@ -59,7 +60,7 @@ export default function ClientEditForm({client, id}){
                     placeholder={client?.street_address}
                     onChange={(e)=>updateStreetAddress(e.target.value)}
                     value={streetaddress}
-                   
+                    required={true}
                     ></input>
                 </div>
                 <div>
@@ -70,7 +71,7 @@ export default function ClientEditForm({client, id}){
                     name='phone'
                     onChange={(e)=>updatePhone(e.target.value)}
                     value={phone}
-                    
+                    required={true}
                     ></input>
                 </div>
                 <div className='client-submitEdit-button'>
