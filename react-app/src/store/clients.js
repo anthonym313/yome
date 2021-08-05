@@ -51,7 +51,6 @@ export const editClient = (id, name,email, streetaddress,phone) => async (dispat
     if (res.ok){
         const updatedClient= await res.json();
         dispatch(setClient(updatedClient));
-        console.log(updatedClient)
         return updatedClient
     }
 }

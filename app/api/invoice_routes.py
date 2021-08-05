@@ -61,5 +61,28 @@ def add_invoice_item(itemList, new_invoiceId):
         invoice_items.append(item)
         
     return [item.to_dict() for item in invoice_items]
-        
-             
+
+
+@invoice_routes.route('/<int:id>/edit', methods=['PUT'])
+@login_required
+def edit_invoice(id):
+    """
+    Edits only the invoice information by finding the invoice by PK.
+    """
+    req=request.get_json()
+    invoice_to_update = Invoice.query.get(id)
+    invoice_to_update.invoice_number=req['invoicenumber'],
+    invoice_to_update.date=req['date'],
+    invoice_to_update.client_id=req['clientid']
+   
+    db.session.commit()
+    return invoice_to_update.to_dict()
+
+
+@invoice_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_invoice(id):
+    invoice_to_delete = Invoice.query.get(id)
+    db.session.delete(invoice_to_delete)
+    db.session.commit()
+    return {'message':'Invoice Deleted'}
