@@ -15,13 +15,13 @@ export default function InvoiceCreator(){
     const dispatch = useDispatch();
     const history = useHistory();
     
-    const [errors, setErrors] = useState([]);
+  
     const [items, setItems] = useState([])
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
     const [client, setClient] = useState(1)
-    
+    const [validationErrors,setValidationErrors] = useState([])
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [list, setList]= useState([])
     
@@ -32,18 +32,17 @@ export default function InvoiceCreator(){
     const clientTings =(e)=>{
         setClient(e.target.value)
     }
-    
+
 
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
-        const data = await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
-        if(data){
-            setErrors(data)
-        }
+        await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
+        
         window.alert('Invoice Created!')
         history.push(`/invoices/${invoicenumber}`)
-        return data;
+        
     }
+
         
     const addItem =(e)=>{
         e.preventDefault();
@@ -71,7 +70,13 @@ export default function InvoiceCreator(){
     useEffect(()=>{
         dispatch(getAllClients())
         getBalance(itemAmounts)
-    },[dispatch,itemAmounts])
+        const errors=[]
+        if(!invoicenumber) errors.push('Must have a valid invoice number')
+        if(!client) errors.push('Must have a valid client.')
+        if(!balance|| balance === 0) errors.push('You can not create an invoice with no balance.')
+        if(!date) errors.push("You must input a date for your invoice.")
+        setValidationErrors(errors)
+    },[dispatch,itemAmounts, invoicenumber, client,balance,date])
     
     
     

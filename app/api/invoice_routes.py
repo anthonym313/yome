@@ -1,8 +1,20 @@
 from flask import Blueprint, request, jsonify
-from app.models import db,Invoice,Item,Client
+from app.models import db,Invoice,Item
+from app.forms import InvoiceCreationForm
 from flask_login import current_user, login_required
 
 invoice_routes = Blueprint('invoices', __name__)
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 
 @invoice_routes.route('/')
 @login_required
@@ -34,11 +46,11 @@ def create_invoice():
         client_id = req['clientid'],
     )
     
-    
     db.session.add(new_invoice)
     db.session.commit()
     add_invoice_item(req["arrayOfItems"],new_invoice)
     return new_invoice.to_dict()
+    
 
 
 def add_invoice_item(itemList, new_invoiceId):
