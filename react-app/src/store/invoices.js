@@ -60,6 +60,18 @@ export const getOneInvoice = (invoiceNumber) => async (dispatch) =>{
 }
 
 //Update
+export const editInvoice = (id,invoicenumber, date,clientid) => async (dispatch) =>{
+    const res = await fetch(`/api/invoices/${id}/edit`,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({id, invoicenumber,date, clientid})
+    });
+    if(res.ok){
+        const updatedInvoice = await res.json();
+        dispatch(setInvoice(updatedInvoice));
+        return updatedInvoice;
+    }
+}
 
 //Delete
 export const deleteInvoice =(id)=> async (dispatch)=>{
