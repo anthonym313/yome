@@ -20,7 +20,7 @@
     background: rgb(13,27,31);
     background: linear-gradient(0deg, rgba(13,27,31,1) 23%, rgba(103,171,159,1) 100%);
 }
-.free{
+.preview-edit{
     width:100%;
     height:30px;
 }
@@ -57,4 +57,22 @@
 #order-date{
     margin-bottom:40px;
     border-bottom: 1px solid lightslategrey;
+}
+.preview-edit{
+    max-width:100%;
+    display:flex;
+    justify-content: center; 
+}
+.preview-edit button{
+    color:black;
+    transform:scale(1);
+    padding:3px 4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color:#9b9b9b;
+    border-color: #ffebd3;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    margin:0 auto;
+    cursor: pointer;
+    
 }
