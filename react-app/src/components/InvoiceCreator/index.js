@@ -100,9 +100,8 @@ export default function InvoiceCreator(){
         getBalance(itemAmounts)
         const errors=[]
         if(!invoicenumber) errors.push('Must have a valid invoice number')
-        if(!client) errors.push('Must have a valid client.')
-        if(!balance|| balance === 0) errors.push('You can not create an invoice with no balance.')
         if(!date) errors.push("You must input a date for your invoice.")
+        if(!balance|| balance === 0) errors.push('You can not create an invoice with no balance.')
         setValidationErrors(errors)
     },[dispatch,itemAmounts, invoicenumber, client,balance,date])
     
