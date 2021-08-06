@@ -11,7 +11,7 @@ export default function InvoiceDashboard(){
     const allClients = useSelector((state)=>Object.values(state.clients))
     
     const dispatch = useDispatch();
-    const headers = ["Invoice Number", 'Date', "Client Number", 'Balance']
+    const headers = ["Invoice Number", 'Date', "Client Name", 'Balance']
 
     const getClientName= (array,clientNum)=>{
         let currperson= array.filter((personObj)=>

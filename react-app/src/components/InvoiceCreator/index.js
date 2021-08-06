@@ -74,7 +74,7 @@ export default function InvoiceCreator(){
         
     const addItem =(e)=>{
         e.preventDefault();
-        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount} list={list} setList={setList} />])
+        setItems([...items,<InvoiceItemCreator itemToInvoiceAmount ={itemToInvoiceAmount} list={list} setList={setList} validationErrors={validationErrors} setValidationErrors={setValidationErrors} />])
     } 
     
     const deleteItem=(e)=>{
@@ -122,7 +122,6 @@ export default function InvoiceCreator(){
                 
                 <form  id='invoice-creator-form'>
                     <div className='invoiceCreator-errors' style={{display:show}}>
-                        <h4>Please Fix Errors</h4>
                         {validationErrors && validationErrors.map((e,i)=>(
                             <p key={i}>{e}</p>
                         ))}

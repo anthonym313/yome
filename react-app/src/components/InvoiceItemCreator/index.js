@@ -8,7 +8,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
     const [rate, setRate] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [amount, setAmount] = useState(0)
-
+    
     
     function amt(r,q){
         return r * q;
@@ -19,7 +19,9 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
     useEffect(()=>{
         setAmount(amt(rate,quantity))
         itemToInvoiceAmount(amount)
-        setList([...list,{description,rate, quantity,amount}])
+       
+            setList([...list,{description,rate, quantity,amount}])
+        
 
     },[itemToInvoiceAmount,rate, quantity,amount,description,list,setList])
 
@@ -37,6 +39,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
                             placeholder='Description'
                             onChange={(e)=>setDescription(e.target.value)}
                             value={description}
+                            required
                             ></input>
                         </div>
                     </td>
@@ -48,6 +51,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
                             placeholder='Rate'
                             onChange={(e)=>setRate(e.target.value)}
                             value={rate}
+                            required
                             ></input>
                         </div>
                     </td>
@@ -60,6 +64,7 @@ export default function InvoiceItemCreator({itemToInvoiceAmount, list, setList})
                             placeholder='Quantity'
                             onChange={(e)=>setQuantity(e.target.value)}
                             value={quantity}
+                            required
                             ></input>
                         </div>
                     </td>

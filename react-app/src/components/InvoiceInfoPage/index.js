@@ -36,7 +36,7 @@ export default function InvoiceInfoPage(){
         if(!date) errors.push("You must input a date for your invoice.")
         if(!clientid) errors.push("You must Select a Client")
         setValidationErrors(errors)
-    },[dispatch,invoice_number,invoicenumber,date])
+    },[dispatch,invoice_number,invoicenumber,date,clientid])
 
     const handleInvoiceDelete = (e) =>{
         e.preventDefault();
