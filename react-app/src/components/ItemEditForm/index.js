@@ -1,16 +1,18 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { editItem,deleteItem } from '../../store/items';
 
 import './ItemEditForm.css'
 
 export default function ItemEditForm(item){
+    console.log('this is an item',item)
+    const {id} = item
     const dispatch = useDispatch()
     const [description, setDescription] = useState(item?.description)
     const [rate, setRate] = useState(item?.rate);
     const [quantity, setQuantity] = useState(item?.quantity);
     const [amount, setAmount] = useState(item?.amount)
-    const [itemId, setId] = useState(item?.id)
+    const [itemId, setId] = useState(item?.id || null)
     
     
     function amt(r,q){
@@ -23,7 +25,7 @@ export default function ItemEditForm(item){
     }
     const deleteItemHandler=(e)=>{
         e.preventDefault();
-        dispatch(deleteItem(itemId))
+        dispatch(deleteItem(id))
         window.alert('item deleted.')
 
     }
@@ -31,13 +33,16 @@ export default function ItemEditForm(item){
 
     useEffect(()=>{
         setAmount(amt(rate,quantity))
-    },[rate, quantity, amount, description])
+        setId(id)
+    },[id,rate, quantity, amount, description])
     
     
             
-            return(
+            return item &&(
                 <tr key={description}>
-                    
+                    <td>
+                        
+                    </td>
                     <td>
                         <div className='item-description'>
                             <input
@@ -68,7 +73,7 @@ export default function ItemEditForm(item){
                             <input
                             type='number'
                             name='quantity'
-                            placeholder='Quantity'
+                            placeholder={quantity}
                             onChange={(e)=>setQuantity(e.target.value)}
                             value={quantity}
                             required
@@ -78,12 +83,12 @@ export default function ItemEditForm(item){
                     =
                     <td>
                         <div className='item-balance'>
-                           ${Number.parseFloat(amount).toFixed(2)}
+                           ${Number.parseFloat(item?.amount).toFixed(2)}
                         </div>
                     </td>
                     <td>
-                        <button onClick={(e)=>saveItemHandler(id,e)}>Save Updates</button>
-                        <button onClick={(e)=>deleteItemHandler(id,e)}>Delete Item</button>
+                        <button onClick={saveItemHandler}>Save Updates</button>
+                        <button onClick={deleteItemHandler}>Delete Item</button>
                     </td>
                 </tr>
             )

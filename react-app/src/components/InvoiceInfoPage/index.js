@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useParams,useHistory,Link} from 'react-router-dom';
 import { getAllClients } from '../../store/clients';
 import { editInvoice, getOneInvoice,deleteInvoice} from '../../store/invoices';
+import ItemEditForm from '../ItemEditForm';
 import './InvoiceInfoPage.css'
 
 
@@ -83,6 +84,15 @@ export default function InvoiceInfoPage(){
                     <td>{quantity}</td>
                     <td>$ {Number.parseFloat(amount).toFixed(2)}</td>
                 </tr>
+            )
+                
+        })
+    }
+    const editTableData=(array)=>{
+        return array?.map((item,index)=>{
+            
+            return(
+                <ItemEditForm item={item}/>
             )
                 
         })
@@ -230,7 +240,7 @@ export default function InvoiceInfoPage(){
                             <table id='invoice-summary'>
                                 <tbody>
                                     <tr>{tableHeaders(headers)}</tr>
-                                    {tableData(currentInvoice.items)}
+                                    {editTableData(currentInvoice?.items)}
                                     <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
                                 </tbody>
 
