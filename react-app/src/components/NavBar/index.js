@@ -22,11 +22,11 @@ export default function NavBar(){
             </NavLink>
           </li>
           <div className='nav-links-right'>
-            <li>
+            {/* <li>
               <NavLink to='/features' exact={true} className='nav-feature' activeClassName='active'>
                 Features
               </NavLink>
-            </li>
+            </li> */}
             <div className= 'nav-links-right2'>
               <li>
                 <DemoUser/>
