@@ -25,7 +25,7 @@ export default function InvoiceCreator(){
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [list, setList]= useState([])
     const [show, setShow]= useState('none')
-    console.log(allClients)
+    
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
     }
@@ -79,7 +79,7 @@ export default function InvoiceCreator(){
     
     const deleteItem=(e)=>{
         e.preventDefault();
-        if(items[0]){
+        if(items.length){
             items.pop()
             itemAmounts.pop()
             setItems([...items])

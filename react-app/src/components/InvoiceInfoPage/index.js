@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {useParams,useHistory} from 'react-router-dom';
+import {useParams,useHistory,Link} from 'react-router-dom';
 import { getAllClients } from '../../store/clients';
 import { editInvoice, getOneInvoice,deleteInvoice} from '../../store/invoices';
 import './InvoiceInfoPage.css'
@@ -15,8 +15,9 @@ export default function InvoiceInfoPage(){
     const allClients = useSelector((state)=> Object.values(state.clients))
     const currentInvoice = invoice[0] || null
     
-    
+    const [show, setShow]= useState('none')
     const [editMode, setEditMode] = useState(false)
+    const [validationErrors,setValidationErrors] = useState([])
 
     const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice?.invoice_number)
     const [date, updateInvoiceDate]= useState(currentInvoice?.date)
@@ -30,7 +31,12 @@ export default function InvoiceInfoPage(){
     useEffect(()=>{
         dispatch(getAllClients())
         dispatch(getOneInvoice(invoice_number))
-    },[dispatch,invoice_number])
+        const errors=[]
+        if(!invoicenumber) errors.push('Must have a valid invoice number')
+        if(!date) errors.push("You must input a date for your invoice.")
+        if(!clientid) errors.push("You must Select a Client")
+        setValidationErrors(errors)
+    },[dispatch,invoice_number,invoicenumber,date])
 
     const handleInvoiceDelete = (e) =>{
         e.preventDefault();
@@ -42,17 +48,23 @@ export default function InvoiceInfoPage(){
                 history.push('/invoices')
             }
         }
-    }
+    };
 
-    const updateInvoiceSubmitHandler = (e)=>{
+    const updateInvoiceSubmitHandler = async(e)=>{
         e.preventDefault();
-        dispatch(editInvoice(currentInvoice.id,invoicenumber,date,clientid))
-        window.alert('Changes saved.Invoice Information Updated!')
-        history.push(`/invoices/${invoicenumber}`)
-    }
+        if(validationErrors.length){
+            setShow('flex')
+        }else{
+            await dispatch(editInvoice(currentInvoice.id,invoicenumber,date,clientid))
+            window.alert('Changes saved.Invoice Information Updated!')
+            history.push(`/invoices/${invoicenumber}`)
+        }
+    };
+
     const clientSelectHandler = (e)=>{
         updateInvoiceClientID(e.target.value)
-    }
+    };
+
     const tableHeaders = (array)=>{
         return array.map((head, index)=>{
             return <th key={index}>{head}</th>
@@ -93,6 +105,7 @@ export default function InvoiceInfoPage(){
                                     <h1>INVOICE</h1>
                                     <img src={currentUser.logo_url} alt='user logo'></img>
                                 </div>
+                               
                                 <div>
                                     <h3>Invoice No.</h3>
                                     <p>{currentInvoice.invoice_number}</p>
@@ -156,6 +169,12 @@ export default function InvoiceInfoPage(){
                                     <h1>INVOICE</h1>
                                     <img src={currentUser.logo_url} alt='user logo'></img>
                                 </div>
+                                <div className='invoiceCreator-errors' style={{display:show}}>
+                                    
+                                    {validationErrors && validationErrors.map((e,i)=>(
+                                    <p key={i}>{e}</p>
+                                     ))}
+                                </div>
                                 <div>
                                     <h3>Invoice No.</h3>
                                     <input
@@ -179,6 +198,8 @@ export default function InvoiceInfoPage(){
                                         ))}
 
                                     </select>
+                                    <h5>or</h5>
+                                    <Link to='/new-client' style={{color:'Blue',fontWeight:"Bold"}}>Create a new Client</Link>
                                 </div>
                                 <div className='company-info-container'>
                                     <h3>Company Info</h3>
