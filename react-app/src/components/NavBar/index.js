@@ -78,9 +78,9 @@ export default function NavBar(){
               {user.username}
             </li>
             <div className= 'nav-links-right2'>
-              <li>
+              {/* <li>
                 <button className='demo-button'>Upgrade Now</button>
-              </li>
+              </li> */}
               <li> <LogoutButton/></li>
             </div>     
           </div>
