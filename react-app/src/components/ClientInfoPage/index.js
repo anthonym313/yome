@@ -33,16 +33,18 @@ export default function ClientInfoPage(){
         editButton.style.display='block'
     }
 
-    const handleDelete = (e)=>{
+    const handleDelete = async(e)=>{
         e.preventDefault();
         if (currentUserId !== 1 || (currentUserId === 1 && singleClient.id > 2)){
             const permitDeletion = window.confirm('Are you sure you want to delete this client?');
             if (permitDeletion){
-                dispatch(deleteClient(singleClient.id));
+                await dispatch(deleteClient(singleClient.id));
+                window.alert('Client deleted!')
                 history.push('/clients')
             }
         } else {
-        }window.alert('The demo user is not allowed to delete example clients. Please create a new client or sign-up to see this feature function.')
+            window.alert('The demo user is not allowed to delete example clients. Please create a new client or sign-up to see this feature function.')
+        }
             
     }
 

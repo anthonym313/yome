@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link} from 'react-router-dom';
 
 import InvoiceItemCreator from '../InvoiceItemCreator';
 import { invoiceCreation } from '../../store/invoices';
@@ -15,16 +15,17 @@ export default function InvoiceCreator(){
     const dispatch = useDispatch();
     const history = useHistory();
     
-    const [errors, setErrors] = useState([]);
+  
     const [items, setItems] = useState([])
     const [invoicenumber, setInvoiceNumber] = useState('');
     const [date, setDate] = useState('')
     const [balance, setBalance] = useState(0);
     const [client, setClient] = useState(1)
-    
+    const [validationErrors,setValidationErrors] = useState([])
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [list, setList]= useState([])
-    
+    const [show, setShow]= useState('none')
+    console.log(allClients)
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
     }
@@ -32,18 +33,44 @@ export default function InvoiceCreator(){
     const clientTings =(e)=>{
         setClient(e.target.value)
     }
-    
 
+    const clientStatus= (array)=>{
+        if (!array.length){
+            return(
+                <>
+                    <h5>You Must Create a Client Before Creating an Invoice</h5>
+                    <Link to='/new-client'>Create a Client</Link>
+                </>
+            )
+        }else{
+            return(
+                <>
+                    <label for='clients'> Choose a client</label>
+                    <select value={client} onChange={clientTings} id='client-drop'>
+                        {array.map((person,ind)=>(
+                            <option value={person.id} key={ind}>{person.name}</option>
+                            ))}
+                    </select>
+                    <h5>or</h5>
+                    <Link to='/new-client' style={{color:'Blue',fontWeight:"Bold"}}>Create a new Client</Link>
+                </>
+            )
+        }
+
+    }
     const submitInvoiceHandler= async(e)=>{
         e.preventDefault();
-        const data = await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
-        if(data){
-            setErrors(data)
+        if(validationErrors.length){
+            setShow('flex')
+        }else{
+            await dispatch(invoiceCreation(invoicenumber,date,balance,client,list))
+            window.alert('Invoice Created!')
+            history.push(`/invoices/${invoicenumber}`)
+
         }
-        window.alert('Invoice Created!')
-        history.push(`/invoices/${invoicenumber}`)
-        return data;
+        
     }
+
         
     const addItem =(e)=>{
         e.preventDefault();
@@ -71,7 +98,12 @@ export default function InvoiceCreator(){
     useEffect(()=>{
         dispatch(getAllClients())
         getBalance(itemAmounts)
-    },[dispatch,itemAmounts])
+        const errors=[]
+        if(!invoicenumber) errors.push('Must have a valid invoice number')
+        if(!date) errors.push("You must input a date for your invoice.")
+        if(!balance|| balance === 0) errors.push('You can not create an invoice with no balance.')
+        setValidationErrors(errors)
+    },[dispatch,itemAmounts, invoicenumber, client,balance,date])
     
     
     
@@ -79,7 +111,7 @@ export default function InvoiceCreator(){
         <div className='iC-page'>
 
             <div className='invoice-creator-container'>
-                <div className='invoice-dash-back'><a href='/invoices'>Back to Invoice Dashboard</a></div>
+                <div className='invoice-dash-back'><a href='/invoices' style={{color:'Blue'}}>Back to Invoice Dashboard</a></div>
                 <div className='invoice-header'>
                     <img src={currentUser.logo_url} alt='user logo'></img>
                     <div>
@@ -89,10 +121,11 @@ export default function InvoiceCreator(){
 
                 
                 <form  id='invoice-creator-form'>
-                    <div className='invoiceCreator-errors'>
-                        {errors.map((error,ind)=>(
-                            <div key={ind}>{error}</div>
-                            ))}
+                    <div className='invoiceCreator-errors' style={{display:show}}>
+                        <h4>Please Fix Errors</h4>
+                        {validationErrors && validationErrors.map((e,i)=>(
+                            <p key={i}>{e}</p>
+                        ))}
                     </div>
                     <div className='invoice-top-inputs'>
                         <div>
@@ -117,12 +150,7 @@ export default function InvoiceCreator(){
                     </div>
                     <div className='busCli-container'>
                         <div className='invoice-client-Info-container'>
-                            <label for='clients'> Choose a client</label>
-                            <select value={client} onChange={clientTings} id='client-drop'>
-                                {allClients.map((person,ind)=>(
-                                    <option value={person.id} key={ind}>{person.name}</option>
-                                    ))}
-                            </select>
+                            {clientStatus(allClients)}
                         </div>
                         <div className='invoice-business-Info-container'>
                             <h4>{currentUser.username}</h4>
