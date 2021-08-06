@@ -13,7 +13,7 @@ import ClientCreator from './components/ClientCreator';
 import ClientInfoPage from './components/ClientInfoPage';
 import HomePage from './components/HomePage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import User from './components/User';
+import Settings from './components/Settings';
 import { authenticate } from './store/session';
 
 
@@ -69,8 +69,8 @@ function App() {
         <ProtectedRoute path='/upgrade' exact={true} >
           <h1>My Link to other projects and Portfolio</h1>
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+        <ProtectedRoute path='/settings' exact={true} >
+          <Settings/>
         </ProtectedRoute>
         <Route component={NotFoundPage}/>
           

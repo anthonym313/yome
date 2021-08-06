@@ -68,7 +68,7 @@ export default function NavBar(){
               </NavLink>
             </li>
             <li>
-              <NavLink to='/users/:id' exact={true} className='nav-feature' activeClassName='active'>
+              <NavLink to='/settings' exact={true} className='nav-feature' activeClassName='active'>
                 SETTINGS
               </NavLink>
             </li>

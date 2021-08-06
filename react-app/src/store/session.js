@@ -57,6 +57,22 @@ export const login = (email, password) => async (dispatch) => {
 
 }
 
+//Update
+export const editUser = (id, username,streetaddress,citystate,zipcode,phone,businessphone, logourl) => async (dispatch)=>{
+  const res = await fetch(`/api/auth/${id}/edit`, {
+      method:"PUT",
+      headers:{"Content-Type": "application/json"},
+      body:JSON.stringify({id, username,streetaddress,citystate,zipcode,phone,businessphone, logourl})
+  });
+  if (res.ok){
+      const updatedUser= await res.json();
+      dispatch(setUser(updatedUser));
+      return updatedUser
+  }
+}
+
+
+
 export const logout = () => async (dispatch) => {
   const response = await fetch('/api/auth/logout', {
     headers: {
@@ -68,6 +84,7 @@ export const logout = () => async (dispatch) => {
     dispatch(removeUser());
   }
 };
+
 
 
 export const signUp = (username, email, password,streetaddress,citystate,zipcode,phone,businessphone, logourl) => async (dispatch) => {

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, user
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -80,6 +80,24 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@auth_routes.route('/<int:id>/edit',methods=['PUT'])
+@login_required
+def edit_user(id):
+    """
+    Edits a logged in User/Business information.
+    """
+    req=request.get_json()
+    user_to_update =User.query.get(id)
+    user_to_update.username= req['username'],
+    user_to_update.street_address= req['streetaddress'],
+    user_to_update.city_state=req['citystate'],
+    user_to_update.zipcode=req['zipcode'],
+    user_to_update.phone=req['phone'],
+    user_to_update.business_phone =req['businessphone'],
+    user_to_update.logo_url= req['logourl'],
+    
+    db.session.commit()
+    return user_to_update.to_dict()
 
 @auth_routes.route('/unauthorized')
 def unauthorized():
