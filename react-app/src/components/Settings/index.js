@@ -15,20 +15,25 @@ export default function Settings() {
   const [phone,updatePhone]=useState(user.phone)
   const [businessphone,updateBusinessPhone]=useState(user.business_phone)
   const [logourl,updateLogoUrl]=useState(user.logo_url)
-
-
-
+  const [validationErrors, setValidationErrors]=useState([])  
 
   useEffect(() => {
-
     setId(user.id)
+    const errors = [];
+    if(!username)errors.push('Please provide a Business Name')
+    if(!logourl) errors.push('Please provide Logo Url')
+    if(!phone && !businessphone) errors.push('Please provide at least one phone number')
+    setValidationErrors(errors)
     
   }, [user,username, streetaddress,citystate,zipcode,phone,businessphone,logourl]);
   
   const handleSubmit =(e)=>{
     e.preventDefault();
-    dispatch(editUser(id, username, streetaddress,citystate,zipcode,phone,businessphone,logourl))
-    window.alert('Business Profile Settings Updated!')
+    if(!validationErrors.length){
+      dispatch(editUser(id, username, streetaddress,citystate,zipcode,phone,businessphone,logourl))
+      window.alert('Business Profile Settings Updated!')
+    }
+
   }
   
   return user && (
