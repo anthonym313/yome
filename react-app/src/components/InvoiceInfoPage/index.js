@@ -47,6 +47,8 @@ export default function InvoiceInfoPage(){
                 window.alert('Invoice successfully deleted.')
                 history.push('/invoices')
             }
+        }else{
+            window.alert('The demo user may edit but is not allowed to delete example invoices. Please create a new invoice or sign-up to see this feature function.')
         }
     };
 
