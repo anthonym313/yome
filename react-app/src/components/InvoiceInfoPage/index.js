@@ -19,9 +19,9 @@ export default function InvoiceInfoPage(){
     const [editMode, setEditMode] = useState(false)
     const [validationErrors,setValidationErrors] = useState([])
 
-    const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice.invoice_number)
-    const [date, updateInvoiceDate]= useState(currentInvoice.date)
-    const [clientid, updateInvoiceClientID]= useState(currentInvoice.client_id)
+    const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice?.invoice_number)
+    const [date, updateInvoiceDate]= useState(currentInvoice?.date)
+    const [clientid, updateInvoiceClientID]= useState(currentInvoice?.client_id)
 
     
 
