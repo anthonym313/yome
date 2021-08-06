@@ -67,11 +67,11 @@ export default function NavBar(){
                 CLIENTS
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to='/users/:id' exact={true} className='nav-feature' activeClassName='active'>
                 SETTINGS
               </NavLink>
-            </li>
+            </li> */}
           </div>
           <div className='nav-links-right'>
             <li className='logged_in_user'>
