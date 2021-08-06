@@ -87,6 +87,8 @@ export default function InvoiceInfoPage(){
                 
         })
     }
+
+
     const handleClick = (e)=>{
         e.preventDefault();
         setEditMode(editMode?false:true)

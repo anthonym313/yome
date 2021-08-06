@@ -15,5 +15,5 @@ def seed_clients():
     
 
 def undo_clients():
-    db.session.execute('TRUNCATE invoices RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE clients RESTART IDENTITY CASCADE;')
     db.session.commit()
