@@ -34,11 +34,12 @@ export default function Settings() {
   return user && (
     <div className="settings-page-container">
       <div className='settings-card-container'>
-        <h2>My Settings</h2>
+        <h1>Profile Settings</h1>
         <div className="editable-user-settings">
-          <div className='profile-setting-header'>
-            <h3>Edit Business profile</h3>
-          </div>
+          
+            <h3>Edit Business Profile</h3>
+            <button type='submit'>Save</button>
+          
           <form onSubmit={handleSubmit}>
             <div className='user-logo-edits'>
               <img src={user.logo_url} alt='business logo' style={{height:'150px'}}></img>
@@ -54,8 +55,8 @@ export default function Settings() {
                 ></input>
               </div>  
             </div>
-              <div className='user-edit'>
-                <label>Business/ Company Name</label>
+            <div className='user-edit'>
+              <label>Business/ Company Name</label>
                 <input
                 type="text"
                 name="username"
@@ -131,9 +132,9 @@ export default function Settings() {
                 required={true}
                 ></input>
               </div>
-            <button type='submit'>Save</button>
-
+              
           </form>
+
 
         </div>
 
