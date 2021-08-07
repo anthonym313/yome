@@ -4,7 +4,7 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo-lition Company', email='demo@yome.io', password='password', street_address='123 Main St.', city_state='Yomeville,Fl', zipcode="12345", phone='555-555-5555', business_phone='1-800-555-DEMO', logo_url='https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/173838359/original/1d7179fed713e9abdeb108670f4e13cc8f617d6c/any-company-logo-design-best-demo.jpg' )
+        username='Demo-lition Company', email='demo@yome.io', password='password', street_address='123 Main St.', city_state='Yomeville,Fl', zipcode="12345", phone='555-555-5555', business_phone='1-800-555-DEMO', logo_url='https://lh3.googleusercontent.com/Lrvn0UNYPipdYpUqZTawGvXG5wLogE9BmhgKNHWLSaEaVh1qFMHTNeXond9lu2Vm_872ng=s102' )
     
     db.session.add(demo) 
     db.session.commit()
