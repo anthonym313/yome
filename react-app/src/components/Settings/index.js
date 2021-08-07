@@ -29,23 +29,29 @@ export default function Settings() {
   
   const handleSubmit =(e)=>{
     e.preventDefault();
-    if(!validationErrors.length){
+     if(!validationErrors.length){
       dispatch(editUser(id, username, streetaddress,citystate,zipcode,phone,businessphone,logourl))
       window.alert('Business Profile Settings Updated!')
     }
-
+    
   }
+
   
   return user && (
     <div className="settings-page-container">
       <div className='settings-card-container'>
         <h1>Profile Settings</h1>
+        <div className='settings-update-errors'>
+            {validationErrors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+        </div>
         <div className="editable-user-settings">
           
             <h3>Edit Business Profile</h3>
-            <button type='submit'>Save</button>
+            <button type='submit' onClick={handleSubmit}>Save</button>
           
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className='user-logo-edits'>
               <img src={user.logo_url} alt='business logo' style={{height:'150px'}}></img>
               <div className='user-edit'>
@@ -93,17 +99,7 @@ export default function Settings() {
                 required={true}
                 ></input>
               </div>
-              <div className='user-edit'>
-                <label>Zipcode</label>
-                <input
-                type="text"
-                name="zipcode"
-                placeholder={zipcode}
-                onChange={(e)=>updateZipcode(e.target.value)}
-                value={zipcode}
-                required={true}
-                ></input>
-              </div>
+
               <div className='user-edit'>
                 <label>Zipcode</label>
                 <input
