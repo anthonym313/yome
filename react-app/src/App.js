@@ -51,9 +51,9 @@ function App() {
         <ProtectedRoute path='/invoices/:invoice_number' exact={true} >
           <InvoiceInfoPage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/invoices/:id/payments' exact={true} >
+        {/* <ProtectedRoute path='/invoices/:id/payments' exact={true} >
           <h1>Add a payment to invoice</h1>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/new-invoice' exact={true} >
           <InvoiceCreator/>
         </ProtectedRoute>
@@ -66,9 +66,9 @@ function App() {
         <ProtectedRoute path='/clients/:id' exact={true} >
           <ClientInfoPage/>
         </ProtectedRoute>
-        <ProtectedRoute path='/upgrade' exact={true} >
+        {/* <ProtectedRoute path='/upgrade' exact={true} >
           <h1>My Link to other projects and Portfolio</h1>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/settings' exact={true} >
           <Settings/>
         </ProtectedRoute>
