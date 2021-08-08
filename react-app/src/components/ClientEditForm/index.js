@@ -26,7 +26,6 @@ export default function ClientEditForm({client, id}){
     }
     
     
-
     return client && (
         <form onSubmit={handleSubmit}>
              <div>

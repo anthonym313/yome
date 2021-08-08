@@ -15,8 +15,7 @@ export default function HomePage(){
         e.preventDefault();
         history.push('/sign-up')
     }
-
-    
+""   
     
     return(
         <div className='home-container'>
