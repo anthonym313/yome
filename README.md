@@ -24,7 +24,7 @@ Yome [*you-owe-me*] is an invoice creation and  management app. With Yome a busi
 ![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-client-editor.gif?raw=true)
 #### Business Information Settings
 ![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/business-settings-capture%20.jpg?raw=true)
-<h3>🤔 Technical Details</h3>
+<h3>🔋 Technical Details</h3>
 Yome users can create and different items to their invoices during invoice creation.
 Items must be created after the Invoice is created in the database so that the item may have the invoices ID to create the association between the two. To achieve this when an invoice POST request is made a list of Item(s) goes with the request. The invoice is created in the database then helper function takes in that list of Item(s) and loops thru to create add each Item in the database with the associated invoice ID.
 <br></br>
@@ -55,9 +55,9 @@ Items must be created after the Invoice is created in the database so that the i
 * Heroku
 
 ## [📖 Wiki](https://github.com/anthonym313/yome/wiki)
-[1. Feature List](https://github.com/anthonym313/yome/wiki/Feature-List)
-[2. User Stories](https://github.com/anthonym313/yome/wiki/User-Stories)
-[3. Design Wireframes](https://github.com/anthonym313/yome/wiki/WireFrame)
-[4. Database Schema](https://github.com/anthonym313/yome/wiki/Database-Schema)
-[5. Frontend Routes](https://github.com/anthonym313/yome/wiki/Frontend-Routes)
+1. [📄 Feature List](https://github.com/anthonym313/yome/wiki/Feature-List)
+2. [📄  User Stories](https://github.com/anthonym313/yome/wiki/User-Stories)
+3. [📄  Design Wireframes](https://github.com/anthonym313/yome/wiki/WireFrame)
+4. [📄  Database Schema](https://github.com/anthonym313/yome/wiki/Database-Schema)
+5. [📄  Frontend Routes](https://github.com/anthonym313/yome/wiki/Frontend-Routes)
 
