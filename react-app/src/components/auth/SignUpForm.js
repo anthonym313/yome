@@ -82,7 +82,7 @@ const SignUpForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Business or Individual Name*(required)</label>
             <input
               type='text'
@@ -92,7 +92,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Email*(required)</label>
             <input
               type='text'
@@ -102,7 +102,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'> 
             <label>Street Address</label>
             <input
               type='text'
@@ -111,7 +111,7 @@ const SignUpForm = () => {
               value={streetAddress}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>City, State</label>
             <input
               type='text'
@@ -120,7 +120,7 @@ const SignUpForm = () => {
               value={cityState}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Zipcode</label>
             <input
               type='text'
@@ -129,7 +129,7 @@ const SignUpForm = () => {
               value={zipcode}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Phone Number</label>
             <input
               type='text'
@@ -138,7 +138,7 @@ const SignUpForm = () => {
               value={phone}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Business Phone Number</label>
             <input
               type='text'
@@ -147,7 +147,7 @@ const SignUpForm = () => {
               value={businessPhone}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Logo Url</label>
             <input
               type='text'
@@ -156,7 +156,7 @@ const SignUpForm = () => {
               value={logoUrl}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Password*(required)</label>
             <input
               type='password'
@@ -166,7 +166,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <div>
+          <div className='sign-up-inputs'>
             <label>Repeat Password*(required)</label>
             <input
               type='password'
@@ -176,7 +176,7 @@ const SignUpForm = () => {
               required={true}
             ></input>
           </div>
-          <button className='signup-button' type='submit'>Sign Up!</button>
+          <button className='signup-button' type='submit'><strong>Sign Up!</strong></button>
         </form>
       </div>
       <div className='signup-column-right'>

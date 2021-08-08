@@ -60,7 +60,7 @@ export default function ClientDashboard(){
                 <div className='client-navigation'>
                     <a href='/new-client'><button id='new-client-button'>Create New Client</button></a>
                 </div>
-                <h1>Currently You Have No Saved Clients</h1>
+                <h2>Currently You Have No Saved Clients. Create Your First Client!</h2>
             </div>
         )
     }
