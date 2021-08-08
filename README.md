@@ -1,7 +1,20 @@
 # Yome
-Yome is an invoice creation and  management app. Yome is made with Python and React.
+Yome [*you-owe-me*] is an invoice creation and  management app. With Yome a business/independent contractor can create an account to create invoices,and store client information. Yome is made with Python and React.
 
 [Yome: Live Site](https://yome.herokuapp.com/) 
 
 ### Screenshots
 #### Splash Page
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-splash-08082021.gif?raw=true)
+#### Business Registration Page
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/signup-capture.jpg?raw=true)
+#### Invoice Creation
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-new-invoice.gif?raw=true)
+#### Invoice Preview and Editing
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-invoice-preview_editor.gif?raw=true)
+#### Client Information
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-client-editor.gif?raw=true)
+#### Business Information Settings
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/business-settings-capture%20.jpg?raw=true)
+### Technical Details
+Yome users can create and different items to their invoices during invoice creation.
