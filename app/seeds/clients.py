@@ -29,6 +29,13 @@ def seed_clients():
     
     db.session.add(demo)
     db.session.add(client2)
+    db.session.add(client3)
+    db.session.add(client4)
+    db.session.add(client5)
+    db.session.add(client6)
+    db.session.add(client7)
+    db.session.add(client8)
+    
     db.session.commit()
     
 
