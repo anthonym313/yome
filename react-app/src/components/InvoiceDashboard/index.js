@@ -47,17 +47,22 @@ export default function InvoiceDashboard(){
     const tableData = (array,allClients)=>{
         return array?.map((invoice)=>{
             const {invoice_number, date, balance, client_id, id} = invoice
-           if(allClients[0])
-            return(
-                 <tr key={id}>
-                     <td><a href={`/invoices/${invoice_number}`}>{invoice_number}</a></td>
-                     <td>{date}</td>
-                     <td>{getClientName(allClients,client_id)}</td>
-                     <td>${balance}</td>
-                 </tr>
-            )
-            
+           if(allClients[0]){
+               return(
+                    <tr key={id}>
+                        <td><a href={`/invoices/${invoice_number}`}>{invoice_number}</a></td>
+                        <td>{date}</td>
+                        <td>{getClientName(allClients,client_id)}</td>
+                        <td>${balance}</td>
+                    </tr>
+               )
+            }else {
+                return null
+            }
         })
+        
+
+            
     }
 
     if(allInvoices[0]&& allClients[0]){
