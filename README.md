@@ -18,3 +18,6 @@ Yome [*you-owe-me*] is an invoice creation and  management app. With Yome a busi
 ![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/business-settings-capture%20.jpg?raw=true)
 ### Technical Details
 Yome users can create and different items to their invoices during invoice creation.
+Items must be created after the Invoice is created in the database so that the item may have the invoices ID to create the association between the two. To achieve this when an invoice POST request is made a list of Item(s) goes with the request. The invoice is created in the database then helper function takes in that list of Item(s) and loops thru to create add each Item in the database with the associated invoice ID.
+
+![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-invoicecreation-api.png?raw=true)
