@@ -15,7 +15,8 @@ Yome [*you-owe-me*] is an invoice creation and  management app. With Yome a busi
 #### Splash Page
 ![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-splash-08082021.gif?raw=true)
 #### Business Registration Page
-![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/signup-capture.jpg?raw=true)
+<img src="https://github.com/anthonym313/yome/blob/main/feature/gifs/signup-capture.jpg?raw=true" width="500">
+
 #### Invoice Creation
 ![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-new-invoice.gif?raw=true)
 #### Invoice Preview and Editing
