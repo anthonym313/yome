@@ -19,12 +19,16 @@ export default function InvoiceInfoPage(){
     const [show, setShow]= useState('none')
     const [editMode, setEditMode] = useState(false)
     const [validationErrors,setValidationErrors] = useState([])
-
+    const [items, setItems] = useState([])
+    const [list, setList]= useState([])
+    const [itemAmounts, setItemAmounts ] = useState([0])
     const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice?.invoice_number)
     const [date, updateInvoiceDate]= useState(currentInvoice?.date)
     const [clientid, updateInvoiceClientID]= useState(currentInvoice?.client_id)
 
-    
+    const itemToInvoiceAmount = (itemAmt)=>{
+        setItemAmounts([...itemAmounts,itemAmt])
+    }
 
     const headers = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL']
     const headTotal=(anInvoice)=> (['','','','TOTAL', `$ ${Number.parseFloat(anInvoice.balance).toFixed(2)}`])
@@ -92,7 +96,7 @@ export default function InvoiceInfoPage(){
         return array?.map((item,index)=>{
             
             return(
-                <ItemEditForm item={item}/>
+                <ItemEditForm item={item} index={index+1} itemToInvoiceAmount ={itemToInvoiceAmount} list={list} setList={setList}/>
             )
                 
         })
