@@ -58,6 +58,7 @@ Yome uses the Redux library to store and manage state.
 * WTForms
 * Docker
 * Heroku
+* 
 
 ## [📖 Wiki](https://github.com/anthonym313/yome/wiki)
 1. [📄 Feature List](https://github.com/anthonym313/yome/wiki/Feature-List)
