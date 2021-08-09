@@ -35,7 +35,7 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
     return item &&(
         
         <>    
-            
+           
             
                 <tr key={index}>
                         <td>
@@ -75,6 +75,7 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
                                 <input
                                 type='number'
                                 name='quantity'
+                                
                                 placeholder={item.quantity}
                                 value={quantity}
                                 onChange={(e)=>setQuantity(e.target.value)}
@@ -90,6 +91,7 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
                         </td>
                         <button type="sumbit" onClick={handleSubmit}>Save</button>
                 </tr>
+            
             
              
         </>

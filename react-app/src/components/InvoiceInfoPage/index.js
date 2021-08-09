@@ -243,18 +243,18 @@ export default function InvoiceInfoPage(){
                         </form>
                         <div>
                             <h2>Order Summary</h2>
-                            <form>
+                            
 
                                 <table id='edit-invoice-summary'>
                                     <tbody>
                                         <tr>{tableHeaders(editHeaders)}</tr>
-                                        {editTableData(currentInvoice?.items)}
+                                       {editTableData(currentInvoice?.items)}
                                         <tr>{tableHeaders(editHeadTotal(currentInvoice))}</tr>
                                     </tbody>
 
                                 </table>
-                            </form>
                         </div>
+                            
                     </div>
                 </div>
             </div>
