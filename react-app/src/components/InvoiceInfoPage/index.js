@@ -33,7 +33,8 @@ export default function InvoiceInfoPage(){
     const headers = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL']
     const editHeaders = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL','Y/N']
     const headTotal=(anInvoice)=> (['','','','TOTAL', `$ ${Number.parseFloat(anInvoice.balance).toFixed(2)}`])
-
+    const editHeadTotal=(anInvoice)=> (['','','','','TOTAL', `$ ${Number.parseFloat(anInvoice.balance).toFixed(2)}`])
+    
     useEffect(()=>{
         dispatch(getAllClients())
         dispatch(getOneInvoice(invoice_number))
@@ -242,14 +243,17 @@ export default function InvoiceInfoPage(){
                         </form>
                         <div>
                             <h2>Order Summary</h2>
-                            <table id='edit-invoice-summary'>
-                                <tbody>
-                                    <div><tr>{tableHeaders(editHeaders)}</tr></div>
-                                    {editTableData(currentInvoice?.items)}
-                                    <div><tr>{tableHeaders(headTotal(currentInvoice))}</tr></div>
-                                </tbody>
+                            <form>
 
-                            </table>
+                                <table id='edit-invoice-summary'>
+                                    <tbody>
+                                        <tr>{tableHeaders(editHeaders)}</tr>
+                                        {editTableData(currentInvoice?.items)}
+                                        <tr>{tableHeaders(editHeadTotal(currentInvoice))}</tr>
+                                    </tbody>
+
+                                </table>
+                            </form>
                         </div>
                     </div>
                 </div>

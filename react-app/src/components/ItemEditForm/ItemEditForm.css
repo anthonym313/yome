@@ -1,0 +1,10 @@
+.edit-item-description input{
+    width: 230px;
+
+}
+.edit-item-rate input{
+    width: 25px;
+} 
+.edit-item-quantity input{
+    width: 38px;
+}

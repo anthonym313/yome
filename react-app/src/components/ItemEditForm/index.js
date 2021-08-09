@@ -34,19 +34,18 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
             
     return item &&(
         
-        <div>    
+        <>    
             
-            <form>
+            
                 <tr key={index}>
                         <td>
-                            <div>
+                            
                                 {index}
 
-                            </div>
 
                         </td>
                         <td>
-                            <div className='item-description'>
+                            <div className='edit-item-description'>
                                 <input
                                 type='text'
                                 name='description'
@@ -59,7 +58,7 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
                             </div>
                         </td>
                         <td>
-                            <div className='item-rate'>
+                            <div className='edit-item-rate'>
                                 <input
                                 type='number'
                                 name='rate'
@@ -72,7 +71,7 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
                         </td>
                         
                         <td>
-                            <div className='item-quantity'>
+                            <div className='edit-item-quantity'>
                                 <input
                                 type='number'
                                 name='quantity'
@@ -91,9 +90,9 @@ export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setL
                         </td>
                         <button type="sumbit" onClick={handleSubmit}>Save</button>
                 </tr>
-            </form>
+            
              
-        </div>
+        </>
     
     )
         

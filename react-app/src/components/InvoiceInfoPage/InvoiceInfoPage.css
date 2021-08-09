@@ -43,6 +43,11 @@
     text-align:center;
     font-family:'Times New Roman', Times, serif;
 }
+#edit-invoice-summary{
+    width:100%;
+    text-align:center;
+    font-family:'Times New Roman', Times, serif;
+}
 
 #invoice-summary th{
     border-top:1px solid black;
@@ -64,8 +69,13 @@
 }
 #edit-invoice-summary th:nth-last-child(1){
     border-right: 1px solid black;
+    
 }
+
 #invoice-summary td{
+    padding:10px 0;
+}
+#edit-invoice-summary td{
     padding:10px 0;
 }
 #order-date{
