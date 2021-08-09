@@ -29,7 +29,7 @@ def seed_items():
     db.session.add(item5)
     db.session.add(item6)
     db.session.add(item7)
-    db.sessoin.commit()
+    db.session.commit()
     
     
 def undo_items():
