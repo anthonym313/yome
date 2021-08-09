@@ -19,7 +19,7 @@ export default function InvoiceInfoPage(){
     const [show, setShow]= useState('none')
     const [editMode, setEditMode] = useState(false)
     const [validationErrors,setValidationErrors] = useState([])
-    const [items, setItems] = useState([])
+
     const [list, setList]= useState([])
     const [itemAmounts, setItemAmounts ] = useState([0])
     const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice?.invoice_number)
@@ -31,6 +31,7 @@ export default function InvoiceInfoPage(){
     }
 
     const headers = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL']
+    const editHeaders = ['#', 'DESCRIPTION', 'RATE', 'QUANTITY', 'SUBTOTAL','Y/N']
     const headTotal=(anInvoice)=> (['','','','TOTAL', `$ ${Number.parseFloat(anInvoice.balance).toFixed(2)}`])
 
     useEffect(()=>{
@@ -241,11 +242,11 @@ export default function InvoiceInfoPage(){
                         </form>
                         <div>
                             <h2>Order Summary</h2>
-                            <table id='invoice-summary'>
+                            <table id='edit-invoice-summary'>
                                 <tbody>
-                                    <tr>{tableHeaders(headers)}</tr>
+                                    <div><tr>{tableHeaders(editHeaders)}</tr></div>
                                     {editTableData(currentInvoice?.items)}
-                                    <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
+                                    <div><tr>{tableHeaders(headTotal(currentInvoice))}</tr></div>
                                 </tbody>
 
                             </table>
