@@ -31,6 +31,10 @@ Items must be created after the Invoice is created in the database so that the i
 <br></br>
 
 ![image](https://github.com/anthonym313/yome/blob/main/feature/gifs/yome-invoicecreation-api.png?raw=true)
+<br></br>
+Yome uses the Redux library to store and manage state.
+#### Redux Tree
+![image](https://user-images.githubusercontent.com/78447674/128655064-9d221121-185c-41d5-82f4-e9e336fb165b.png)
 
 ## 🎮 Features
 * Account Creation and Updating
