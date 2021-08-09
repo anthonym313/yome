@@ -11,6 +11,9 @@
     align-items:center;
     text-shadow: 4px 3px 5px rgba(0,0,0,.40);
 }
+.user-logo-edits img{
+max-width:120px;
+}
 .settings-card-container{
     width:100%;
     display:flex;

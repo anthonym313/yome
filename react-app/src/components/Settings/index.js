@@ -53,7 +53,7 @@ export default function Settings() {
           
           <form>
             <div className='user-logo-edits'>
-              <img src={user.logo_url} alt='business logo' style={{height:'150px'}}></img>
+              <img src={user.logo_url} alt='business logo'></img>
               <div className='user-edit'>
                 <label>LogoUrl</label>
                 <input
