@@ -50,8 +50,7 @@ def create_invoice():
     db.session.commit()
     add_invoice_item(req["arrayOfItems"],new_invoice)
     return new_invoice.to_dict()
-    
-
+   
 
 def add_invoice_item(itemList, new_invoiceId):
     """

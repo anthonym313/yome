@@ -6,10 +6,10 @@ import './ItemEditForm.css'
 export default function ItemEditForm({item,index,itemToInvoiceAmount, list, setList}){
     
     const {id} = item
-    const [description, setDescription] = useState('')
-    const [rate, setRate] = useState(0);
-    const [quantity, setQuantity] = useState(0);
-    const [amount, setAmount] = useState(0)
+    const [description, setDescription] = useState(item.description || '')
+    const [rate, setRate] = useState(item.rate || 0);
+    const [quantity, setQuantity] = useState(item.quantity || 0);
+    const [amount, setAmount] = useState(item.amount || 0)
     
     
     

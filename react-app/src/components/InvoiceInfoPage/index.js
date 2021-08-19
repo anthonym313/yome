@@ -25,6 +25,13 @@ export default function InvoiceInfoPage(){
     const [invoicenumber, updateInvoiceNumber]= useState(currentInvoice?.invoice_number)
     const [date, updateInvoiceDate]= useState(currentInvoice?.date)
     const [clientid, updateInvoiceClientID]= useState(currentInvoice?.client_id)
+    const [balance, updateBalance] = useState(currentInvoice?.balance)
+
+    function getBalance(array){
+        let n = 0
+        array.forEach(item=>(n+=item))
+        updateBalance(n) 
+    }
 
     const itemToInvoiceAmount = (itemAmt)=>{
         setItemAmounts([...itemAmounts,itemAmt])
