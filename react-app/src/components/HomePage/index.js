@@ -68,7 +68,7 @@ export default function HomePage(){
             </div>
             <div className='footer'>
                 <a href='https://www.linkedin.com/in/anthonyamartin/' target='_blank' rel='nooperner noreferrer'><span style={{color:'#67ab9f'}}><i className='fab fa-linkedin'> </i></span></a>
-                <a href="https://github.com/anthonym313/yome" target='_blank' rel='nooperner noreferrer'><span style={{color:'#67ab9f', padding:'1rem', height:'16px'}}><i className='fab fa-github'></i></span></a>
+                <a href="https://github.com/anthonym313/yome" target='_blank' rel='nooperner noreferrer'><span style={{color:'#67ab9f', padding:'1rem', height:'20px'}}><i className='fab fa-github'></i></span></a>
                 Developed by: Anthony Martin
             </div>
           

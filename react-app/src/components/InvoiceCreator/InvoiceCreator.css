@@ -19,7 +19,9 @@
     max-height:150px;
 }
 .invoice-top-inputs{
-    padding-left:4%;
+    display:flex;
+    justify-content: space-around;
+     
 }
 .invoice-header h1{
 padding-right:20px;
@@ -38,9 +40,7 @@ color:rgba(0, 0, 0, 0.315)
     margin-top: 50px;
     display:flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-right: 10%;
-    padding-left:4%;
+    justify-content: space-around;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom:30px;
 }
@@ -68,11 +68,12 @@ thead #itemQty{
 
 .itm-addDel-buttons button{
     padding:3px 6px;
+    margin:1rem 0;
     cursor: pointer;
     color:white;
     font-weight: 600;
     background-color: red;
-    border:border-box;
+    border:none;
     border-radius: 3px;
     transition-duration: .4s;
     box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -90,6 +91,7 @@ thead #itemQty{
     margin:30px 0 0 670px;
 }
 .invoice-bottom-container button{
+    border:none;
     cursor: pointer;
     margin:14px 0 25px 0;
     padding:10px;
