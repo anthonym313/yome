@@ -14,7 +14,7 @@ export default function ClientInfoPage(){
     const singleClient = client[0] || null
 
     const noShow = {display:'none'}
-    const show = {display:'block'}
+    const show = {display:'flex'}
     
     const [toogleShow, setToggleShow] = useState(noShow)
 
