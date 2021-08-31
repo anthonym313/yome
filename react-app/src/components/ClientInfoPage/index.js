@@ -63,23 +63,30 @@ export default function ClientInfoPage(){
                         <a href='/clients'>Back to Dashboard</a>
                         <button onClick={handleDelete} id='delete-client-button'>Delete Client</button>
                     </div>
-                    <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
-                    <div>
-                        <button onClick={editClick} id='client-edit-button'>Edit Client</button>
+                    <div className='client-id-card'>
+                        <div className='client-id-image'>
+                            <img src='https://i1.wp.com/pngall.com/wp-content/uploads/5/Profile-Avatar-PNG.png' alt='Client-AVATAR'></img>
+                            <div>
+                                <button onClick={editClick} id='client-edit-button'>Edit Client</button>
+                            </div>
+                        </div>
+                        <div>
+                            <div><span><i className='far fa-user'></i> {singleClient.name}</span></div>
+                            <div><span><i className='far fa-envelope'></i> {singleClient.email}</span></div>
+                            <div><span><i className='fas fa-map-marker'></i> {singleClient.street_address}</span></div>
+                            <div><span><i className='fas fa-phone-alt'></i> {singleClient.phone}</span></div>
+                        </div>
                     </div>
-                    <h3>{singleClient.name}</h3>
-                    <h4>{singleClient.email}</h4>
-                    <h4>{singleClient.street_address}</h4>
-                    <h4>{singleClient.phone}</h4>
+
                 </div>
                 <div className='client-card-edit' style={toogleShow}>
                     <button onClick={closeEdit} id='client-close-button'>Cancel Edit</button>
                     <ClientEditForm client={singleClient} id={singleClient.id}/>
                 </div>
 
-               
             </div>
         </div>
+               
 
     )
 }

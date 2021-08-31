@@ -16,8 +16,7 @@
 }
 #client-creation-submit{
     width:330px;
-    padding-top:4px;
-    padding-bottom:4px;
+    padding:.4rem;
     border:none;
     color:#ffebd3;
     font-weight: 700;
@@ -41,8 +40,7 @@
 #client-creation-cancel{
     width:330px;
     margin-top:12px;
-    padding-top:4px;
-    padding-bottom:4px;
+    padding:.4rem;
     border:none;
     color:#ffebd3;
     font-weight: 700;
