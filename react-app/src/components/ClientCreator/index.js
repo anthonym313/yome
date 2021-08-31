@@ -35,7 +35,7 @@ export default function ClientCreator(){
                     ))}
                 </div>
                 <div>
-                    <label>Name*(required)</label>
+                    <label>Name*</label>
                     <input
                     type='text'
                     name='name'
@@ -45,7 +45,7 @@ export default function ClientCreator(){
                     ></input>
                 </div>
                 <div>
-                    <label>E-Mail*(required)</label>
+                    <label>E-Mail*</label>
                     <input
                     type='text'
                     name='email'
@@ -55,7 +55,7 @@ export default function ClientCreator(){
                     ></input>
                 </div>
                 <div>
-                    <label>Street Address*(required)</label>
+                    <label>Street Address*</label>
                     <input
                     type='text'
                     name='street_address'
@@ -65,7 +65,7 @@ export default function ClientCreator(){
                     ></input>
                 </div>
                 <div>
-                    <label>Phone*(required)</label>
+                    <label>Phone*</label>
                     <input
                     type='text'
                     name='phone'

@@ -45,7 +45,7 @@ export default function InvoiceCreator(){
         }else{
             return(
                 <>
-                    <label for='clients'> Choose a client</label>
+                    <label for='clients'>Choose a client </label>
                     <select value={client} onChange={clientTings} id='client-drop'>
                         {array.map((person,ind)=>(
                             <option value={person.id} key={ind}>{person.name}</option>

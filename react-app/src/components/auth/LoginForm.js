@@ -48,24 +48,26 @@ const LoginForm = () => {
               <div key={ind}>{error}</div>
             ))}
           </div>
-          <div>
-            <label htmlFor='email'>Email</label>
+          <div className='login-input'>
+            <span><i className='fas fa-at'></i> Email</span>
             <input
               name='email'
               type='text'
               placeholder='Email'
               value={email}
               onChange={updateEmail}
+              required={true}
             />
           </div>
-          <div>
-            <label htmlFor='password'>Password</label>
+          <div className='login-input'>
+            <span><i className='fas fa-key'></i> Password</span>
             <input
               name='password'
               type='password'
               placeholder='Password'
               value={password}
               onChange={updatePassword}
+              required={true}
             />
           </div>
           <div id="login-button">
