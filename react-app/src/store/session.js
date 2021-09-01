@@ -58,11 +58,11 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 //Update
-export const editUser = (id, username,streetaddress,citystate,zipcode,phone,businessphone, logourl) => async (dispatch)=>{
-  const res = await fetch(`/api/auth/${id}/edit`, {
+export const editUser = (formData) => async (dispatch)=>{
+  const res = await fetch(`/api/auth/edit`, {
       method:"PUT",
-      headers:{"Content-Type": "application/json"},
-      body:JSON.stringify({id, username,streetaddress,citystate,zipcode,phone,businessphone, logourl})
+      headers:{"Content-Type": "multipart/form-data"},
+      body:JSON.stringify({formData})
   });
   if (res.ok){
       const updatedUser= await res.json();

@@ -7,6 +7,7 @@ from app.models import User, db, user
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.utils import secure_filename
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -120,21 +121,40 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@auth_routes.route('/<int:id>/edit',methods=['PUT'])
+@auth_routes.route('/edit',methods=['PUT'])
 @login_required
-def edit_user(id):
+def edit_user():
     """
     Edits a logged in User/Business information.
     """
-    req=request.get_json()
-    user_to_update =User.query.get(id)
-    user_to_update.username= req['username'],
-    user_to_update.street_address= req['streetaddress'],
-    user_to_update.city_state=req['citystate'],
-    user_to_update.zipcode=req['zipcode'],
-    user_to_update.phone=req['phone'],
-    user_to_update.business_phone =req['businessphone'],
-    user_to_update.logo_url= req['logourl'],
+           
+    image = request.files['image']
+    'this is coming up empty'
+    
+   
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"},400
+    
+    image.filename = get_unique_filename(image.filename)
+    
+    upload = upload_file_to_s3(image)
+    if "url" not in upload:
+        """
+        if the dict doesn't have a url key
+        there was an error when uploading
+        we then send back that error message
+        """
+        return upload, 400
+    
+    user_to_update =User.query.get(current_user.id)
+    user_to_update.username= request['username'],
+    user_to_update.street_address= request['streetaddress'],
+    user_to_update.city_state=request['citystate'],
+    user_to_update.zipcode=request['zipcode'],
+    user_to_update.phone=request['phone'],
+    user_to_update.business_phone =request['businessphone'],
+    user_to_update.logo_url= upload["url"]
+    
     
     db.session.commit()
     return user_to_update.to_dict()

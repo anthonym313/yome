@@ -14,27 +14,36 @@ export default function Settings() {
   const [zipcode,updateZipcode]=useState(user.zipcode)
   const [phone,updatePhone]=useState(user.phone)
   const [businessphone,updateBusinessPhone]=useState(user.business_phone)
-  const [logourl,updateLogoUrl]=useState(user.logo_url)
+  const [image,updateLogoUrl]=useState('')
   const [validationErrors, setValidationErrors]=useState([])  
 
   useEffect(() => {
     setId(user.id)
     const errors = [];
     if(!username)errors.push('Please provide a Business Name')
-    if(!logourl) errors.push('Please provide Logo Url')
+    if(!image) errors.push('Please provide Logo Url')
     if(!phone && !businessphone) errors.push('Please provide at least one phone number')
     setValidationErrors(errors)
     
-  }, [user,username, streetaddress,citystate,zipcode,phone,businessphone,logourl]);
+  }, [user,username, streetaddress,citystate,zipcode,phone,businessphone,image]);
   
-  const handleSubmit =(e)=>{
+  const handleSubmit = (e)=>{
     e.preventDefault();
      if(!validationErrors.length){
-      dispatch(editUser(id, username, streetaddress,citystate,zipcode,phone,businessphone,logourl))
+       const formData = {
+         image,streetaddress,citystate,zipcode,phone,businessphone,username
+       }
+       
+      dispatch(editUser(formData))
+      console.log(formData)
       window.alert('Business Profile Settings Updated!')
     }
     
   }
+  const updateLogo = (e) => {
+    const file = e.target.files[0];
+    updateLogoUrl(file);
+}
 
   
   return user && (
@@ -51,17 +60,17 @@ export default function Settings() {
             <h3>Edit Business Profile</h3>
             <button type='submit' onClick={handleSubmit}>Save</button>
           
-          <form>
+          <form encType="multipart/form-data">
             <div className='user-logo-edits'>
               <img src={user.logo_url} alt='business logo'></img>
               <div>
                 <label>LogoUrl</label>
                 <input
                 type="file"
-                name="file"
-                onSubmit={(e)=>updateLogoUrl(e.target.value)}
-                value={''}
-                required={true}
+                name='image'
+                accept="image/*"
+                onChange={updateLogo}
+                
                 ></input>
               </div>  
             </div>
