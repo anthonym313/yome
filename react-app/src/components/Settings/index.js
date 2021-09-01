@@ -54,14 +54,13 @@ export default function Settings() {
           <form>
             <div className='user-logo-edits'>
               <img src={user.logo_url} alt='business logo'></img>
-              <div className='user-edit'>
+              <div>
                 <label>LogoUrl</label>
                 <input
-                type="text"
-                name="logo_url"
-                placeholder={logourl}
-                onChange={(e)=>updateLogoUrl(e.target.value)}
-                value={logourl}
+                type="file"
+                name="file"
+                onSubmit={(e)=>updateLogoUrl(e.target.value)}
+                value={''}
                 required={true}
                 ></input>
               </div>  
