@@ -1,3 +1,7 @@
+import boto3
+import botocore
+import uuid
+import os
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db, user
 from app.forms import LoginForm
@@ -5,6 +9,13 @@ from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
+
+s3 = boto3.client(
+    "s3",
+    aws_access_key_id=os.environ.get("S3_KEY"),
+    aws_secret_access_key=os.environ.get("S3_SECRET")
+)
+ALLOWED_EXTENSIONS ={'pdf','png','jpg','jpeg'}
 
 
 def validation_errors_to_error_messages(validation_errors):

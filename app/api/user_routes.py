@@ -1,19 +1,8 @@
-import boto3
-import botocore
-import uuid
-import os
 from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import User
 
 user_routes = Blueprint('users', __name__)
-
-s3 = boto3.client(
-    "s3",
-    aws_access_key_id=os.environ.get("S3_KEY"),
-    aws_secret_access_key=os.environ.get("S3_SECRET")
-)
-ALLOWED_EXTENSIONS ={'pdf','png','jpg','jpeg'}
 
 
 @user_routes.route('/')
