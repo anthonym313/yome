@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams,useHistory,Link} from 'react-router-dom';
+import {PDFDownloadLink, Document, Page} from '@react-pdf/renderer'
+
 import { getAllClients } from '../../store/clients';
 import { editInvoice, getOneInvoice,deleteInvoice} from '../../store/invoices';
 import './InvoiceInfoPage.css'
@@ -92,7 +94,7 @@ export default function InvoiceInfoPage(){
         setEditMode(editMode?false:true)
     }
     
-    if(editMode === false){
+    const invoiceDoc = (currentInvoice)=>{
         return currentInvoice && (
             <div className='individual-page-container'>
                 <div className='preview-edit'>
@@ -153,6 +155,91 @@ export default function InvoiceInfoPage(){
                 </div>
             </div>
         )
+    }
+
+    const MyDoc = () => (
+        <Document>
+          <Page>
+            {invoiceDoc(currentInvoice)}
+          </Page>
+        </Document>
+    );
+    const DownloadInv = () => (
+        <div>
+            <PDFDownloadLink document={<MyDoc />} fileName="invoice.pdf">
+                {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+            </PDFDownloadLink>
+        </div>
+    )
+    if(editMode === false){
+        return(
+            <>
+
+                {invoiceDoc(currentInvoice)}
+                {DownloadInv()}
+            
+            </>
+        )
+        // return currentInvoice && (
+        //     <div className='individual-page-container'>
+        //         <div className='preview-edit'>
+        //             <button disabled={true}>Preview Mode</button>
+        //             <button onClick={handleClick}>Edit Mode</button>
+        //         </div>
+        //         <div className='invoice-information-page-container'>
+        //             <div className='invoice-preview'>
+                      
+        //                     <div className='inv-head'>
+        //                         <div className='inv-head-logo'>
+        //                             <h1>INVOICE</h1>
+        //                             <img src={currentUser.logo_url} alt='user logo'></img>
+        //                         </div>
+                               
+        //                         <div>
+        //                             <h3>Invoice No.</h3>
+        //                             <p>{currentInvoice.invoice_number}</p>
+        //                         </div>
+        //                     </div>
+        //                     <div className='client-company-infoContainer'>
+        //                         <div className='client-information-container'>
+        //                             <h3>Customer Info</h3>
+        //                             <p>{currentInvoice.clients.name}</p>
+        //                             <p>{currentInvoice.clients.street_address}</p>
+        //                             <p>{currentInvoice.clients.phone}</p>
+        //                             <p>{currentInvoice.clients.email}</p>
+        //                         </div>
+        //                         <div className='company-info-container'>
+        //                             <h3>Company Info</h3>
+        //                             <p>{currentUser.username}</p>
+        //                             <p>{currentUser.street_address}</p>
+        //                             <p>{currentUser.city_state} {currentUser.zipcode}</p>
+        //                             <p>{currentUser.email}</p>
+        //                             <p>{currentUser.business_phone}</p>
+        //                             <p>{currentUser.phone}</p>
+        //                         </div>
+        //                     </div>
+        //                     <div id='order-date'>
+        //                         <h3>Order Date:</h3>
+        //                         <p>{currentInvoice.date}</p>
+        //                     </div>
+
+                    
+
+        //                 <div>
+        //                     <h2>Order Summary</h2>
+        //                     <table id='invoice-summary'>
+        //                         <tbody>
+        //                             <tr>{tableHeaders(headers)}</tr>
+        //                             {tableData(currentInvoice.items)}
+        //                             <tr>{tableHeaders(headTotal(currentInvoice))}</tr>
+        //                         </tbody>
+
+        //                     </table>
+        //                 </div>
+        //             </div>
+        //         </div>
+        //     </div>
+        // )
     }else{
         return currentInvoice && allClients && (
             <div className='individual-page-container-edit'>
