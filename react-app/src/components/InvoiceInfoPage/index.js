@@ -7,6 +7,13 @@ import { getAllClients } from '../../store/clients';
 import { editInvoice, getOneInvoice,deleteInvoice} from '../../store/invoices';
 import './InvoiceInfoPage.css'
 
+const MyDoc = ({data}) => (
+    <Document>
+      <Page>
+        {data}
+      </Page>
+    </Document>
+);
 
 export default function InvoiceInfoPage(){
     const {invoice_number} = useParams();
@@ -157,16 +164,10 @@ export default function InvoiceInfoPage(){
         )
     }
 
-    const MyDoc = () => (
-        <Document>
-          <Page>
-            {invoiceDoc(currentInvoice)}
-          </Page>
-        </Document>
-    );
+    
     const DownloadInv = () => (
         <div>
-            <PDFDownloadLink document={<MyDoc />} fileName="invoice.pdf">
+            <PDFDownloadLink document={<MyDoc data={invoiceDoc(currentInvoice)}/>} fileName="invoice.pdf">
                 {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
             </PDFDownloadLink>
         </div>
@@ -175,8 +176,8 @@ export default function InvoiceInfoPage(){
         return(
             <>
 
-                {invoiceDoc(currentInvoice)}
                 {DownloadInv()}
+                {invoiceDoc(currentInvoice)}
             
             </>
         )
