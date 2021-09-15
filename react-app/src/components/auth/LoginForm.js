@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import {GoogleLogin} from 'react-google-login'
 import DemoUser2 from '../DemoUser/DemoUser2';
 import './Login.css'
 
@@ -19,6 +20,17 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
+
+  const responseGoogle = async (response) => {
+    const data = await dispatch(login({email: response?.Rs?.Ct, password: 'password1!'}));
+    if (user) {
+    
+
+    }
+
+
+    return response
+  }
 
   const updateEmail = (e) => {
     setEmail(e.target.value);

@@ -40,6 +40,7 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
+
   
   
   if (response.ok) {
@@ -56,6 +57,8 @@ export const login = (email, password) => async (dispatch) => {
   }
 
 }
+
+
 
 //Update
 export const editUser = (id, username,streetaddress,citystate,zipcode,phone,businessphone, logourl) => async (dispatch)=>{
@@ -120,6 +123,9 @@ export const signUp = (username, email, password,streetaddress,citystate,zipcode
     return ['An error occurred. Please try again.']
   }
 }
+
+
+
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
