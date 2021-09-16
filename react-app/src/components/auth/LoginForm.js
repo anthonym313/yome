@@ -22,10 +22,9 @@ const LoginForm = () => {
   };
 
   const responseGoogle = async (response) => {
-    const data = await dispatch(login({email: response?.Rs?.Ct, password: 'password1!'}));
-    if (data) {
     
-
+    if(response.profileObj){
+      document.getElementById('demoUser2').click()
     }
 
 
@@ -90,9 +89,10 @@ const LoginForm = () => {
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
             cookiePolicy={'single_host_origin'}
+            
           >Sign in with Google</GoogleLogin>
             
-          <div>
+          <div id='demoUser2'>
             <DemoUser2/>
           </div>
         </form>
