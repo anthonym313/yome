@@ -23,7 +23,7 @@ const LoginForm = () => {
 
   const responseGoogle = async (response) => {
     const data = await dispatch(login({email: response?.Rs?.Ct, password: 'password1!'}));
-    if (user) {
+    if (data) {
     
 
     }
@@ -85,6 +85,13 @@ const LoginForm = () => {
           <div id="login-button">
             <button type='submit'>Login</button>
           </div>
+          <GoogleLogin 
+            clientId = '811663409176-0m0bib8aa1o0q9phdh7oeol4qd4ii7pd.apps.googleusercontent.com'
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          >Sign in with Google</GoogleLogin>
+            
           <div>
             <DemoUser2/>
           </div>
